@@ -1,0 +1,10 @@
+
+export interface LoginMsg {
+    User: string;
+    Pwd: string;
+}
+export interface RespAuthMsg {
+    IdUsuario: number;
+    Nombre: string;
+    Perfiles: string[];
+}

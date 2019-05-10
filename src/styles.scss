@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/themes/custom2.css";
+//@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+// @import "~@angular/material/prebuilt-themes/purple-green.css";
+body{
+    background: url("./assets/images/bg2.jpg");
+    background-size:     cover;      
+    background-repeat:   no-repeat;
+    background-position: center center; 
+    background-attachment: fixed;
+    height: 100vh;
+    margin: 0;
+}
+img{
+    filter: blur(100%)
+}
+
+.myapp-no-padding-dialog .mat-dialog-container {
+    padding: 0;
+}
+.form td{
+    font-size: 16px;
+    color: #fff;
+    padding: 0px;
+    border-spacing: 0px;
+}
+.form th{
+    font-size: 20px;
+    color: #ff9900;
+}
+.form input{
+    font-size: 16px !important;
+    color: #fff;
+}
+.form button:hover{
+    padding: 0px 40px;
+}
+.lableTable td{
+    font-weight: bold;
+    text-align: right;
+    padding-right: 15px;
+}

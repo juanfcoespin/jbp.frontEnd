@@ -1,0 +1,54 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{global.ComponentTitle}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- <div>Cliente: {{global.UserLogged.Nombre}}</div> -->
+    <div [formGroup]="form" fxLayout="column">
+      <mat-form-field>
+        <input matInput  [matDatepicker]="fechaPedido" placeholder="Fecha del pedido" formControlName="fechaPedido">
+        <mat-datepicker-toggle  matSuffix [for]="fechaPedido"></mat-datepicker-toggle>
+        <mat-datepicker  #fechaPedido></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="fechaEntrega" placeholder="Fecha de entrega" formControlName="fechaEntrega">
+        <mat-datepicker-toggle matSuffix [for]="fechaEntrega"></mat-datepicker-toggle>
+        <mat-datepicker #fechaEntrega></mat-datepicker>
+        <mat-error>Debe registrar la fecha de entrega</mat-error>
+      </mat-form-field>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Detalle Pedido</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <!--div formArrayName="products">
+            <div fxLayout="row" >
+              <label fxFlex="90%" fxFlexFill>Producto</label>
+              <label fxFlex="10%" fxFlexFill fxLayoutAlign="end end">Subtotal</label>
+            </div>
+            <div *ngFor="let product of form.controls.products.controls; let i = index" > 
+              <div [formGroupName]="i"  fxLayout="row" fxLayoutGap="5%" fxLayoutAlign="space-between center">
+                <mat-form-field  fxFlex="90%" fxFlexFill>
+                  <input matInput type="number" (change)="calcSubtotal(i)" placeholder="{{product.controls.Nombre.value+' ('+(product.controls.Precio.value | currency)+')'}}" formControlName="Cantidad" required>
+                  <mat-error>
+                      Debe ingresar la cantidad
+                  </mat-error>
+                </mat-form-field>
+                <div>
+                    {{product.controls.Subtotal.value | currency}}
+                </div>
+              </div>        
+            </div>
+          </div>
+          <div>
+              Total: {{this.form.value.total | currency}}
+          </div-->
+        </mat-card-content>
+      </mat-card>
+    
+    </div>
+  </mat-card-content>
+  <mat-card-actions fxLayout="row" fxLayoutAlign="center center">
+    <button mat-button (click)="createPedido()">Hacer Pedido</button>
+  </mat-card-actions>
+</mat-card>

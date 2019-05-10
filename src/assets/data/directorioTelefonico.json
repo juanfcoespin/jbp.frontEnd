@@ -1,0 +1,533 @@
+﻿[
+	{
+		"CONTACTO": "ADALID LINARES",
+		"DEPARTAMENTO": "Liberaciones",
+		"PLANTA": "MATRIZ",
+		"Ext": "202"
+	},
+	{
+		"CONTACTO": "ADRIANA/MAURICIO",
+		"DEPARTAMENTO": "Asuntos Regulatorios",
+		"PLANTA": "MATRIZ",
+		"Ext": "110"
+	},
+	{
+		"CONTACTO": "ALEXIS CRUZ",
+		"DEPARTAMENTO": "Informática",
+		"PLANTA": "MATRIZ",
+		"Ext": "216"
+	},
+	{
+		"CONTACTO": "ANDRES MEJIA",
+		"DEPARTAMENTO": "Informática",
+		"PLANTA": "MATRIZ",
+		"Ext": "106"
+	},
+	{
+		"CONTACTO": "ANDRES NARANJO",
+		"DEPARTAMENTO": "Gerencia Financiera",
+		"PLANTA": "MATRIZ",
+		"Ext": "128"
+	},
+	{
+		"CONTACTO": "ANDRES VELASQUEZ",
+		"DEPARTAMENTO": "Gerencia línea Veterinaria",
+		"PLANTA": "MATRIZ",
+		"Ext": "123"
+	},
+	{
+		"CONTACTO": "BELGICA ENRIQUEZ",
+		"DEPARTAMENTO": "Tesorería",
+		"PLANTA": "MATRIZ",
+		"Ext": "103"
+	},
+	{
+		"CONTACTO": "BLANCA SANTILLANA",
+		"DEPARTAMENTO": "Aseguramiento /Calidad",
+		"PLANTA": "MATRIZ",
+		"Ext": "201"
+	},
+	{
+		"CONTACTO": "CARLOS SEMPERTEGUI",
+		"DEPARTAMENTO": "Gerente línea Humana",
+		"PLANTA": "MATRIZ",
+		"Ext": "119"
+	},
+	{
+		"CONTACTO": "CARMEN BROWN",
+		"DEPARTAMENTO": "Ventas",
+		"PLANTA": "MATRIZ",
+		"Ext": "120"
+	},
+	{
+		"CONTACTO": "CAROLINA MEJIA",
+		"DEPARTAMENTO": "Compras",
+		"PLANTA": "MATRIZ",
+		"Ext": "115"
+	},
+	{
+		"CONTACTO": "CRISTINA LOZADA",
+		"DEPARTAMENTO": "Compras",
+		"PLANTA": "MATRIZ",
+		"Ext": "126"
+	},
+	{
+		"CONTACTO": "DATACENTER",
+		"DEPARTAMENTO": "Informática",
+		"PLANTA": "MATRIZ",
+		"Ext": "233"
+	},
+	{
+		"CONTACTO": "EDUARDO CONSTANTE",
+		"DEPARTAMENTO": "Cartera/Contabilidad",
+		"PLANTA": "MATRIZ",
+		"Ext": "102"
+	},
+	{
+		"CONTACTO": "FABIAN BASTIDAS",
+		"DEPARTAMENTO": "Contabilidad",
+		"PLANTA": "MATRIZ",
+		"Ext": "108"
+	},
+	{
+		"CONTACTO": "FELIPE BROWN",
+		"DEPARTAMENTO": "Gerencia General",
+		"PLANTA": "MATRIZ",
+		"Ext": "116"
+	},
+	{
+		"CONTACTO": "FERNANDO ANDRADE",
+		"DEPARTAMENTO": "Marketing",
+		"PLANTA": "MATRIZ",
+		"Ext": "109"
+	},
+	{
+		"CONTACTO": "GARDENIA LANDACAY",
+		"DEPARTAMENTO": "Ventas",
+		"PLANTA": "MATRIZ",
+		"Ext": "122"
+	},
+	{
+		"CONTACTO": "HECTOR GRIJALVA",
+		"DEPARTAMENTO": "Gerente de Operaciones",
+		"PLANTA": "MATRIZ",
+		"Ext": "211"
+	},
+	{
+		"CONTACTO": "Ignacio BOTTONI/M. DE SOUSA",
+		"DEPARTAMENTO": "Aseguramiento",
+		"PLANTA": "MATRIZ",
+		"Ext": "230"
+	},
+	{
+		"CONTACTO": "JAMES BROWN H",
+		"DEPARTAMENTO": "Presidente",
+		"PLANTA": "MATRIZ",
+		"Ext": "117"
+	},
+	{
+		"CONTACTO": "JEANETH LOZA",
+		"DEPARTAMENTO": "Compras",
+		"PLANTA": "MATRIZ",
+		"Ext": "114"
+	},
+	{
+		"CONTACTO": "JENIFFER MOREIRA",
+		"DEPARTAMENTO": "Recepción",
+		"PLANTA": "MATRIZ",
+		"Ext": "209"
+	},
+	{
+		"CONTACTO": "JIMENA CALAHORRANO",
+		"DEPARTAMENTO": "Planificación",
+		"PLANTA": "MATRIZ",
+		"Ext": "226"
+	},
+	{
+		"CONTACTO": "JOFFRE ACERO",
+		"DEPARTAMENTO": "Planificación",
+		"PLANTA": "MATRIZ",
+		"Ext": "227"
+	},
+	{
+		"CONTACTO": "JORGE VERGARA",
+		"DEPARTAMENTO": "Ventas-Mascotas",
+		"PLANTA": "MATRIZ",
+		"Ext": "124"
+	},
+	{
+		"CONTACTO": "JUAN CARLOS MOYA",
+		"DEPARTAMENTO": "Sub Gerente",
+		"PLANTA": "MATRIZ",
+		"Ext": "118"
+	},
+	{
+		"CONTACTO": "JUAN FRANCISCO ESPIN",
+		"DEPARTAMENTO": "Informática",
+		"PLANTA": "MATRIZ",
+		"Ext": "236"
+	},
+	{
+		"CONTACTO": "KARINA LOOR",
+		"DEPARTAMENTO": "Recepción",
+		"PLANTA": "MATRIZ",
+		"Ext": "104"
+	},
+	{
+		"CONTACTO": "KARLA PONCE",
+		"DEPARTAMENTO": "Contabilidad",
+		"PLANTA": "MATRIZ",
+		"Ext": "107"
+	},
+	{
+		"CONTACTO": "LOLA CISNEROS",
+		"DEPARTAMENTO": "Asist. Gerencia",
+		"PLANTA": "MATRIZ",
+		"Ext": "121"
+	},
+	{
+		"CONTACTO": "MARCELO ORTIZ",
+		"DEPARTAMENTO": "Departamento Técnico",
+		"PLANTA": "MATRIZ",
+		"Ext": "132"
+	},
+	{
+		"CONTACTO": "MARIA AUGUSTA TRÁVEZ",
+		"DEPARTAMENTO": "Seguridad Industrial",
+		"PLANTA": "MATRIZ",
+		"Ext": "217"
+	},
+	{
+		"CONTACTO": "MARIA JOSÉ PEPINÓS",
+		"DEPARTAMENTO": "Planificación",
+		"PLANTA": "MATRIZ",
+		"Ext": "235"
+	},
+	{
+		"CONTACTO": "NELSON CHUQUI",
+		"DEPARTAMENTO": "Contabilidad",
+		"PLANTA": "MATRIZ",
+		"Ext": "131"
+	},
+	{
+		"CONTACTO": "OLGA PAZMIÑO",
+		"DEPARTAMENTO": "Recursos Humanos",
+		"PLANTA": "MATRIZ",
+		"Ext": "105"
+	},
+	{
+		"CONTACTO": "RECEPCIÓN",
+		"DEPARTAMENTO": "Inalámbrico",
+		"PLANTA": "MATRIZ",
+		"Ext": "193"
+	},
+	{
+		"CONTACTO": "ROBERTO ALMEIDA",
+		"DEPARTAMENTO": "Compras",
+		"PLANTA": "MATRIZ",
+		"Ext": "113"
+	},
+	{
+		"CONTACTO": "SALA PISO 1",
+		"DEPARTAMENTO": "Sala Reuniones",
+		"PLANTA": "MATRIZ",
+		"Ext": "151"
+	},
+	{
+		"CONTACTO": "SALA PISO 2",
+		"DEPARTAMENTO": "Sala Reuniones",
+		"PLANTA": "MATRIZ",
+		"Ext": "152"
+	},
+	{
+		"CONTACTO": "SEBASTIAN BROWN",
+		"DEPARTAMENTO": "Marketing",
+		"PLANTA": "MATRIZ",
+		"Ext": "130"
+	},
+	{
+		"CONTACTO": "T. DIAZ/ M.OLI PEÑAHERRERA",
+		"DEPARTAMENTO": "Aseguramiento",
+		"PLANTA": "MATRIZ",
+		"Ext": "214"
+	},
+	{
+		"CONTACTO": "TATIANA GUEVARA",
+		"DEPARTAMENTO": "Ventas",
+		"PLANTA": "MATRIZ",
+		"Ext": "125"
+	},
+	{
+		"CONTACTO": "VANESSA ZULETA",
+		"DEPARTAMENTO": "Contabilidad",
+		"PLANTA": "MATRIZ",
+		"Ext": "101"
+	},
+	{
+		"CONTACTO": "VERÓNICA FIALLOS",
+		"DEPARTAMENTO": "Ventas",
+		"PLANTA": "MATRIZ",
+		"Ext": "127"
+	},
+	{
+		"CONTACTO": "VERÓNICA JINEZ",
+		"DEPARTAMENTO": "Cartera/Contabilidad",
+		"PLANTA": "MATRIZ",
+		"Ext": "112"
+	},
+	{
+		"CONTACTO": "VIVIANA RAMIREZ",
+		"DEPARTAMENTO": "Ventas",
+		"PLANTA": "MATRIZ",
+		"Ext": "111"
+	},
+	{
+		"CONTACTO": "BOLÍVAR TUPIZA",
+		"DEPARTAMENTO": "Bodega Fijo",
+		"PLANTA": "PIFO",
+		"Ext": "203"
+	},
+	{
+		"CONTACTO": "BOLÍVAR TUPIZA",
+		"DEPARTAMENTO": "Bodega Inalámbrico",
+		"PLANTA": "PIFO",
+		"Ext": "292"
+	},
+	{
+		"CONTACTO": "CARLOS PALACIOS",
+		"DEPARTAMENTO": "Planta Producción",
+		"PLANTA": "PIFO",
+		"Ext": "229"
+	},
+	{
+		"CONTACTO": "COMEDOR",
+		"DEPARTAMENTO": "Pharma",
+		"PLANTA": "PIFO",
+		"Ext": "215"
+	},
+	{
+		"CONTACTO": "CONSERJE",
+		"DEPARTAMENTO": "Planta Pifo",
+		"PLANTA": "PIFO",
+		"Ext": "220"
+	},
+	{
+		"CONTACTO": "DAVID LEDESMA",
+		"DEPARTAMENTO": "Producción Humanos",
+		"PLANTA": "PIFO",
+		"Ext": "210"
+	},
+	{
+		"CONTACTO": "ESTEBAN PÉREZ",
+		"DEPARTAMENTO": "Producción Veterinaria",
+		"PLANTA": "PIFO",
+		"Ext": "213"
+	},
+	{
+		"CONTACTO": "GLORIA IZA",
+		"DEPARTAMENTO": "Control de Calidad",
+		"PLANTA": "PIFO",
+		"Ext": "204"
+	},
+	{
+		"CONTACTO": "GUARDIANÍA",
+		"DEPARTAMENTO": "Pharma",
+		"PLANTA": "PIFO",
+		"Ext": "219"
+	},
+	{
+		"CONTACTO": "IVAN TOASA",
+		"DEPARTAMENTO": "Investig. Y Desarrollo",
+		"PLANTA": "PIFO",
+		"Ext": "218"
+	},
+	{
+		"CONTACTO": "JOSÉ IDROVO",
+		"DEPARTAMENTO": "Mantenimiento",
+		"PLANTA": "PIFO",
+		"Ext": "208"
+	},
+	{
+		"CONTACTO": "LABORATORIO",
+		"DEPARTAMENTO": "Laboratorio Control",
+		"PLANTA": "PIFO",
+		"Ext": "205"
+	},
+	{
+		"CONTACTO": "JOE CORREA",
+		"DEPARTAMENTO": "Microbiología",
+		"PLANTA": "PIFO",
+		"Ext": "224"
+	},
+	{
+		"CONTACTO": "MARIA G DAVALOS",
+		"DEPARTAMENTO": "Biológicos",
+		"PLANTA": "PIFO",
+		"Ext": "212"
+	},
+	{
+		"CONTACTO": "MELINA RUANO",
+		"DEPARTAMENTO": "Dispensario médico",
+		"PLANTA": "PIFO",
+		"Ext": "221"
+	},
+	{
+		"CONTACTO": "NATALI NASIMBA",
+		"DEPARTAMENTO": "Asuntos Reg. Humanos",
+		"PLANTA": "PIFO",
+		"Ext": "234"
+	},
+	{
+		"CONTACTO": "RAMIRO CALUPIÑA",
+		"DEPARTAMENTO": "Pesaje",
+		"PLANTA": "PIFO",
+		"Ext": "222"
+	},
+	{
+		"CONTACTO": "SANDRA BARBA",
+		"DEPARTAMENTO": "Estabilidades",
+		"PLANTA": "PIFO",
+		"Ext": "231"
+	},
+	{
+		"CONTACTO": "SANDRA PERALTA",
+		"DEPARTAMENTO": "Empaque",
+		"PLANTA": "PIFO",
+		"Ext": "207"
+	},
+	{
+		"CONTACTO": "TALLER",
+		"DEPARTAMENTO": "Mantenimiento",
+		"PLANTA": "PIFO",
+		"Ext": "228"
+	},
+	{
+		"CONTACTO": "WILLIAM SOTOMAYOR",
+		"DEPARTAMENTO": "Bioterio primer piso",
+		"PLANTA": "PIFO",
+		"Ext": "206"
+	},
+	{
+		"CONTACTO": "ANGELICA PROAÑO",
+		"DEPARTAMENTO": "Recepción",
+		"PLANTA": "PUEMBO",
+		"Ext": "305"
+	},
+	{
+		"CONTACTO": "CARLOS JÁTIVA",
+		"DEPARTAMENTO": "Jefe de Planta",
+		"PLANTA": "PUEMBO",
+		"Ext": "306"
+	},
+	{
+		"CONTACTO": "COMEDOR",
+		"DEPARTAMENTO": "JB",
+		"PLANTA": "PUEMBO",
+		"Ext": "302"
+	},
+	{
+		"CONTACTO": "CUARENTENA",
+		"DEPARTAMENTO": "Producción",
+		"PLANTA": "PUEMBO",
+		"Ext": "315"
+	},
+	{
+		"CONTACTO": "EDUARDO MECÍAS",
+		"DEPARTAMENTO": "Bodega",
+		"PLANTA": "PUEMBO",
+		"Ext": "303"
+	},
+	{
+		"CONTACTO": "GUARDIANÍA",
+		"DEPARTAMENTO": "JB",
+		"PLANTA": "PUEMBO",
+		"Ext": "308"
+	},
+	{
+		"CONTACTO": "ISMAEL VEGA",
+		"DEPARTAMENTO": "Producción Veterinaria",
+		"PLANTA": "PUEMBO",
+		"Ext": "307"
+	},
+	{
+		"CONTACTO": "JENNY IZA",
+		"DEPARTAMENTO": "Almacén Inalámbrico",
+		"PLANTA": "PUEMBO",
+		"Ext": "391"
+	},
+	{
+		"CONTACTO": "JENNY IZA",
+		"DEPARTAMENTO": "Almacén facturación",
+		"PLANTA": "PUEMBO",
+		"Ext": "301"
+	},
+	{
+		"CONTACTO": "JENNY IZA",
+		"DEPARTAMENTO": "Almacén Oficina",
+		"PLANTA": "PUEMBO",
+		"Ext": "393"
+	},
+	{
+		"CONTACTO": "MARCELA POSSO",
+		"DEPARTAMENTO": "Betalactámicos",
+		"PLANTA": "PUEMBO",
+		"Ext": "309"
+	},
+	{
+		"CONTACTO": "MR. BROWN",
+		"DEPARTAMENTO": "JB",
+		"PLANTA": "PUEMBO",
+		"Ext": "314"
+	},
+	{
+		"CONTACTO": "PLAGUICIDAS",
+		"DEPARTAMENTO": "JB",
+		"PLANTA": "PUEMBO",
+		"Ext": "313"
+	},
+	{
+		"CONTACTO": "SERGIO SILVA",
+		"DEPARTAMENTO": "Mantenimiento",
+		"PLANTA": "PUEMBO",
+		"Ext": "304"
+	},
+	{
+		"CONTACTO": "TANIA CHILUISA",
+		"DEPARTAMENTO": "Empaque",
+		"PLANTA": "PUEMBO",
+		"Ext": "312"
+	},
+	{
+		"CONTACTO": "BROWN B",
+		"DEPARTAMENTO": "Recepción",
+		"PLANTA": "BROWNBREEDING",
+		"Ext": "310"
+	},
+	{
+		"CONTACTO": "JOSE RAFAEL",
+		"DEPARTAMENTO": "Gerencia",
+		"PLANTA": "BROWNBREEDING",
+		"Ext": "311"
+	},
+	{
+		"CONTACTO": "CARLOS SEMPERTEGUI",
+		"DEPARTAMENTO": "Gerente linea Humana",
+		"PLANTA": "GUAYAQUIL",
+		"Ext": "402"
+	},
+	{
+		"CONTACTO": "IGNACIO HIDALGO",
+		"DEPARTAMENTO": "Despachos Gye",
+		"PLANTA": "GUAYAQUIL",
+		"Ext": "401"
+	},
+	{
+		"CONTACTO": "JUAN IGNACIO HIDALGO",
+		"DEPARTAMENTO": "Despachos Gye",
+		"PLANTA": "GUAYAQUIL",
+		"Ext": "403"
+	},
+	{
+		"CONTACTO": ""
+	}
+]
