@@ -130,16 +130,17 @@ export class GestionParticipantesPuntosComponent implements OnInit {
   filtrarVendedor(me: string): string[] {
     let ms: string[];
     ms = new Array();
-    me = me.toLocaleLowerCase();
-    const matrixToken = me.split(' ');
-    for (const item of this.vendedores) {
-      if (ArrayUtils.contieneTokens(item, matrixToken)) {
-        ms.push(item);
+    if (me) {
+      me = me.toLocaleLowerCase();
+      const matrixToken = me.split(' ');
+      for (const item of this.vendedores) {
+        if (ArrayUtils.contieneTokens(item, matrixToken)) {
+          ms.push(item);
+        }
       }
     }
     return ms;
   }
-  
   buscarSocioNegocio() {
     this.snService.buscarSocioNegocio(this.txtSearch.value).
       subscribe(resp => { // se ejecuta cuando se tiene el resultado del servicio que corre de manera asincrona
@@ -149,15 +150,12 @@ export class GestionParticipantesPuntosComponent implements OnInit {
       });
   }
   mostrarResultadoBusqueda() {
-    console.log(this.listSociosNegocio);
     this.filterSearchSocioNegocio = this.txtSearch.valueChanges.pipe(
       startWith(''),
       map(value => this.filtrarSocioNegocio(value))
     );
   }
   filtrarSocioNegocio(me: string): SocioNegocioItem[] {
-    console.log('hola');
-    console.log(me);
     let ms: SocioNegocioItem[];
     ms = new Array();
     const matrixToken = me.split(' ');

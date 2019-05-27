@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
 
 @Injectable()
 export class StringUtils {
-    static replace(texto, textoBusqueda, textoRemplazo): string {
-        if(texto && texto!=''){
-            var re= new RegExp(textoBusqueda);
+    static replace(texto: string, textoBusqueda: string, textoRemplazo: string): string {
+        if (texto && texto !== '') {
+            const re = new RegExp(textoBusqueda);
             return texto.replace(re, textoRemplazo);
         }
         return null;

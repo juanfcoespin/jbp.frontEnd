@@ -42,6 +42,7 @@ import {UserService} from './services/userService';
 import {DirectorioTelefonicoService} from './services/directorioTelefonicoServices';
 import {PeriodoService} from './services/periodoServices';
 import {CuentaService} from './services/cuentaServices';
+import {NotificationService} from './services/notificationService';
 // paginas
 import { AlertComponent } from './controls/alert/alert.component';
 import { PedidosComponent } from './pages/pedidos/pedidos.component';
@@ -51,6 +52,7 @@ import { UpdateMontosCuentasComponent } from './pages/update-montos-cuentas/upda
 import { LoginComponent } from './pages/login/login.component';
 import { NewUserComponent } from './pages/new-user/new-user.component';
 import { TestSingleRComponent } from './pages/test-single-r/test-single-r.component';
+import { BusinessServicesComponent } from './pages/business-services/business-services.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,7 @@ import { TestSingleRComponent } from './pages/test-single-r/test-single-r.compon
     GestionParticipantesPuntosComponent,
     DirectorioTelefonicoComponent,
     UpdateMontosCuentasComponent,
+    BusinessServicesComponent,
   ],
   imports: [
     BrowserModule,
@@ -107,7 +110,8 @@ import { TestSingleRComponent } from './pages/test-single-r/test-single-r.compon
     UserService,
     DirectorioTelefonicoService,
     PeriodoService,
-    CuentaService
+    CuentaService,
+    NotificationService
   ],
   entryComponents: [AlertComponent, NewUserComponent],
   bootstrap: [AppComponent]

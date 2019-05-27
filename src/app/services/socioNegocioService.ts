@@ -20,7 +20,7 @@ export class SocioNegocioService{
         return this.http.get<ParticipantePuntosMsg>(url);
       }
     }
-    getVendedores():Observable<string[]> {
+    getVendedores(): Observable<string[]> {
       const url = UrlServices.SocioNegocioUrl + '/getVendedores';
       return this.http.get<string[]>(url);
     }

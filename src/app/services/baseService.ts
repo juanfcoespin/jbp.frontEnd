@@ -5,6 +5,8 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 @Injectable()
-export class BaseService{
-    constructor(public http: HttpClient) {}
+export class BaseService {
+    public http: HttpClient;
+    constructor() {
+    }
 }

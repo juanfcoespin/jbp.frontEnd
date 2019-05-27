@@ -8,30 +8,32 @@ import { Injectable } from '@angular/core';
 export class FormUtils {
   private alertMsg: AlertMsg;
   constructor(private dialog: MatDialog) {}
-  showMsg(msg, tipo: MessageType = MessageType.info) {
-      this.alertMsg = new AlertMsg(msg, tipo);
-      this.dialog.open(AlertComponent, {
-          data: this.alertMsg,
-          panelClass: 'myapp-no-padding-dialog'
-      });
-  }
-  static MarkAsTouch (form: FormGroup) {
+  static MarkAsTouch(form: FormGroup) {
     for (const key in form.controls) {
       if (form.controls.hasOwnProperty(key)) {
-        const control = <FormControl> form.controls[key];
+        const control =  form.controls[key] as FormControl;
         control.markAsTouched();
-        const group = <FormGroup>form.controls[key];
+        const group = form.controls[key] as FormGroup;
         if (group) {
           this.MarkAsTouch(group);
         }
       }
     }
   }
-  static cleanForm(me: FormGroup){
-    for(let id in me.controls){
-      const control = <FormControl>me.controls[id];
-      control.setValue(null);
+  static cleanForm(me: FormGroup) {
+    for (const id in me.controls) {
+      if (me.controls.hasOwnProperty(id)) {
+        const control = me.controls[id] as FormControl;
+        control.setValue(null);
+      }
     }
   }
+  showMsg(msg, tipo: MessageType = MessageType.info) {
+    this.alertMsg = new AlertMsg(msg, tipo);
+    this.dialog.open(AlertComponent, {
+        data: this.alertMsg,
+        panelClass: 'myapp-no-padding-dialog'
+    });
+}
 }
 
