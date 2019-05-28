@@ -17,3 +17,16 @@ export class ListMe<T> extends BaseMsg {
         this.List = [];
     }
 }
+export enum eTypeLog {
+    None,
+    Catalogo,
+    Error,
+    Info,
+    Advertencia,
+    Guardado
+}
+export class LogMsg {
+    date: string;
+    type: eTypeLog;
+    msg: string;
+}

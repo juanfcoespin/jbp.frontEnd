@@ -53,6 +53,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { NewUserComponent } from './pages/new-user/new-user.component';
 import { TestSingleRComponent } from './pages/test-single-r/test-single-r.component';
 import { BusinessServicesComponent } from './pages/business-services/business-services.component';
+import { ServiceComponent } from './controls/service/service.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { BusinessServicesComponent } from './pages/business-services/business-se
     DirectorioTelefonicoComponent,
     UpdateMontosCuentasComponent,
     BusinessServicesComponent,
+    ServiceComponent,
   ],
   imports: [
     BrowserModule,

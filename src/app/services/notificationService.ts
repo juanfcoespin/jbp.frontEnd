@@ -2,11 +2,12 @@ import { HubConnection, HubConnectionBuilder  } from '@aspnet/signalr';
 import { UrlServices } from '../global';
 import {Observable, observable} from 'rxjs';
 import { Injectable } from '@angular/core';
+import {LogMsg} from 'src/app/msg/common.msg';
 
 @Injectable()
 export class NotificationService {
     private hubPromotickLog: HubConnection;
-    public promotickLogObservable: Observable<any>;
+    public promotickLogObservable: Observable<LogMsg>;
     constructor() {
         this.initHubPromotick();
     }
