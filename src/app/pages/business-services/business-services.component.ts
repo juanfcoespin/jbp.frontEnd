@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationService  } from 'src/app/services/notificationService';
-import { LogMsg, eTypeLog } from 'src/app/msg/common.msg';
+import { UrlServices } from 'src/app/global';
 
 @Component({
   selector: 'app-business-services',
@@ -8,18 +7,13 @@ import { LogMsg, eTypeLog } from 'src/app/msg/common.msg';
   styleUrls: ['./business-services.component.css']
 })
 export class BusinessServicesComponent implements OnInit {
-  serviceRuning: boolean;
-  constructor(
-    private notificationService: NotificationService,
-  ) { }
+  promotickServiceHubUrl: string;
+  promotickServiceUrl: string;
+  constructor() {
+  }
 
   ngOnInit() {
-    this.serviceRuning = true;
-    this.notificationService.promotickLogObservable.subscribe(log => {
-      console.log(log);
-      if (log.type === eTypeLog.Error) {
-        console.log('Error');
-      }
-    });
+    this.promotickServiceUrl = UrlServices.promotickServiceUrl;
+    this.promotickServiceHubUrl = UrlServices.promotickServiceHubUrl;
   }
 }

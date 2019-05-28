@@ -18,7 +18,8 @@ export class UrlServices {
     static periodoUrl = 'http://services.jbp.com.ec/api/periodo';
     static cuentaUrl = 'http://services.jbp.com.ec/api/cuenta';
     static signalRUrl = 'http://localhost:5000/notify';
-    static logPromotickServiceHubUrl = 'http://localhost:5000/logPromotickServiceHub';
+    static promotickServiceHubUrl = 'http://localhost:5000/logPromotickServiceHub';
+    static promotickServiceUrl = 'http://jbpservices/api/facturaPromotick';
 }
 
 @Injectable()
