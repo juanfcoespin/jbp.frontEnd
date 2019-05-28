@@ -8,7 +8,7 @@ export class ItemMsg {
     Nombre: string;
 }
 export class SavedME extends BaseMsg {
-    Saved: Boolean;
+    Saved: boolean;
 }
 export class ListMe<T> extends BaseMsg {
     List: Array<T>;
