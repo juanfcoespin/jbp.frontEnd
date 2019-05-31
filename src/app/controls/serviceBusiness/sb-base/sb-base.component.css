@@ -1,5 +1,25 @@
-.mat-icon {
+.butonIcon {
     font-size: 40px;
     height: 40px;
     width: 40px;
+}
+.infoIcon {
+    font-size: 20px;
+    height: 20px;
+    color: #009dff;
+}
+.errorIcon {
+    font-size: 20px;
+    height: 20px;
+    color: red;
+}
+.warningIcon {
+    font-size: 20px;
+    height: 20px;
+    color: #ffae00;
+}
+.example-viewport {
+    background: white;
+    height: 80px;
+    border: 1px solid black;
 }

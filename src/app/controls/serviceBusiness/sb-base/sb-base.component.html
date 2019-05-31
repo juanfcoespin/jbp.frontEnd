@@ -4,9 +4,18 @@
     </mat-card-header>
     <mat-card-content>
         <div fxLayout="row" fxLayoutAlign="space-around center">
-            <mat-icon>play_circle_outline</mat-icon>
+            <mat-icon onmouseover="this.style.cursor='pointer';" 
+                matTooltip="Info about the action" class="butonIcon" (click)="check()">play_circle_outline</mat-icon>
             <button mat-button (click)="check()">Chek Status</button>
-        </div>
-        <p>{{status}}</p>
+        </div><br>
+        <cdk-virtual-scroll-viewport itemSize="3" class="example-viewport">
+            <table>
+                <tr *cdkVirtualFor="let log of this.logsObs">
+                    <td ><mat-icon [ngClass]="log.iconClass">{{log.icon}}</mat-icon></td>
+                    <td><b>{{log.date}}</b></td>
+                    <td style="padding-left: 10px">{{log.msg}}</td>
+                </tr>
+            </table>
+        </cdk-virtual-scroll-viewport>
     </mat-card-content>
 </mat-card>

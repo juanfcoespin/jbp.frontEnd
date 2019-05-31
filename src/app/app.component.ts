@@ -23,7 +23,6 @@ export class AppComponent {
     userService.logout();
     userService.currentUser.subscribe(usr => {
       this.currentUser = usr;
-      console.log(this.currentUser);
     });
   }
 

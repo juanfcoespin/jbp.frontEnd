@@ -19,4 +19,15 @@ export class ArrayUtils {
         }
         return true;
     }
+    static OrderByLastFirst(me: any[]): any[] {
+        if (me != null && me.length > 1) {
+            let tmpMe = Array.from(me); // se copia para no vaciar el objeto me
+            let tmp: any[] = [];
+            while (tmpMe.length > 0) {
+                tmp.push(tmpMe.pop());
+            }
+            return tmp;
+        }
+        return me;
+    }
 }

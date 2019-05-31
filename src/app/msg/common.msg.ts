@@ -29,4 +29,6 @@ export class LogMsg {
     date: string;
     type: eTypeLog;
     msg: string;
+    icon: string;
+    iconClass: string;
 }

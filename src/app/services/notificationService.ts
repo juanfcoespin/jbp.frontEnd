@@ -12,7 +12,6 @@ export class NotificationService {
     }
 
     public initHub(urlHub: string) {
-        console.log(urlHub);
         this.hub =  new HubConnectionBuilder().withUrl(urlHub).build();
         this.hub
         .start()
@@ -20,7 +19,7 @@ export class NotificationService {
         .catch(err => console.log('Error while establishing connection :('));
 
         this.logObservable = new Observable( obs => {
-            this.hub.on('PushLog', (log: any) => {
+            this.hub.on('PushLog', (log: LogMsg) => {
                 obs.next(log);
             });
         });

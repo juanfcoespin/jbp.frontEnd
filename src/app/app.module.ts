@@ -28,6 +28,7 @@ import {
   MatCheckboxModule,
   MatSlideToggleModule
 } from '@angular/material';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 // configuraciones
 import { UrlServices, GlobalVariables } from './global';
@@ -99,6 +100,7 @@ import { SbBaseComponent } from './controls/serviceBusiness/sb-base/sb-base.comp
     LayoutModule,
     MatSidenavModule,
     MatListModule,
+    ScrollingModule,
   ],
   providers: [
     AuthGuard,

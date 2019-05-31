@@ -21,16 +21,13 @@ export class DirectorioTelefonicoComponent implements OnInit {
   contactosFiltered: Observable<DirectorioMsg[]>;
   constructor(
     private directorioService: DirectorioTelefonicoService,
-    public global: GlobalVariables,) {
+    public global: GlobalVariables) {
       this.setTitulo();
     }
 
   ngOnInit() {
     this.cargarContactos();
     const tmp = 'MÉDICO';
-    console.log(tmp);
-    console.log(StringUtils.quitarTildes(tmp));
-
   }
   setTitulo() {
     this.global.setComponentTitle('Directorio Telefónico');
@@ -41,7 +38,7 @@ export class DirectorioTelefonicoComponent implements OnInit {
       this.mostrarResultadoBusqueda();
     });
   }
-  mostrarResultadoBusqueda(){
+  mostrarResultadoBusqueda() {
     this.contactosFiltered = this.txtSearch.valueChanges.pipe(
       startWith(''),
       map(value => this.filtrarContacto(value))
