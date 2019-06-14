@@ -24,4 +24,10 @@ export class StringUtils {
         ms = this.replace(ms, 'Ñ', 'N');
         return ms;
     }
+    static getTwoDigitNumber(me: number) {
+        if ( me < 10) {
+            return '0' + me;
+        }
+        return me;
+    }
 }

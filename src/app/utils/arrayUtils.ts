@@ -9,7 +9,7 @@ export class ArrayUtils {
             texto = StringUtils.quitarTildes(texto);
         }
         for (let token of matrixToken) {
-            if(token) {
+            if (token) {
                 token = token.toLowerCase();
                 token = StringUtils.quitarTildes(token);
             }
@@ -21,8 +21,8 @@ export class ArrayUtils {
     }
     static OrderByLastFirst(me: any[]): any[] {
         if (me != null && me.length > 1) {
-            let tmpMe = Array.from(me); // se copia para no vaciar el objeto me
-            let tmp: any[] = [];
+            const tmpMe = Array.from(me); // se copia para no vaciar el objeto me
+            const tmp: any[] = [];
             while (tmpMe.length > 0) {
                 tmp.push(tmpMe.pop());
             }

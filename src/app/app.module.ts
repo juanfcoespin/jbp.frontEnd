@@ -43,7 +43,7 @@ import {UserService} from './services/userService';
 import {DirectorioTelefonicoService} from './services/directorioTelefonicoServices';
 import {PeriodoService} from './services/periodoServices';
 import {CuentaService} from './services/cuentaServices';
-import {NotificationService} from './services/notificationService';
+import {BusinessServiceOrders} from './services/businessServiceOrders';
 // paginas
 import { AlertComponent } from './controls/alert/alert.component';
 import { PedidosComponent } from './pages/pedidos/pedidos.component';
@@ -54,7 +54,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { NewUserComponent } from './pages/new-user/new-user.component';
 import { TestSingleRComponent } from './pages/test-single-r/test-single-r.component';
 import { BusinessServicesComponent } from './pages/business-services/business-services.component';
-import { SbBaseComponent } from './controls/serviceBusiness/sb-base/sb-base.component';
+import { ServiceBusinessComponent } from './controls/service-business/service-business.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +68,7 @@ import { SbBaseComponent } from './controls/serviceBusiness/sb-base/sb-base.comp
     DirectorioTelefonicoComponent,
     UpdateMontosCuentasComponent,
     BusinessServicesComponent,
-    SbBaseComponent,
+    ServiceBusinessComponent,
   ],
   imports: [
     BrowserModule,
@@ -115,7 +115,7 @@ import { SbBaseComponent } from './controls/serviceBusiness/sb-base/sb-base.comp
     DirectorioTelefonicoService,
     PeriodoService,
     CuentaService,
-    NotificationService
+    BusinessServiceOrders
   ],
   entryComponents: [AlertComponent, NewUserComponent],
   bootstrap: [AppComponent]

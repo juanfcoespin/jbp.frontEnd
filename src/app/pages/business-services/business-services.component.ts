@@ -8,12 +8,12 @@ import { UrlServices } from 'src/app/global';
 })
 export class BusinessServicesComponent implements OnInit {
   promotickServiceHubUrl: string;
-  promotickServiceUrl: string;
+  promotickBusinessServiceOrdersUrl: string;
   constructor() {
   }
 
   ngOnInit() {
-    this.promotickServiceUrl = UrlServices.promotickServiceUrl;
+    this.promotickBusinessServiceOrdersUrl = UrlServices.promotickBusinessServiceOrdersUrl;
     this.promotickServiceHubUrl = UrlServices.promotickServiceHubUrl;
   }
 }
