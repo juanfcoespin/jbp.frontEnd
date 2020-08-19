@@ -1,9 +1,14 @@
-.table {
-    display: grid;
-    grid-template-columns: 50%  50% ;
-    grid-gap: 0px;
-    border-bottom: solid 1px #666;
+.origenInfoTitle{
+    background-color: rgb(27, 40, 75);
+    color: white;
+    padding-left: 20px;
 }
-.table > div {
-    padding: 0px;
+
+th, td {
+    border-bottom: 1px solid #ddd;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.resaltar:hover {
+    background-color: #f1cb7f;
 }

@@ -32,8 +32,8 @@
     </div>
       <mat-tab-group *ngIf="seSeleccionoSocioNegocio">
         <!-- Info web service promotick -->
-        <mat-tab label="Promotick Info">
-          <app-estado-cuenta-ptk></app-estado-cuenta-ptk>
+        <mat-tab label="Información del Participante">
+          <app-estado-cuenta-ptk [participante]="participante"></app-estado-cuenta-ptk>
         </mat-tab>
         <!-- documentos enviados -->
         <mat-tab label="Documentos Enviados">

@@ -38,6 +38,7 @@ export class GestionParticipantesPuntosComponent implements OnInit {
   elite: boolean;
   TiposDocumento: ItemMsg[];
   form: FormGroup;
+  participante: any;
   // aqui se almacena el resultado de la consulta al servidor
   listSociosNegocio: SocioNegocioItem[] = [];
   vendedores: string[] = [];
@@ -182,11 +183,12 @@ export class GestionParticipantesPuntosComponent implements OnInit {
     const ruc=event.value;
     this.estadoCuentaService.consultarEstadoCuenta(ruc);
     this.documentosEnviadosService.consultarDocumentosEnviados(ruc);
-    this.snService.getParticipanteByRuc(ruc).subscribe(
-      participante => {
+    this.snService.getParticipanteByRuc(ruc).subscribe(participante => {
+        
         this.seSeleccionoSocioNegocio=true;
         FormUtils.cleanForm(this.form);
         if (participante && participante.nombres) { //se encontro en la bdd de participantes
+          this.participante=participante;
           this.form.patchValue(participante); 
         } else{ // se trae del erp
           console.log("No se encontro participante, traigo información del ERP");

@@ -1,34 +1,97 @@
 <div style="padding: 20px;">
-    <div class="table">
-        <div><b>Mensaje del Servidor:</b></div>
-        <div>{{this.estadoCuentaServices.estadoCuenta.mensaje}} <mat-progress-spinner *ngIf="this.estadoCuentaServices.procesando" [mode]="'indeterminate'" [diameter]="30"></mat-progress-spinner></div>
-        <div><b>Participante:</b></div>
-        <div>{{this.estadoCuentaServices.estadoCuenta.data.participante}}</div>
-        <div><b>Monto Facturación:</b></div>
-        <div>{{this.estadoCuentaServices.estadoCuenta.data.montoFacturacion}}</div>
-        <div><b>Puntos Disponibles:</b></div>
-        <div>{{this.estadoCuentaServices.estadoCuenta.data.puntosDisponibles}}</div>
-        <div><b>Puntos Canjeados:</b></div>
-        <div>{{this.estadoCuentaServices.estadoCuenta.data.puntosCanjeados}}</div>
-        </div>
-    <mat-accordion>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Canjes
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    Detalle de canjes de puntos del participante
-                  </mat-panel-description>
-            </mat-expansion-panel-header>
-            <div class="table">
-                <div><b>Fecha</b></div>
-                <div><b>Total Puntos</b></div>
-            </div>
-            <div class="table" *ngFor="let c of this.estadoCuentaServices.estadoCuenta.data.canjes">
-                <div>{{c.fecha}}</div>
-                <div>{{c.totalPuntos}}</div>
-            </div>
-        </mat-expansion-panel>
-    </mat-accordion>
+    <table align="center">
+        <tr>
+            <td class="origenInfoTitle" colspan="2">Información Promotick</td>
+        </tr>
+        <tr>
+            <td style="padding-right: 20px;"><b>Mensaje del Servidor Promotick:</b></td>
+            <td>
+                {{this.estadoCuentaServices.estadoCuenta.mensaje}} <mat-progress-spinner *ngIf="this.estadoCuentaServices.procesando" [mode]="'indeterminate'" [diameter]="30"></mat-progress-spinner>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Participante:</b></td>
+            <td>{{this.estadoCuentaServices.estadoCuenta.data.participante}}</td>
+        </tr>
+        <tr>
+            <td><b>Monto Facturación:</b></td>
+            <td>{{this.estadoCuentaServices.estadoCuenta.data.montoFacturacion}}</td>
+        </tr>
+        <tr>
+            <td><b>Puntos Disponibles:</b></td>
+            <td>{{this.estadoCuentaServices.estadoCuenta.data.puntosDisponibles}}</td>
+        </tr>
+        <tr>
+            <td><b>Puntos Canjeados:</b></td>
+            <td>{{this.estadoCuentaServices.estadoCuenta.data.puntosCanjeados}}</td>
+        </tr>
+        <tr >
+            <td colspan="2">
+                <!-- Detalle de canjes -->
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Canjes
+                              </mat-panel-title>
+                              <mat-panel-description>
+                                Detalle de canjes de puntos del participante
+                              </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <table align="center">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Total Puntos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="resaltar" *ngFor="let c of this.estadoCuentaServices.estadoCuenta.data.canjes">
+                                    <td>{{c.fecha}}</td>
+                                    <td align="right">{{c.totalPuntos}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 20px;" colspan="2"></td>
+        </tr>
+        <tr>
+            <td class="origenInfoTitle" colspan="2">Información SAP</td>
+        </tr>
+        <tr>
+            <td><b>Cupo Anual:</b></td>
+            <td>USD {{participante.metaAnual}}</td>
+        </tr>
+        <tr>
+            <td><b>Cupo Mensual:</b></td>
+            <td>USD {{participante.metaAnual/12}}</td>
+        </tr>
+        <tr>
+            <td><b>Email:</b></td>
+            <td>{{participante.email}}</td>
+        </tr>
+        <tr>
+            <td><b>Tipo Participante:</b></td>
+            <td>{{participante.idCatalogo==1?'A':'B'}}</td>
+        </tr>
+        <tr>
+            <td><b>Acreditación de puntos imediata:</b></td>
+            <td>{{participante.Elite?'Si':'No'}}</td>
+        </tr>
+        <tr>
+            <td><b>Vendedor:</b></td>
+            <td>{{participante.vendedor}}</td>
+        </tr>
+        <tr>
+            <td><b>Comentario:</b></td>
+            <td>{{participante.Comentario}}</td>
+        </tr>
+        
+        
+    </table>
+    
 </div>

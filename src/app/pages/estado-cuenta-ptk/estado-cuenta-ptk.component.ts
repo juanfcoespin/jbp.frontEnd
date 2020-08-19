@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { EstadoCuentaServices } from 'src/app/services/estadoCuentaServices';
 
 @Component({
@@ -7,7 +7,8 @@ import { EstadoCuentaServices } from 'src/app/services/estadoCuentaServices';
   styleUrls: ['./estado-cuenta-ptk.component.scss']
 })
 export class EstadoCuentaPtkComponent implements OnInit {
-
+  @Input()
+  participante: any;
   constructor(
     public estadoCuentaServices: EstadoCuentaServices
   ) { }
