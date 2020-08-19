@@ -1,0 +1,27 @@
+mat-toolbar {
+  position: fixed;
+  z-index: 2;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.719);
+
+}
+.logo{
+  border-radius: 100%;
+  background-color: white;
+  width: 80px;
+}
+mat-sidenav-container{
+  height: 100vh;
+  background: none;
+}
+mat-card{
+  background-color: rgba($color: #fff, $alpha: 1)
+}
+.bienvenido{
+  font-size: 12px; 
+  width: 100%; 
+  text-align: right;
+  font-style: italic;
+  text-decoration: underline;
+}

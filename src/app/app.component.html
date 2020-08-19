@@ -1,33 +1,46 @@
 <!-- tyle="height: 90vh;" -->
 <!-- *ngIf="currentUser" -->
-<mat-toolbar color="primary" *ngIf="currentUser">
+<mat-toolbar *ngIf="currentUser">
     <mat-toolbar-row>
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
         <mat-icon>menu</mat-icon>
       </button>
-      <span style="padding-right:10px">Menu</span>
+      <span style="padding-right:10px" fxHide.gt-sm>Menu</span>
+      <div style="font-size: 12px;" fxHide.gt-sm>Bienvenido, {{nombreUsuario}}</div>
       <span class="menu-spacer"></span>
-      <div fxShow="true"  fxHide.lt-md>
-        <div>
-            <a routerLink="participantesPuntos" mat-button>Participantes Puntos</a>
-            <a routerLink="updateMontoCuentas" mat-button>Procesar Montos Cuentas</a>
-            <a routerLink="directorio" mat-button>Directorio</a>
-            <a (click)="salir()" mat-button>Salir</a>
-        </div>
-      </div>
+      <table fxShow="true"  fxHide.lt-md width="100%">
+        <tr>
+          <td><img class="logo" src="/assets/images/logo.png"></td>
+          <td>
+            <button mat-button  routerLink="participantesPuntos" >
+             <mat-icon>group</mat-icon> Participantes Puntos
+            </button>
+          </td>
+          <td>
+            <button mat-button  routerLink="directorio" >
+              <mat-icon>menu_book</mat-icon> Directorio
+            </button>
+          </td>
+          <td>
+            <button mat-button (click)="salir()" >
+              <mat-icon>exit_to_app</mat-icon> Salir
+            </button>
+          </td>
+          <td class="bienvenido">Bienvenido, {{nombreUsuario}}</td>
+        </tr>
+      </table>
   </mat-toolbar-row>
 </mat-toolbar>
 <!-- fxFlexFill -->
 <mat-sidenav-container [style.padding-top]="getPadding()">
   <mat-sidenav #sidenav [style.padding-top]="getPadding()">
     <mat-nav-list>
-        <a mat-list-item routerLink="participantesPuntos">Participantes Puntos</a>
-        <a mat-list-item routerLink="updateMontoCuentas">Procesar Montos Cuentas</a>
-        <a mat-list-item routerLink="directorio">Directorio</a>
-        <a mat-list-item (click)="salir();sidenav.toggle()">Salir</a>
-      </mat-nav-list>
+      <a mat-list-item routerLink="participantesPuntos">Participantes Puntos</a>
+      <a mat-list-item routerLink="directorio">Directorio</a>
+      <a mat-list-item (click)="salir();sidenav.toggle()">Salir</a>
+    </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content style="padding-top: 10px;">
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

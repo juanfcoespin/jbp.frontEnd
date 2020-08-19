@@ -136,5 +136,10 @@
       }
     }
   },
-  "defaultProject": "jbp-frontEnd"
+  "defaultProject": "jbp-frontEnd",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

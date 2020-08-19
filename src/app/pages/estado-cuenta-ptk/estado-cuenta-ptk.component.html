@@ -1,0 +1,34 @@
+<div style="padding: 20px;">
+    <div class="table">
+        <div><b>Mensaje del Servidor:</b></div>
+        <div>{{this.estadoCuentaServices.estadoCuenta.mensaje}} <mat-progress-spinner *ngIf="this.estadoCuentaServices.procesando" [mode]="'indeterminate'" [diameter]="30"></mat-progress-spinner></div>
+        <div><b>Participante:</b></div>
+        <div>{{this.estadoCuentaServices.estadoCuenta.data.participante}}</div>
+        <div><b>Monto Facturación:</b></div>
+        <div>{{this.estadoCuentaServices.estadoCuenta.data.montoFacturacion}}</div>
+        <div><b>Puntos Disponibles:</b></div>
+        <div>{{this.estadoCuentaServices.estadoCuenta.data.puntosDisponibles}}</div>
+        <div><b>Puntos Canjeados:</b></div>
+        <div>{{this.estadoCuentaServices.estadoCuenta.data.puntosCanjeados}}</div>
+        </div>
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Canjes
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Detalle de canjes de puntos del participante
+                  </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="table">
+                <div><b>Fecha</b></div>
+                <div><b>Total Puntos</b></div>
+            </div>
+            <div class="table" *ngFor="let c of this.estadoCuentaServices.estadoCuenta.data.canjes">
+                <div>{{c.fecha}}</div>
+                <div>{{c.totalPuntos}}</div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

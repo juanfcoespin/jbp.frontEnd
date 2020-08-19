@@ -1,4 +1,11 @@
-
+.mat-button{
+  color : #fff;
+  background-color: rgba(10, 64, 116, 0.96);
+  font-size: 16px;
+}
+mat-card{
+    background-color: rgba($color: #fff, $alpha: 0.7)
+}
 .login-container {
     width: 100%;
 }
@@ -7,3 +14,4 @@
         width: 500px;
     }
 }
+

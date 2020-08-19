@@ -5,21 +5,21 @@ export interface SocioNegocioItem {
 
 export interface ParticipantePuntosMsg {
     Activo: boolean;
-    Apellidos: string;
-    Celular: string;
-    Clave: string;
+    apellidos: string;
+    celular: string;
+    clave: string;
     Comentario: string;
-    CupoAnual: number;
+    metaAnual: number;
     Elite: boolean;
-    Email: string;
-    FechaNacimiento: Date;
-    IdCatalogo: number;
-    IdGenero: number;
-    IdTipoDocumento: number;
-    Nombres: string;
-    NroDocumento: string;
+    email: string;
+    fechaNacimiento: Date;
+    idCatalogo: number;
+    nombres: string;
+    nroDocumento: string;
     NroDocumentoAnterior: string;
     RucPrincipal: string;
-    Telefono: string;
-    Vendedor: string;
+    telefono: string;
+    tipoDocumento: number;
+    tipoGenero: number;
+    vendedor: string;
 }

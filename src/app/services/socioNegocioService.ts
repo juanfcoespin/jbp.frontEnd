@@ -20,6 +20,12 @@ export class SocioNegocioService{
         return this.http.get<ParticipantePuntosMsg>(url);
       }
     }
+    getParticipanteByRucFromERP(ruc: string): Observable<ParticipantePuntosMsg>{
+      if (ruc && ruc !== '') {
+        const url = UrlServices.SocioNegocioUrl + '/getParticipanteByRucFromERP/' + ruc;
+        return this.http.get<ParticipantePuntosMsg>(url);
+      }
+    }
     getVendedores(): Observable<string[]> {
       const url = UrlServices.SocioNegocioUrl + '/getVendedores';
       return this.http.get<string[]>(url);

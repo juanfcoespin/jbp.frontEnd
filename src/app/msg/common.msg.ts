@@ -7,6 +7,10 @@ export class ItemMsg {
     Id: number;
     Nombre: string;
 }
+export class ItemCodeMsg {
+    Code: string;
+    Name: string;
+}
 export class SavedME extends BaseMsg {
     Saved: boolean;
 }
@@ -31,4 +35,9 @@ export class LogMsg {
     msg: string;
     icon: string;
     iconClass: string;
+}
+export class StatusMsg {
+    date: string;
+    msg: string;
+    msgColor: string;
 }

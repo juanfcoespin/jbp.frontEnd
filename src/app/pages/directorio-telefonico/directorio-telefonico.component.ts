@@ -11,7 +11,7 @@ import { StringUtils } from '../../utils/stringUtils';
 @Component({
   selector: 'app-directorio-telefonico',
   templateUrl: './directorio-telefonico.component.html',
-  styleUrls: ['./directorio-telefonico.component.css']
+  styleUrls: ['./directorio-telefonico.component.scss']
 })
 export class DirectorioTelefonicoComponent implements OnInit {
   // controles de ingreso en la UI para búsqueda
@@ -27,7 +27,6 @@ export class DirectorioTelefonicoComponent implements OnInit {
 
   ngOnInit() {
     this.cargarContactos();
-    const tmp = 'MÉDICO';
   }
   setTitulo() {
     this.global.setComponentTitle('Directorio Telefónico');

@@ -17,6 +17,7 @@ import { UserService } from 'src/app/services/userService';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   hidePwd: boolean;
+  procesando: boolean;
   constructor(
     private userService: UserService,
     private router: Router,
@@ -48,11 +49,14 @@ export class LoginComponent implements OnInit {
     });
   }
   ingresar() {
+    
     if (this.form.invalid) {
       FormUtils.MarkAsTouch(this.form);
       return;
     }
+    this.procesando=true;
     this.userService.login(this.form.value).subscribe(loginOk => {
+      this.procesando=false;
       if (loginOk) {
         this.router.navigate(['participantesPuntos']);
       } else {

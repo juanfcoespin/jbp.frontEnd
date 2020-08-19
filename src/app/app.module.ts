@@ -7,6 +7,8 @@ import { GrowlModule } from 'primeng/primeng';
 import { AuthGuard } from './auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// material
 import { MatDialogModule} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -26,10 +28,12 @@ import {
   MatRadioModule,
   MatButtonModule,
   MatCheckboxModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
+import {MatTabsModule} from '@angular/material/tabs';
 import {ScrollingModule} from '@angular/cdk/scrolling';
-
+import {MatExpansionModule} from '@angular/material/expansion';
 // configuraciones
 import { UrlServices, GlobalVariables } from './global';
 // utils
@@ -38,12 +42,18 @@ import { FormUtils} from './utils/forms.utils';
 import { ArrayUtils } from './utils/arrayUtils';
 import { StringUtils } from './utils/stringUtils';
 // servicios
+import {PromotickServices} from './services/promotickServices';
+import {ConfServices} from './services/confServices';
 import {SocioNegocioService} from './services/socioNegocioService';
 import {UserService} from './services/userService';
 import {DirectorioTelefonicoService} from './services/directorioTelefonicoServices';
 import {PeriodoService} from './services/periodoServices';
 import {CuentaService} from './services/cuentaServices';
 import {BusinessServiceOrders} from './services/businessServiceOrders';
+import {RetencionesServices } from './services/retencionesServices';
+import {EstadoCuentaServices } from './services/estadoCuentaServices';
+import {DocumentosEnviadosServices } from './services/documentosEnviadosServices';
+
 // paginas
 import { AlertComponent } from './controls/alert/alert.component';
 import { PedidosComponent } from './pages/pedidos/pedidos.component';
@@ -55,6 +65,10 @@ import { NewUserComponent } from './pages/new-user/new-user.component';
 import { TestSingleRComponent } from './pages/test-single-r/test-single-r.component';
 import { BusinessServicesComponent } from './pages/business-services/business-services.component';
 import { ServiceBusinessComponent } from './controls/service-business/service-business.component';
+import { TestComponent } from './pages/test/test.component';
+import { EnvioRetencionesComponent } from './pages/envio-retenciones/envio-retenciones.component';
+import { EstadoCuentaPtkComponent } from './pages/estado-cuenta-ptk/estado-cuenta-ptk.component';
+import { DocumentosEnviadosComponent } from './pages/documentos-enviados/documentos-enviados.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +83,10 @@ import { ServiceBusinessComponent } from './controls/service-business/service-bu
     UpdateMontosCuentasComponent,
     BusinessServicesComponent,
     ServiceBusinessComponent,
+    TestComponent,
+    EnvioRetencionesComponent,
+    EstadoCuentaPtkComponent,
+    DocumentosEnviadosComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,6 +119,9 @@ import { ServiceBusinessComponent } from './controls/service-business/service-bu
     MatSidenavModule,
     MatListModule,
     ScrollingModule,
+    MatProgressSpinnerModule,
+    MatTabsModule,
+    MatExpansionModule
   ],
   providers: [
     AuthGuard,
@@ -115,7 +136,12 @@ import { ServiceBusinessComponent } from './controls/service-business/service-bu
     DirectorioTelefonicoService,
     PeriodoService,
     CuentaService,
-    BusinessServiceOrders
+    BusinessServiceOrders,
+    RetencionesServices,
+    ConfServices,
+    PromotickServices,
+    EstadoCuentaServices,
+    DocumentosEnviadosServices
   ],
   entryComponents: [AlertComponent, NewUserComponent],
   bootstrap: [AppComponent]

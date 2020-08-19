@@ -1,0 +1,38 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>
+          <b>Envio de Retenciones al SRI</b>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="column" fxLayoutAlign=" center" >
+            <mat-form-field>
+                <mat-label>Meses que se requiere enviar las retenciones</mat-label>
+                <mat-select [formControl]="mesesControl" multiple>
+                  <mat-option *ngFor="let item of mesesRetencion" [value]="item.Code">{{item.Name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="mesesControl.hasError('required')">
+                    Debe seleccionar los meses en que se requiere enviar las retenciones
+                  </mat-error>
+            </mat-form-field>
+            <div fxLayoutAlign="center none" style="padding-top: 20px; padding-bottom: 20px;">
+                <button [disabled]="procesando" fxFlexAlign="center" mat-button (click)="enviarRetenciones()">Enviar Retenciones</button>
+                <div *ngIf="procesando">
+                    <mat-progress-spinner [mode]="'indeterminate'" [diameter]="30"></mat-progress-spinner>
+                </div>
+            </div>
+            <table mat-table [dataSource]="this.statusObs" class="mat-elevation-z8">
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef>Fecha</th>
+                    <td mat-cell *matCellDef="let status" style="padding-left: 10px; width: 150px; vertical-align: top"><b>{{status.date}}</b></td>
+                </ng-container>
+                <ng-container matColumnDef="msg">
+                    <th mat-header-cell *matHeaderCellDef>Mensaje</th>
+                    <td mat-cell *matCellDef="let status" [ngStyle] = "{'color': status.msgColor, 'padding-left': '10px', 'vertical-align': 'top'}" >{{status.msg}}</td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>            
+        </div>
+    </mat-card-content>
+</mat-card>

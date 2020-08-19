@@ -8,13 +8,14 @@ import {HttpClient} from '@angular/common/http';
 import {Observable, BehaviorSubject} from 'rxjs';
 import {AuthGuard} from '../auth.guard';
 import { map } from 'rxjs/operators';
-import { stringify } from '@angular/core/src/render3/util';
+
 
 @Injectable()
 export class UserService {
 
   private currentUserSubject: BehaviorSubject<RespAuthMsg>;
   public currentUser: Observable<RespAuthMsg>;
+
   constructor(
     private http: HttpClient,
     private auth: AuthGuard){
@@ -26,17 +27,20 @@ export class UserService {
     return this.currentUserSubject.value;
   }
 
-  login(me: LoginMsg): Observable<boolean>{
+  login(me: LoginMsg): Observable<boolean> {
     const url = UrlServices.userUrl + '/login';
     return this.http.post<RespAuthMsg>(url, me)
     .pipe(// permite transformar el tipo de dato de retorno del observable
       map(resp => {
-        if (resp) {
+        if (resp && resp.Nombre) {
+          
           localStorage.setItem('currentUser', JSON.stringify(resp));
+          console.log(resp);
           this.auth.isLoged = true;
           this.currentUserSubject.next(resp);
           return true;
         }
+        console.log(resp);
         return false;
         })
     );
