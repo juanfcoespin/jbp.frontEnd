@@ -63,12 +63,12 @@
             <td class="origenInfoTitle" colspan="2">Información SAP</td>
         </tr>
         <tr>
-            <td><b>Cupo Anual:</b></td>
+            <td><b>Meta Anual:</b></td>
             <td>USD {{participante.metaAnual}}</td>
         </tr>
         <tr>
-            <td><b>Cupo Mensual:</b></td>
-            <td>USD {{participante.metaAnual/12}}</td>
+            <td><b>Meta Mensual:</b></td>
+            <td>USD {{metaMensual}}</td>
         </tr>
         <tr>
             <td><b>Email:</b></td>
@@ -106,11 +106,14 @@
                                     <tr>
                                         <td><b>Mes</b></td>
                                         <td><b>Monto</b></td>
+                                        <td><b>Para cumplir meta</b></td>
                                         <td><b>Puntos</b></td>
                                     </tr>
                                     <tr>
                                         <td>{{obj.mes}}</td>
-                                        <td>{{obj.monto}}</td>
+                                        <td *ngIf="obj.cumpleMetaMes" style="color: green;">USD {{obj.monto}}</td>
+                                        <td *ngIf="!obj.cumpleMetaMes" style="color: red;">USD {{obj.monto}}</td>
+                                        <td style="color: rgb(0, 195, 255);" align="right">USD {{obj.paraCumplirMeta}}</td>
                                         <td>{{obj.puntos}}</td>
                                     </tr>
                                 </table>    
@@ -131,7 +134,7 @@
                                     <td>{{d.fechaDocumento}}</td>
                                     <td>{{d.tipoDocumento}}</td>
                                     <td>{{d.numDocumento}}</td>
-                                    <td>{{d.monto}}</td>
+                                    <td>USD {{d.monto}}</td>
                                     <td>{{d.puntos}}</td>
                                 </tr>
                             </tbody>

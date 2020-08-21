@@ -10,13 +10,16 @@ export class EstadoCuentaPtkComponent implements OnInit {
   @Input()
   participante: any;
   documentosPorMes: any[];
+  metaMensual:number;
   constructor(
     public estadoCuentaServices: EstadoCuentaServices
   ) {
     this.documentosPorMes=[];
+    
    }
 
   ngOnInit() {
+    this.metaMensual=this.participante.metaAnual/12;
      this.participante.documentos.forEach(d => {
        let mes=d.mesDocumento;
       if(!this.existeMes(mes)){//agrego el mes en el arreglo
@@ -30,13 +33,24 @@ export class EstadoCuentaPtkComponent implements OnInit {
       this.documentosPorMes.forEach(obj=>{
         if(obj.mes==mes){
           obj.monto+= Number(d.monto);
+          obj.paraCumplirMeta=this.getMontoRestante(obj.monto);
           obj.puntos+= Number(d.puntos);
+          obj.cumpleMetaMes=this.cumpleMetaMes(obj.monto);
           obj.documentos.push(d);
         }
       });
     });
     console.log(this.documentosPorMes);
 
+  }
+  getMontoRestante(monto){
+    let diferencia=this.metaMensual-monto;
+    if(diferencia<0)
+      return 0;
+    return diferencia;
+  }
+  cumpleMetaMes(monto){
+    return (monto>=this.metaMensual);
   }
   existeMes(mes){
     if(this.documentosPorMes.length==0)
