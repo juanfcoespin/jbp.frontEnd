@@ -14,10 +14,10 @@ export class SocioNegocioService{
         return this.http.get<SocioNegocioItem[]>(url);
       }
     }
-    getParticipanteByRuc(ruc: string): Observable<ParticipantePuntosMsg>{
+    getParticipanteByRuc(ruc: string): Observable<any>{
       if (ruc && ruc !== '') {
         const url = UrlServices.SocioNegocioUrl + '/getParticipanteByRuc/' + ruc;
-        return this.http.get<ParticipantePuntosMsg>(url);
+        return this.http.get<any>(url);
       }
     }
     getParticipanteByRucFromERP(ruc: string): Observable<ParticipantePuntosMsg>{

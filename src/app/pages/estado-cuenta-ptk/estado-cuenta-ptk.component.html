@@ -90,8 +90,57 @@
             <td><b>Comentario:</b></td>
             <td>{{participante.Comentario}}</td>
         </tr>
-        
-        
+        <tr>
+            <td style="padding-top: 20px;" colspan="2"></td>
+        </tr>
+        <tr>
+            <td class="origenInfoTitle" colspan="2">Detalle Puntos</td>
+        </tr>
+        <tr *ngFor="let obj of documentosPorMes">
+            <td colspan="2">
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <table>
+                                    <tr>
+                                        <td><b>Mes</b></td>
+                                        <td><b>Monto</b></td>
+                                        <td><b>Puntos</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{obj.mes}}</td>
+                                        <td>{{obj.monto}}</td>
+                                        <td>{{obj.puntos}}</td>
+                                    </tr>
+                                </table>    
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <table align="center">
+                            <thead>
+                                <tr style="background-color: black; color: white;">
+                                    <th>Fecha</th>
+                                    <th>Tipo Documento</th>
+                                    <th>Numero Documento</th>
+                                    <th>Monto</th>
+                                    <th>Puntos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="resaltar" *ngFor="let d of obj.documentos">
+                                    <td>{{d.fechaDocumento}}</td>
+                                    <td>{{d.tipoDocumento}}</td>
+                                    <td>{{d.numDocumento}}</td>
+                                    <td>{{d.monto}}</td>
+                                    <td>{{d.puntos}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                            
+            </td>
+        </tr>
     </table>
     
 </div>
