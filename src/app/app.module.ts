@@ -43,7 +43,6 @@ import { ArrayUtils } from './utils/arrayUtils';
 import { StringUtils } from './utils/stringUtils';
 // servicios
 import {PromotickServices} from './services/promotickServices';
-import {ConfServices} from './services/confServices';
 import {SocioNegocioService} from './services/socioNegocioService';
 import {UserService} from './services/userService';
 import {DirectorioTelefonicoService} from './services/directorioTelefonicoServices';
@@ -51,7 +50,6 @@ import {PeriodoService} from './services/periodoServices';
 import {CuentaService} from './services/cuentaServices';
 import {BusinessServiceOrders} from './services/businessServiceOrders';
 import {RetencionesServices } from './services/retencionesServices';
-import {EstadoCuentaServices } from './services/estadoCuentaServices';
 import {DocumentosEnviadosServices } from './services/documentosEnviadosServices';
 
 // paginas
@@ -138,9 +136,7 @@ import { DocumentosEnviadosComponent } from './pages/documentos-enviados/documen
     CuentaService,
     BusinessServiceOrders,
     RetencionesServices,
-    ConfServices,
     PromotickServices,
-    EstadoCuentaServices,
     DocumentosEnviadosServices
   ],
   entryComponents: [AlertComponent, NewUserComponent],

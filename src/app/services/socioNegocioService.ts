@@ -2,12 +2,19 @@ import { Injectable } from '@angular/core';
 import {SocioNegocioItem, ParticipantePuntosMsg} from '../msg/socioNegocioMsg';
 import { UrlServices } from '../global';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import { SavedME } from '../msg/common.msg';
 
 @Injectable()
 export class SocioNegocioService{
+    _selectSocioNegocio: Subject<string>=new Subject<string>();
     constructor(private http: HttpClient){}
+    selectSocioNegocio(ruc){
+      this._selectSocioNegocio.next(ruc);
+    }
+    onSocioNegocioSelected():Observable<string>{
+      return this._selectSocioNegocio.asObservable();
+    }
     buscarSocioNegocio(token: string): Observable<SocioNegocioItem[]>{
       if(token && token !== ''){
         const url = UrlServices.SocioNegocioUrl + '/getItemsByToken/' + token;

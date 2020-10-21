@@ -6,6 +6,7 @@
     },
     "WSUrls":{
         "Server":"http://services.jbp.com.ec/",
-        "Promotick":"api/promotick"
+        "Promotick":"api/promotick",
+        "Directorio":"api/directorio"
     }
 }

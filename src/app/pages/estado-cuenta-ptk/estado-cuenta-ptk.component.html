@@ -1,59 +1,46 @@
 <div style="padding: 20px;">
-    <table align="center">
+    <table align="center" *ngIf="estadoCuenta">
         <tr>
             <td class="origenInfoTitle" colspan="2">Información Promotick</td>
         </tr>
         <tr>
             <td style="padding-right: 20px;"><b>Mensaje del Servidor Promotick:</b></td>
             <td>
-                {{this.estadoCuentaServices.estadoCuenta.mensaje}} <mat-progress-spinner *ngIf="this.estadoCuentaServices.procesando" [mode]="'indeterminate'" [diameter]="30"></mat-progress-spinner>
+                {{estadoCuenta.mensaje}} <mat-progress-spinner *ngIf="procesando" [mode]="'indeterminate'" [diameter]="30"></mat-progress-spinner>
             </td>
         </tr>
         <tr>
             <td><b>Participante:</b></td>
-            <td>{{this.estadoCuentaServices.estadoCuenta.data.participante}}</td>
+            <td>{{estadoCuenta.data.participante}}</td>
         </tr>
-        <tr>
+         <tr>
             <td><b>Monto Facturación:</b></td>
-            <td>{{this.estadoCuentaServices.estadoCuenta.data.montoFacturacion}}</td>
+            <td>{{estadoCuenta.data.montoFacturacion}}</td>
         </tr>
         <tr>
             <td><b>Puntos Disponibles:</b></td>
-            <td>{{this.estadoCuentaServices.estadoCuenta.data.puntosDisponibles}}</td>
+            <td>{{estadoCuenta.data.puntosDisponibles}}</td>
         </tr>
         <tr>
             <td><b>Puntos Canjeados:</b></td>
-            <td>{{this.estadoCuentaServices.estadoCuenta.data.puntosCanjeados}}</td>
+            <td>{{estadoCuenta.data.puntosCanjeados}}</td>
         </tr>
-        <tr >
+        <tr *ngIf="estadoCuenta.data">
             <td colspan="2">
-                <!-- Detalle de canjes -->
-                <mat-accordion>
-                    <mat-expansion-panel>
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                Canjes
-                              </mat-panel-title>
-                              <mat-panel-description>
-                                Detalle de canjes de puntos del participante
-                              </mat-panel-description>
-                        </mat-expansion-panel-header>
-                        <table align="center">
-                            <thead>
-                                <tr>
-                                    <th>Fecha</th>
-                                    <th>Total Puntos</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="resaltar" *ngFor="let c of this.estadoCuentaServices.estadoCuenta.data.canjes">
-                                    <td>{{c.fecha}}</td>
-                                    <td align="right">{{c.totalPuntos}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </mat-expansion-panel>
-                </mat-accordion>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Total Puntos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="resaltar" *ngFor="let c of estadoCuenta.data.canjes">
+                            <td>{{c.fecha}}</td>
+                            <td align="right">{{c.totalPuntos}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </td>
         </tr>
         <tr>
@@ -68,7 +55,7 @@
         </tr>
         <tr>
             <td><b>Meta Mensual:</b></td>
-            <td>USD {{metaMensual}}</td>
+            <td>USD {{metaMensual.toFixed(2)}}</td>
         </tr>
         <tr>
             <td><b>Email:</b></td>
@@ -78,10 +65,10 @@
             <td><b>Tipo Participante:</b></td>
             <td>{{participante.idCatalogo==1?'A':'B'}}</td>
         </tr>
-        <tr>
+         <!-- <tr>
             <td><b>Acreditación de puntos imediata:</b></td>
             <td>{{participante.Elite?'Si':'No'}}</td>
-        </tr>
+        </tr> -->
         <tr>
             <td><b>Vendedor:</b></td>
             <td>{{participante.vendedor}}</td>
@@ -113,7 +100,7 @@
                                         <td>{{obj.mes}}</td>
                                         <td *ngIf="obj.cumpleMetaMes" style="color: green;">USD {{obj.monto}}</td>
                                         <td *ngIf="!obj.cumpleMetaMes" style="color: red;">USD {{obj.monto}}</td>
-                                        <td style="color: rgb(0, 195, 255);" align="right">USD {{obj.paraCumplirMeta}}</td>
+                                        <td style="color: rgb(0, 195, 255);" align="right">USD {{obj.paraCumplirMeta.toFixed(2)}}</td>
                                         <td>{{obj.puntos}}</td>
                                     </tr>
                                 </table>    
@@ -122,6 +109,8 @@
                         <table align="center">
                             <thead>
                                 <tr style="background-color: black; color: white;">
+                                    <th>Ruc</th>
+                                    <th>Ruc Principal</th>
                                     <th>Fecha</th>
                                     <th>Tipo Documento</th>
                                     <th>Numero Documento</th>
@@ -131,6 +120,8 @@
                             </thead>
                             <tbody>
                                 <tr class="resaltar" *ngFor="let d of obj.documentos">
+                                    <td>{{d.ruc}}</td>
+                                    <td>{{d.rucPrincipal}}</td>
                                     <td>{{d.fechaDocumento}}</td>
                                     <td>{{d.tipoDocumento}}</td>
                                     <td>{{d.numDocumento}}</td>

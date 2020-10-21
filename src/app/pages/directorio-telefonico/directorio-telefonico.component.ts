@@ -33,6 +33,7 @@ export class DirectorioTelefonicoComponent implements OnInit {
   }
   cargarContactos() {
     this.directorioService.getDirectorio().subscribe(contactos => {
+      console.log(contactos);
       this.contactos = Array.from(contactos);
       this.mostrarResultadoBusqueda();
     });
@@ -51,7 +52,7 @@ export class DirectorioTelefonicoComponent implements OnInit {
     }
     const matrixToken = me.split(' ');
     for (const item of this.contactos) {
-      if (ArrayUtils.contieneTokens(item.CONTACTO + ' ' + item.DEPARTAMENTO + ' ' + item.PLANTA, matrixToken)) {
+      if (ArrayUtils.contieneTokens(item.CONTACTO + ' ' + item.DEPARTAMENTO + ' ' + item.PLANTA+ ' ' + item.Ext, matrixToken)) {
         ms.push(item);
       }
     }

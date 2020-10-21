@@ -18,7 +18,6 @@ import { GuardsCheckStart, Router } from '@angular/router';
 import { MessageType } from 'src/app/msg/alert.msg';
 import { UserService } from 'src/app/services/userService';
 import { PromotickServices } from 'src/app/services/promotickServices';
-import {EstadoCuentaServices } from '../../services/estadoCuentaServices';
 import { DocumentosEnviadosServices } from 'src/app/services/documentosEnviadosServices';
 
 @Component({
@@ -54,7 +53,6 @@ export class GestionParticipantesPuntosComponent implements OnInit {
     private utl: FormUtils,
     private snService: SocioNegocioService,
     private ptkService: PromotickServices,
-    private estadoCuentaService: EstadoCuentaServices,
     private documentosEnviadosService: DocumentosEnviadosServices
   ) {
       this.setTitulo();
@@ -181,10 +179,9 @@ export class GestionParticipantesPuntosComponent implements OnInit {
   }
   seleccionarSN(event: MatRadioChange) {
     const ruc=event.value;
-    this.estadoCuentaService.consultarEstadoCuenta(ruc);
+    this.snService.selectSocioNegocio(ruc);
     this.documentosEnviadosService.consultarDocumentosEnviados(ruc);
     this.snService.getParticipanteByRuc(ruc).subscribe(participante => {
-        
         this.seSeleccionoSocioNegocio=true;
         FormUtils.cleanForm(this.form);
         if (participante && participante.nombres) { //se encontro en la bdd de participantes

@@ -10,4 +10,5 @@ export interface Promotick{
 export interface WSUrls{
     Server: string;
     Promotick: string;
+    Directorio: string;
 }

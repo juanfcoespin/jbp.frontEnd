@@ -11,7 +11,7 @@ export class DocumentosEnviadosComponent implements OnInit {
 
   procesando: boolean;
   constructor(public docEnviadosservice: DocumentosEnviadosServices) {
-
+    //console.log(this.docEnviadosservice.documentosEnviados);
   }
 
   ngOnInit() {

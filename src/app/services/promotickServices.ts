@@ -3,38 +3,23 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Promotick, ConfMsg } from '../msg/confMsg';
 import { EstadoCuentaMsg, RucMsg } from '../msg/promotickMsg';
-import { ConfServices } from './confServices';
-
-
+import { ConfigUtils } from '../utils/configUtils';
 
 @Injectable()
 export class PromotickServices {
-    private subject = new Subject<any>();
-    private subject2 = new Subject<any>();
-    
     constructor(
-        private http: HttpClient,
-        private confServices: ConfServices
+        private http: HttpClient
     ) {
         
     }
     getEstadoCuentaByRuc(ruc:string):Observable<any>{
-        this.confServices.get().subscribe(conf=>{
-            const url=conf.WSUrls.Server+conf.WSUrls.Promotick+'/getEstadoCuenta/'+ruc;
-            this.http.get<any>(url).subscribe(resp=>{
-                this.subject.next(JSON.parse(resp));
-            });      
-        });
-        return this.subject.asObservable();
+        const url=ConfigUtils.getUrlFromEndPointName('promotick')+'/getEstadoCuenta/'+ruc;
+        console.log(url);
+        return this.http.get<any>(url);      
     }
     getDocumentosEnviadosByRuc(ruc:string):Observable<any>{
-        this.confServices.get().subscribe(conf=>{
-            const url=conf.WSUrls.Server+conf.WSUrls.Promotick+'/getDocumentosEnviados/'+ruc;
-            this.http.get<any>(url).subscribe(resp=>{
-                this.subject2.next(resp);
-            });      
-        });
-        return this.subject2.asObservable();
+        const url=ConfigUtils.getUrlFromEndPointName('promotick')+'/getDocumentosEnviados/'+ruc;
+        return this.http.get<any>(url);      
     }
     getHeaderWsPromotick(ptkConf: Promotick):any{
         const httpOptions = {
@@ -45,5 +30,4 @@ export class PromotickServices {
           };
         return httpOptions;
     }
-    
 }

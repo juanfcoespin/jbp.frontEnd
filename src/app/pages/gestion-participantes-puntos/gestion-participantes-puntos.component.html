@@ -3,33 +3,30 @@
     <mat-card-title>{{global.ComponentTitle}}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div class="cards">
-      <!-- buscador -->
-      <div class="responsiveCard">
-        <div fxLayout="row" fxLayoutAlign="space-around center">
-          <mat-form-field fxFlex="80" class="example-full-width">
-            <input [formControl]="txtSearch" autofocus matInput placeholder="Búsqueda: (Ruc o Nombre)" >
-          </mat-form-field>  
-          <button [disabled]="procesando" fxFlex="20" style="padding-left:10px" mat-button (click)="buscarSocioNegocio()">Buscar</button>
-          <div *ngIf="procesando">
-            <mat-progress-spinner [mode]="'indeterminate'" [diameter]="30"></mat-progress-spinner>
+    <table>
+      <tr>
+        <td>
+          <div fxLayout="row" fxLayoutAlign="space-around center">
+            <mat-form-field fxFlex="80" class="example-full-width">
+              <input [formControl]="txtSearch" autofocus matInput placeholder="Búsqueda: (Ruc o Nombre)" >
+            </mat-form-field>  
+            <button [disabled]="procesando" fxFlex="20" style="padding-left:10px" mat-button (click)="buscarSocioNegocio()">Buscar</button>
+            <div *ngIf="procesando">
+              <mat-progress-spinner [mode]="'indeterminate'" [diameter]="30"></mat-progress-spinner>
+            </div>
           </div>
-        </div>
-      </div>
-      <!-- resultado busqueda -->
-      <div class="responsiveCard">
-        <div *ngIf="seEncontraroSN">
-          <!-- <label *ngIf="seEncontraroSN" id="example-radio-group-label">Seleccione el socio de negocio:</label>   -->
-          <cdk-virtual-scroll-viewport class="resultadoBusquedaSnScroll" itemSize="1">
-            <mat-radio-group class="example-radio-group">
-              <mat-radio-button class="example-radio-button" (change)="seleccionarSN($event)" *ngFor="let sn of filterSearchSocioNegocio | async" [value]="sn.Ruc">
-                {{sn.Ruc}}: {{sn.Nombre}}
-              </mat-radio-button>
-            </mat-radio-group>
-          </cdk-virtual-scroll-viewport>
-        </div>
-      </div>
-    </div>
+        </td>
+      </tr>
+      <tr>
+        <td *ngIf="seEncontraroSN">
+          <mat-radio-group class="example-radio-group">
+            <mat-radio-button class="example-radio-button" (change)="seleccionarSN($event)" *ngFor="let sn of filterSearchSocioNegocio | async" [value]="sn.Ruc">
+              {{sn.Ruc}}: {{sn.Nombre}}
+            </mat-radio-button>
+          </mat-radio-group>
+        </td>
+      </tr>
+    </table>
       <mat-tab-group *ngIf="seSeleccionoSocioNegocio">
         <!-- Info web service promotick -->
         <mat-tab label="Información del Participante">
