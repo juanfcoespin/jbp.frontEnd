@@ -4,32 +4,34 @@ const conf=[
         "value":[
             {
                 "endPointName": "directorio",
-                "url": "http://services.jbp.com.ec/api/directorio"
+                "url": "http://localhost:53628/api/directorio"
             },
             {
                 "endPointName": "promotick",
-                "url": "http://services.jbp.com.ec/api/promotick"
+                "url": "http://localhost:53628/api/promotick"
             },
             {
                 "endPointName": "entrega",
-                "url": "http://services.jbp.com.ec/api/entrega"
+                "url": "http://localhost:53628/api/entrega"
             },
             {
                 "endPointName": "transportista",
-                "url": "http://services.jbp.com.ec/api/transportista"
+                "url": "http://localhost:53628/api/transportista"
             },
             {
                 "endPointName": "conf",
-                "url": "http://services.jbp.com.ec/api/conf"
+                "url": "http://localhost:53628/api/conf"
             },
             {
                 "endPointName": "socioNegocio",
-                "url": "http://services.jbp.com.ec/api/socioNegocio"
+                "url": "http://localhost:53628/api/socioNegocio"
             },
             {
                 "endPointName": "user",
-                "url": "http://services.jbp.com.ec/api/user"
+                "url": "http://localhost:53628/api/user"
             }
+
+            
         ]
     }
 ]

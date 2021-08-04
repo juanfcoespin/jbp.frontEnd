@@ -4,6 +4,8 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 //@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
 // @import "~@angular/material/prebuilt-themes/purple-green.css";
+
+
 body{
     background: url("./assets/images/bg2.jpg");
     background-size:     cover;      
@@ -42,3 +44,10 @@ img{
     text-align: right;
     padding-right: 15px;
 }
+
+@media print {
+    header, footer, aside, nav, form, iframe, .menu, .hero, .adslot {
+      display: none;
+    }
+  }
+  

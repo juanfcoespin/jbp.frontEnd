@@ -5,6 +5,7 @@ export class BaseMsg {
 
 export class ItemMsg {
     Id: number;
+    Cod: string;
     Nombre: string;
 }
 export class ItemCodeMsg {

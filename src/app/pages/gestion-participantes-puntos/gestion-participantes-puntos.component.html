@@ -125,12 +125,11 @@
                 <input matInput placeholder="Teléfono Convencional" formControlName='telefono'>
               </mat-form-field>
               <mat-form-field>
-                <input type="text" placeholder="Vendedor" matInput formControlName="vendedor" [matAutocomplete]="auto2">
-                <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete">
-                  <mat-option *ngFor="let item of filteredVendedor | async" [value]="item">
-                    {{item}}
+                <mat-select placeholder="Vendedor" formControlName='vendedor'>
+                  <mat-option *ngFor="let v of vendedores" [value]="v.Cod">
+                    {{v.Nombre}}
                   </mat-option>
-                </mat-autocomplete>
+                </mat-select>
                 <mat-error>
                   Debe ingresar el vendedor
                 </mat-error>
@@ -138,7 +137,7 @@
               <mat-form-field>
                 <textarea matInput placeholder="Comentario" formControlName='Comentario' rows="3"></textarea>
               </mat-form-field>
-              <button fxFlexAlign="center" mat-button (click)="guardar()">Guardar</button>  
+              <button fxFlexAlign="center" mat-button disabled="true" (click)="guardar()">Guardar</button>  
             </form>    
           </cdk-virtual-scroll-viewport>
         </mat-tab>

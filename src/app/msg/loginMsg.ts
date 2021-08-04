@@ -7,4 +7,5 @@ export interface RespAuthMsg {
     IdUsuario: number;
     Nombre: string;
     Perfiles: string[];
+    correo: string;
 }

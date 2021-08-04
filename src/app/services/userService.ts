@@ -8,6 +8,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable, BehaviorSubject} from 'rxjs';
 import {AuthGuard} from '../auth.guard';
 import { map } from 'rxjs/operators';
+import { ConfigUtils } from '../utils/configUtils';
 
 
 @Injectable()
@@ -28,19 +29,19 @@ export class UserService {
   }
 
   login(me: LoginMsg): Observable<boolean> {
-    const url = UrlServices.userUrl + '/login';
+    let url = ConfigUtils.getUrlFromEndPointName('user')
+    url += '/login';
+    console.log(url);
     return this.http.post<RespAuthMsg>(url, me)
     .pipe(// permite transformar el tipo de dato de retorno del observable
       map(resp => {
         if (resp && resp.Nombre) {
           
           localStorage.setItem('currentUser', JSON.stringify(resp));
-          console.log(resp);
           this.auth.isLoged = true;
           this.currentUserSubject.next(resp);
           return true;
         }
-        console.log(resp);
         return false;
         })
     );

@@ -13,7 +13,7 @@ import { MatDialogModule} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, MatSidenavModule, MatListModule} from '@angular/material';
+import { MatNativeDateModule, MatSidenavModule, MatListModule, MatPaginatorModule} from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
@@ -67,6 +67,12 @@ import { TestComponent } from './pages/test/test.component';
 import { EnvioRetencionesComponent } from './pages/envio-retenciones/envio-retenciones.component';
 import { EstadoCuentaPtkComponent } from './pages/estado-cuenta-ptk/estado-cuenta-ptk.component';
 import { DocumentosEnviadosComponent } from './pages/documentos-enviados/documentos-enviados.component';
+import { EntregasUrbanoComponent } from './pages/entregas-urbano/entregas-urbano.component';
+import { EntregaServices } from './services/entregaServices';
+import { MatTableExporterModule } from 'mat-table-exporter';
+import { HojaRutaComponent } from './pages/hoja-ruta/hoja-ruta.component';
+import { TransportistaService } from './services/transportistaService';
+import { RptHojaRutaComponent } from './reportes/rpt-hoja-ruta/rpt-hoja-ruta.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +91,9 @@ import { DocumentosEnviadosComponent } from './pages/documentos-enviados/documen
     EnvioRetencionesComponent,
     EstadoCuentaPtkComponent,
     DocumentosEnviadosComponent,
+    EntregasUrbanoComponent,
+    HojaRutaComponent,
+    RptHojaRutaComponent,
   ],
   imports: [
     BrowserModule,
@@ -119,7 +128,9 @@ import { DocumentosEnviadosComponent } from './pages/documentos-enviados/documen
     ScrollingModule,
     MatProgressSpinnerModule,
     MatTabsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTableExporterModule,
+    MatPaginatorModule 
   ],
   providers: [
     AuthGuard,
@@ -137,7 +148,9 @@ import { DocumentosEnviadosComponent } from './pages/documentos-enviados/documen
     BusinessServiceOrders,
     RetencionesServices,
     PromotickServices,
-    DocumentosEnviadosServices
+    DocumentosEnviadosServices,
+    EntregaServices,
+    TransportistaService
   ],
   entryComponents: [AlertComponent, NewUserComponent],
   bootstrap: [AppComponent]

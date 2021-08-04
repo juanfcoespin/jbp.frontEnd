@@ -40,11 +40,11 @@ export class GestionParticipantesPuntosComponent implements OnInit {
   participante: any;
   // aqui se almacena el resultado de la consulta al servidor
   listSociosNegocio: SocioNegocioItem[] = [];
-  vendedores: string[] = [];
+  vendedores: ItemMsg[] = [];
 
   // aqui se almacena el resultado de la consulta en la busquedad del cliente
   filterSearchSocioNegocio: Observable<SocioNegocioItem[]>;
-  filteredVendedor: Observable<string[]>;
+  //filteredVendedor: Observable<string[]>;
   
 
   constructor(
@@ -53,7 +53,8 @@ export class GestionParticipantesPuntosComponent implements OnInit {
     private utl: FormUtils,
     private snService: SocioNegocioService,
     private ptkService: PromotickServices,
-    private documentosEnviadosService: DocumentosEnviadosServices
+    private documentosEnviadosService: DocumentosEnviadosServices,
+    public userService: UserService
   ) {
       this.setTitulo();
       this.initForm();
@@ -65,10 +66,12 @@ export class GestionParticipantesPuntosComponent implements OnInit {
     this.TiposDocumento = [
       {
         Id: 1,
+        Cod: '',
         Nombre: 'Cédula'
       },
       {
         Id: 2,
+        Cod: '',
         Nombre: 'Ruc'
       }
     ];
@@ -77,10 +80,12 @@ export class GestionParticipantesPuntosComponent implements OnInit {
     this.categorias = [
       {
         Id: 1,
+        Cod: '',
         Nombre: 'A'
       },
       {
         Id: 2,
+        Cod: '',
         Nombre: 'B'
       }
     ];
@@ -89,10 +94,12 @@ export class GestionParticipantesPuntosComponent implements OnInit {
     this.generos = [
       {
         Id: 1,
+        Cod: '',
         Nombre: 'Masculino'
       },
       {
         Id: 2,
+        Cod: '',
         Nombre: 'Femenino'
       }
     ];
@@ -129,26 +136,13 @@ export class GestionParticipantesPuntosComponent implements OnInit {
   setVendedores() {
     this.snService.getVendedores().subscribe(items => {
       this.vendedores = items;
-      this.filteredVendedor = this.form.controls.vendedor.valueChanges.pipe(
+      /*this.filteredVendedor = this.form.controls.vendedor.valueChanges.pipe(
         startWith(''),
         map(value => this.filtrarVendedor(value))
-      );
+      );*/
     });
   }
-  filtrarVendedor(me: string): string[] {
-    let ms: string[];
-    ms = new Array();
-    if (me) {
-      me = me.toLocaleLowerCase();
-      const matrixToken = me.split(' ');
-      for (const item of this.vendedores) {
-        if (ArrayUtils.contieneTokens(item, matrixToken)) {
-          ms.push(item);
-        }
-      }
-    }
-    return ms;
-  }
+  
   buscarSocioNegocio() {
     this.procesando=true;
     this.seSeleccionoSocioNegocio=false;
@@ -182,27 +176,42 @@ export class GestionParticipantesPuntosComponent implements OnInit {
     this.snService.selectSocioNegocio(ruc);
     this.documentosEnviadosService.consultarDocumentosEnviados(ruc);
     this.snService.getParticipanteByRuc(ruc).subscribe(participante => {
-        this.seSeleccionoSocioNegocio=true;
         FormUtils.cleanForm(this.form);
-        if (participante && participante.nombres) { //se encontro en la bdd de participantes
+        if(this.usuarioAutorizado(participante)){
           this.participante=participante;
-          this.form.patchValue(participante); 
-        } else{ // se trae del erp
-          console.log("No se encontro participante, traigo información del ERP");
-          this.snService.getParticipanteByRucFromERP(event.value).subscribe(
-            participanteFromERP => {
-              console.log("SN del ERP:")
-              console.log(participanteFromERP)
-              if(participanteFromERP && participanteFromERP.nombres)
-                this.form.patchValue(participanteFromERP); 
-              else
-               console.log("No hay info del cliente "+event.value+" en el ERP");
-            }
-          );
-          
-        }     
+          this.seSeleccionoSocioNegocio=true;
+          if (this.participante && this.participante.nombres) { //se encontro en la bdd de participantes
+            this.form.patchValue(participante); 
+          } else{ // se trae del erp
+            this.utl.showMsg("El ruc no esta asociado a ningún participante del plan puntos!!",MessageType.warning)
+            FormUtils.cleanForm(this.form);
+            this.seSeleccionoSocioNegocio=false;
+          }
+        }
       }
     );
+  }
+  usuarioAutorizado(participante){
+    console.log(this.userService.currentUserValue);
+    if(this.loggedUserHasPerfil('Administrador') || this.loggedUserHasPerfil('Administrador Ventas'))
+      return true;
+    if(this.loggedUserHasPerfil('Vendedor')){
+      //Solo si el vendedor está a cargo del participante lo puede ver
+      const correoUsuario=this.userService.currentUserValue.correo.toLocaleLowerCase();
+      const correoVendedor=participante.correoVendedor.toLocaleLowerCase();
+      console.log(correoUsuario);
+      console.log(correoVendedor);
+      if (correoUsuario === correoVendedor)
+        return true;
+    }
+    this.utl.showMsg("Ud no está autorizado para ver este participante!!", MessageType.warning);
+    return false;
+  }
+  loggedUserHasPerfil(perfil){
+    if(!this.userService.currentUserValue)
+      return false;
+    let perfilIndex=this.userService.currentUserValue.Perfiles.findIndex (p=>p===perfil);
+    return (perfilIndex>-1);
   }
   guardar() {
     // console.log(this.form.value);

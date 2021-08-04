@@ -9,10 +9,16 @@ import { BusinessServicesComponent } from './pages/business-services/business-se
 import { AuthGuard } from './auth.guard';
 import { TestComponent } from './pages/test/test.component';
 import { EnvioRetencionesComponent} from './pages/envio-retenciones/envio-retenciones.component';
+import { EntregasUrbanoComponent } from './pages/entregas-urbano/entregas-urbano.component';
+import { HojaRutaComponent } from './pages/hoja-ruta/hoja-ruta.component';
+import { RptHojaRutaComponent } from './reportes/rpt-hoja-ruta/rpt-hoja-ruta.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'directorio', component: DirectorioTelefonicoComponent},
+  {path: 'entregasUrbano', component: EntregasUrbanoComponent},
+  {path: 'hojaRuta', component: HojaRutaComponent},
+  {path: 'rptHojaRuta', component: RptHojaRutaComponent},
   {path: 'participantesPuntos', component: GestionParticipantesPuntosComponent},
   {path: 'envioRetenciones', component: EnvioRetencionesComponent, canActivate: [AuthGuard]},
   {path: 'updateMontoCuentas', component: UpdateMontosCuentasComponent},

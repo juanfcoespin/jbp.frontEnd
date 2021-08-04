@@ -14,7 +14,6 @@ export class PromotickServices {
     }
     getEstadoCuentaByRuc(ruc:string):Observable<any>{
         const url=ConfigUtils.getUrlFromEndPointName('promotick')+'/getEstadoCuenta/'+ruc;
-        console.log(url);
         return this.http.get<any>(url);      
     }
     getDocumentosEnviadosByRuc(ruc:string):Observable<any>{

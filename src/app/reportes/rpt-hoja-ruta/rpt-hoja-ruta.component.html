@@ -1,0 +1,60 @@
+
+<div id="hide-section">
+    <button  mat-button (click)="regresar()">Regresar</button>
+    &nbsp;&nbsp;&nbsp;
+    <button  mat-button (click)="print('hide-section')">Imprimir</button>
+</div>
+
+<div style="padding-top:30px">
+    <table style="background-color: #ffffff;" align="center">
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <img width="130px" src="../../../assets/images/logo.png">
+                        </td>
+                        <td class="titulo">
+                            HOJA DE RUTA
+                        </td>
+                        <td class="secuencial">0022151</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <b>Fecha:</b> {{hojaRuta.fecha}}
+                            <span style="padding-left: 15px; padding-right: 40px;"><b>Lugar:</b> {{hojaRuta.lugar}}</span>
+                            <b>Transportista:</b> {{hojaRuta.transportista}}
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <th>Nombre del Cliente</th>
+                        <th>Número de Factura</th>
+                        <th>Número de Bultos / Cajas</th>
+                        <th>Transporte</th>
+                        <th>Ciudad</th>
+                        <th>Observaciones</th>
+                        <th>Firma / Sello</th>
+                        <th>Guía</th>
+                    </tr>
+                    <tr *ngFor="let entrega of hojaRuta.entregasSeleccionadas">
+                        <td class="entrega">{{entrega.Cliente}}</td>
+                        <td class="entrega">{{entrega.NumFactura}}</td>
+                        <td class="entrega">{{entrega.CantBultos}}</td>
+                        <td class="entrega">{{entrega.Transporte}}</td>
+                        <td class="entrega">{{entrega.Ciudad}}</td>
+                        <td class="entrega">{{entrega.Observaciones}}</td>
+                        <td class="entrega"></td>
+                        <td class="entrega">{{entrega.NumeroGuia}}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+

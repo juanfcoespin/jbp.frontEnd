@@ -7,7 +7,7 @@ import { CatalogoMsg } from './msg/catalogo.msg';
 export class UrlServices {
     // Desarrollo
     //static userUrl = 'http://jbpservices/api/user';
-    // static SocioNegocioUrl = 'http://localhost:53627/api/socioNegocio';
+    //static SocioNegocioUrl = 'http://localhost:53628/api/socioNegocio';
     //static periodoUrl = 'http://jbpservices/api/periodo';
     //static cuentaUrl = 'http://jbpservices/api/cuenta';
     //static signalRUrl = 'http://localhost:5000/notify'; // esto es solo para pruebas de signalR
@@ -19,8 +19,8 @@ export class UrlServices {
     //static autorizacionesSRIServiceUrl = 'http://jbpservices/api/autorizacionSRI';
 
     // produccion
-    static userUrl = 'http://services.jbp.com.ec/api/user';
-    static SocioNegocioUrl = 'http://services.jbp.com.ec/api/socioNegocio';
+    //static userUrl = 'http://services.jbp.com.ec/api/user';
+    //static SocioNegocioUrl = 'http://services.jbp.com.ec/api/socioNegocio';
     static periodoUrl = 'http://services.jbp.com.ec/api/periodo';
     static cuentaUrl = 'http://services.jbp.com.ec/api/cuenta';
     static signalRUrl = 'http://services2.jbp.com.ec/notify'; // esto es solo para pruebas de signalR

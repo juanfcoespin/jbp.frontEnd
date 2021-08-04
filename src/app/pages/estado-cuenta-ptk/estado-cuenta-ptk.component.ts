@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { EstadoCuentaMsg } from 'src/app/msg/estadoCuentaMsg';
+import { DetalleEstadoCuentaMsg, EstadoCuentaMsg } from 'src/app/msg/estadoCuentaMsg';
 import { PromotickServices } from 'src/app/services/promotickServices';
 import { SocioNegocioService } from 'src/app/services/socioNegocioService';
 
@@ -16,6 +16,7 @@ export class EstadoCuentaPtkComponent implements OnInit {
   metaMensual:number;
   estadoCuenta:EstadoCuentaMsg=new EstadoCuentaMsg();
   procesando:boolean=false;
+  
   constructor(
       private socioNegocioService: SocioNegocioService, 
       private ptkService: PromotickServices) {
@@ -29,21 +30,40 @@ export class EstadoCuentaPtkComponent implements OnInit {
 
   ngOnInit() {
    this.loadDocumentosParticipante();
+   //ordeno por el mes mas reciente
+   if(this.documentosPorMes){
+    this.documentosPorMes.sort((a,b)=>(a.mes<b.mes)?1:-1)
+   }
+  }
+  mostrarDetEstadoCuenta(det: DetalleEstadoCuentaMsg){
+    if(det.facturado==0 && det.canjeado==0 && det.acumulado==0 && det.descargado==0)
+      return false;
+    return true;
   }
   consultarEstadoCuentaByRuc(ruc){
     this.procesando=true;
     let call=this.ptkService.getEstadoCuentaByRuc(ruc).subscribe(resp=>{
       call.unsubscribe();
       this.procesando=false;
-      
       this.estadoCuenta=JSON.parse(resp);
-      console.log(this.estadoCuenta);
-      console.log(this.estadoCuenta.mensaje);
+      if(this.estadoCuenta)
+        this.ordenarEstadoCuenta();
     });
+  }
+  ordenarEstadoCuenta(){
+    if(this.estadoCuenta.data && this.estadoCuenta.data.canjes){
+      this.estadoCuenta.data.canjes.sort((a,b)=>
+        (a.idPedido<b.idPedido) ? 1 : -1
+      );
+    }
+    if(this.estadoCuenta.data && this.estadoCuenta.data.detalleEstadoCuenta){
+      this.estadoCuenta.data.detalleEstadoCuenta.sort((a,b)=>
+        (a.mes<b.mes) ? 1 : -1
+      );
+    }
   }
   loadDocumentosParticipante(){
     this.consultarEstadoCuentaByRuc(this.participante.RucPrincipal);
-    console.log(this.participante);
     this.metaMensual=this.participante.metaAnual/12;
     this.participante.documentos.forEach(d => {
       let mes=d.mesDocumento;

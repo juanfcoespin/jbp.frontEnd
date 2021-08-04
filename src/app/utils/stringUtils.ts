@@ -30,4 +30,14 @@ export class StringUtils {
         }
         return me;
     }
+    static getCurrentDate(){
+        const year=new Date().getFullYear();
+        const month= StringUtils.getTwoDigitNumber(new Date().getMonth()+1);
+        const day=StringUtils.getTwoDigitNumber(new Date().getDate());
+        const time=new Date().toLocaleTimeString();
+        return year+'-'+month+'-'+day+' '+time;
+    }
+    static getUnicKey(){
+        return '_' + Math.random().toString(36).substr(2, 9);
+    }
 }

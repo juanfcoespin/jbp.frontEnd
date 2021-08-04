@@ -1,0 +1,93 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Hoja de Ruta</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div [formGroup]="form" fxLayout="column">
+            <mat-form-field appearance="fill">
+                <mat-label>Fecha Desde</mat-label>
+                <input matInput [matDatepicker]="fechaDesde" formControlName="fechaDesde">
+                <mat-datepicker-toggle matSuffix [for]="fechaDesde"></mat-datepicker-toggle>
+                <mat-datepicker #fechaDesde></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Fecha Hasta</mat-label>
+                <input matInput [matDatepicker]="fechaHasta" formControlName="fechaHasta">
+                <mat-datepicker-toggle matSuffix [for]="fechaHasta"></mat-datepicker-toggle>
+                <mat-datepicker #fechaHasta></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Transportista</mat-label>
+                <mat-select formControlName="codTransportista">
+                  <mat-option *ngFor="let t of transportistas" [value]="t.Id">
+                    {{t.Nombre}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            <mat-form-field appearance="fill">
+            <mat-label>Lugar donde se emite la hoja de ruta</mat-label>
+            <mat-select formControlName="lugar">
+                <mat-option *ngFor="let l of lugares" [value]="l">
+                {{l}}
+                </mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="center center">
+        <button mat-button (click)="getEntregas()">Consultar Entregas</button>
+    </mat-card-actions>
+    <div *ngIf="this.entregas">
+        <button  mat-button (click)="generarHojaRuta()">Previsualizar Hoja de Ruta</button>
+    </div>
+    <div>
+        <mat-table matTableExporter [dataSource]="dataSource" #exporter="matTableExporter" [hiddenColumns]="[0]">
+          <ng-container matColumnDef="Selected">
+            <mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="selectAll($event.checked)">Exportar todo?</mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <mat-checkbox [(ngModel)]="element.Selected"></mat-checkbox>
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Cliente">
+            <mat-header-cell *matHeaderCellDef>Cliente</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Cliente}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="NumFactura">
+            <mat-header-cell *matHeaderCellDef>NumFactura</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NumFactura}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Fecha">
+            <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Fecha}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="CantBultos">
+            <mat-header-cell *matHeaderCellDef>CantBultos</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.CantBultos}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Transporte">
+            <mat-header-cell *matHeaderCellDef>Transporte</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Transporte}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Ciudad">
+            <mat-header-cell *matHeaderCellDef>Ciudad</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Ciudad}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Observaciones">
+            <mat-header-cell *matHeaderCellDef>Observaciones</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Observaciones}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="NumeroGuia">
+            <mat-header-cell *matHeaderCellDef>NumeroGuia</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.NumeroGuia}}</mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
+      </div>
+      
+</mat-card>
+
+

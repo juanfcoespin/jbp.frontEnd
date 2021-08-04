@@ -8,15 +8,29 @@ export class EstadoCuentaMsg{
 }
 
 export class DataMsg{
+    acelerador: number;
+    bonoSemestral1: number;
+    bonoSemestral2: number;
+    canjes: CanjeMsg[];
+    cupoAnual:number;
+    detalleEstadoCuenta: DetalleEstadoCuentaMsg[];
+    montoFacturacion: number;
     participante: string;
-    ruc: string;
     puntosCanjeados: number;
     puntosDisponibles: number;
-    montoFacturacion: number;
-    canjes: CanjeMsg[];
+    ruc: string;
+    
     constructor(){
         this.canjes=[];
     }
+}
+export class DetalleEstadoCuentaMsg{
+    mes: number;
+    facturado: number;
+    canjeado: number;
+    descargado: number;
+    acumulado: number;
+    mostrar: boolean;
 }
 
 export class CanjeMsg{
