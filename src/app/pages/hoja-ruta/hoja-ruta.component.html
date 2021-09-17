@@ -17,21 +17,18 @@
                 <mat-datepicker #fechaHasta></mat-datepicker>
             </mat-form-field>
             <mat-form-field appearance="fill">
-                <mat-label>Transportista</mat-label>
-                <mat-select formControlName="codTransportista">
-                  <mat-option *ngFor="let t of transportistas" [value]="t.Id">
-                    {{t.Nombre}}
+              <mat-label>Lugar donde se emite la hoja de ruta</mat-label>
+              <mat-select formControlName="lugar">
+                  <mat-option *ngFor="let l of lugares" [value]="l">
+                  {{l}}
                   </mat-option>
-                </mat-select>
-              </mat-form-field>
-            <mat-form-field appearance="fill">
-            <mat-label>Lugar donde se emite la hoja de ruta</mat-label>
-            <mat-select formControlName="lugar">
-                <mat-option *ngFor="let l of lugares" [value]="l">
-                {{l}}
-                </mat-option>
-            </mat-select>
+              </mat-select>
             </mat-form-field>
+            <!-- descomentar cuando ya no haya preimpresos -->
+            <!--mat-form-field appearance="fill">
+              <mat-label>Nro. Hoja de Ruta</mat-label>
+              <input matInput formControlName="nroHojaRuta">
+          </mat-form-field-->
         </div>
     </mat-card-content>
     <mat-card-actions fxLayout="row" fxLayoutAlign="center center">
@@ -44,7 +41,7 @@
         <mat-table matTableExporter [dataSource]="dataSource" #exporter="matTableExporter" [hiddenColumns]="[0]">
           <ng-container matColumnDef="Selected">
             <mat-header-cell *matHeaderCellDef>
-                <mat-checkbox (change)="selectAll($event.checked)">Exportar todo?</mat-checkbox>
+                <mat-checkbox (change)="selectAll($event.checked)">Seleccionar todo?</mat-checkbox>
             </mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <mat-checkbox [(ngModel)]="element.Selected"></mat-checkbox>
@@ -61,6 +58,10 @@
           <ng-container matColumnDef="Fecha">
             <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.Fecha}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Bodega">
+            <mat-header-cell *matHeaderCellDef>Bodega</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.Bodega}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="CantBultos">
             <mat-header-cell *matHeaderCellDef>CantBultos</mat-header-cell>

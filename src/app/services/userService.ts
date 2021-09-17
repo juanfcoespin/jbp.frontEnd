@@ -35,6 +35,7 @@ export class UserService {
     return this.http.post<RespAuthMsg>(url, me)
     .pipe(// permite transformar el tipo de dato de retorno del observable
       map(resp => {
+        console.log(resp);
         if (resp && resp.Nombre) {
           
           localStorage.setItem('currentUser', JSON.stringify(resp));

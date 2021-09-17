@@ -45,9 +45,14 @@ img{
     padding-right: 15px;
 }
 
-@media print {
-    header, footer, aside, nav, form, iframe, .menu, .hero, .adslot {
-      display: none;
-    }
+@media only print {
+    body { visibility: hidden; }
+    .printthis { visibility: visible; }
+    
+}
+@page { 
+    margin: 0in; 
+    size: A4 Landscape !important;
+    //-webkit-print-color-adjust: exact;
   }
   

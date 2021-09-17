@@ -20,7 +20,7 @@ export class HojaRutaComponent implements OnInit {
   transportistas: any[];
   entregas: any[];
   lugares: any[]=['PIFO', 'PUEMBO'];
-  displayedColumns = ['Selected','Cliente', 'NumFactura', 'Fecha', 'CantBultos', 'Transporte', 'Ciudad', 'Observaciones', 'NumeroGuia'];
+  displayedColumns = ['Selected','Cliente', 'NumFactura', 'Fecha','Bodega', 'CantBultos', 'Transporte', 'Ciudad', 'Observaciones', 'NumeroGuia'];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   dataSource: MatTableDataSource<Element>;
   constructor(
@@ -30,20 +30,13 @@ export class HojaRutaComponent implements OnInit {
     private transportistaService: TransportistaService,
     private route: Router
   ) {
-    this.setTransportistas();
    }
-
-  setTransportistas(){
-    this.transportistaService.getTransportistas().subscribe(transportistas=>{
-      this.transportistas=transportistas;
-    });
-  }
 
   ngOnInit() {
     this.form = this.fb.group({
       fechaDesde: [new Date(), Validators.required],
       fechaHasta: [new Date(), Validators.required],
-      codTransportista: [null, Validators.required],
+      //nroHojaRuta: [null, Validators.required],
       lugar: [null, Validators.required],
     });
     this.setHojaRutaSeleccionada();
@@ -52,7 +45,7 @@ export class HojaRutaComponent implements OnInit {
     if(this.entregaService.hojaRuta){
       let hr=this.entregaService.hojaRuta;
       this.form.setValue({
-        "codTransportista": hr.codTransportista,
+        //"nroHojaRuta": hr.nroHojaRuta,
         "lugar": hr.lugar,
         "fechaDesde": hr.fechaDesde,
         "fechaHasta": hr.fechaHasta,
@@ -90,18 +83,19 @@ export class HojaRutaComponent implements OnInit {
     });
   }
   validForm(){
-    let control=this.getControl("codTransportista");
-    if(control.status=="INVALID"){
-      control.markAsTouched();
-      this.utl.showMsg('El Transportista es requerido',MessageType.warning);
-      return false;
-    }
-    control=this.getControl("lugar");
+    let control=this.getControl("lugar");
     if(control.status=="INVALID"){
       control.markAsTouched();
       this.utl.showMsg('El lugar es requerido',MessageType.warning);
       return false;
     }
+    //descomentar cuando ya no haya preimpresos
+    /*control=this.getControl("nroHojaRuta");
+    if(control.status=="INVALID"){
+      control.markAsTouched();
+      this.utl.showMsg('Debe Seleccionar el nro de hoja de ruta',MessageType.warning);
+      return false;
+    }*/
     
     return true;
   }
@@ -118,7 +112,7 @@ export class HojaRutaComponent implements OnInit {
   generarHojaRuta(){
     var selected=this.entregas.filter(e=>e.Selected);
     if(selected.length==0){
-      this.utl.showMsg('Debe seleccionar al menos 1 registro a exportar!!', MessageType.warning);
+      this.utl.showMsg('Debe seleccionar al menos 1 registro!!', MessageType.warning);
       return;
     }
     let hojaRuta;
@@ -126,11 +120,11 @@ export class HojaRutaComponent implements OnInit {
     hojaRuta.entregas=this.entregas;
     hojaRuta.fechaDesde=this.getControlValue('fechaDesde');
     hojaRuta.fechaHasta=this.getControlValue('fechaHasta');
-    hojaRuta.codTransportista=this.getControlValue('codTransportista');
     hojaRuta.transportista=this.getTransportistByCod(hojaRuta.codTransportista);
     hojaRuta.lugar=this.getControlValue('lugar');
     hojaRuta.fecha=StringUtils.getCurrentDate();
     hojaRuta.entregasSeleccionadas=selected;
+    //hojaRuta.nroHojaRuta=this.getControlValue('nroHojaRuta');
     this.entregaService.hojaRuta=hojaRuta;
     this.route.navigateByUrl('rptHojaRuta');
     

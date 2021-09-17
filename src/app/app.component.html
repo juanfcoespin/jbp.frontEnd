@@ -1,5 +1,6 @@
 <!-- tyle="height: 90vh;" -->
 <!-- *ngIf="currentUser" -->
+
 <mat-toolbar *ngIf="currentUser">
     <mat-toolbar-row>
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
@@ -21,7 +22,11 @@
              <mat-icon>local_shipping</mat-icon> Entregas Urbano
             </button>
           </td>
-          
+          <td>
+            <button mat-button  routerLink="hojaRuta" >
+             <mat-icon>local_shipping</mat-icon> Hoja de Ruta
+            </button>
+          </td>
           <td>
             <button mat-button  routerLink="directorio" >
               <mat-icon>menu_book</mat-icon> Directorio

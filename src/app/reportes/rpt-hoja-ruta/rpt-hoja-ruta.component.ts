@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { jsPDF } from "jspdf";
-
 
 import { EntregaServices } from 'src/app/services/entregaServices';
 
@@ -13,22 +11,28 @@ import { EntregaServices } from 'src/app/services/entregaServices';
 })
 export class RptHojaRutaComponent implements OnInit {
   hojaRuta: any;
+  marginLeft:string;
+  marginTop:string;
   constructor(
     private entregaService: EntregaServices,
     private route: Router) { }
 
   ngOnInit() {
-    console.log(this.entregaService.hojaRuta);
     this.hojaRuta=this.entregaService.hojaRuta;
+    console.log(this.hojaRuta.entregasSeleccionadas);
+    if(this.hojaRuta.entregasSeleccionadas){
+      this.marginTop=this.hojaRuta.entregasSeleccionadas[0].MargenSuperior;
+      this.marginLeft=this.hojaRuta.entregasSeleccionadas[0].MargenIzquierdo;
+      
+      //this.reportMarginsStyle = this._sanitizer.bypassSecurityTrustStyle(this.reportMarginsStyle);
+      
+    }
   }
   regresar(){
     this.route.navigateByUrl('hojaRuta');
   }
-  print(hideSecction){
-    let toHide=document.getElementById(hideSecction);
-    toHide.style.display='none';
-    let resp=window.print();
-    console.log(resp);
-    toHide.style.display='inline';
+  
+  print(){
+    window.print();
   }
 }
