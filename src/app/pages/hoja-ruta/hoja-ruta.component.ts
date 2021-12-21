@@ -19,6 +19,7 @@ export class HojaRutaComponent implements OnInit {
   form: FormGroup;
   transportistas: any[];
   entregas: any[];
+  procesando: boolean=false;
   lugares: any[]=['PIFO', 'PUEMBO'];
   displayedColumns = ['Selected','Cliente', 'NumFactura', 'Fecha','Bodega', 'CantBultos', 'Transporte', 'Ciudad', 'Observaciones', 'NumeroGuia'];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -69,7 +70,9 @@ export class HojaRutaComponent implements OnInit {
   getEntregas(){
     if(!this.validForm())
       return;
+    this.procesando=true;
     this.entregaService.getHojaRuta(this.form.value).subscribe(entregas=>{
+      this.procesando=false;
       if(entregas){
         this.entregas=entregas;
         this.setUnicKeyEnEntregas()

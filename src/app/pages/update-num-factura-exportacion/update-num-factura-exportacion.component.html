@@ -1,0 +1,26 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Actualizar Número de factura de Exportación</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div [formGroup]="form" fxLayout="column">
+            <mat-form-field>
+                <input matInput placeholder="Número de documento en SAP" formControlName='DocNum'>
+                <mat-error>
+                  Debe ingresar el Número de documento en SAP
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Número de Folio a Ingresar" formControlName='FolioNum'>
+                <mat-error>
+                  Debe ingresar el Número de Folio a Ingresar
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="center center">
+        <button mat-button (click)="updateNumFacturaExportacion()">Registrar Número de Factura</button>
+    </mat-card-actions>
+</mat-card>
+
+

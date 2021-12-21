@@ -30,7 +30,17 @@
             </td>
         </tr-->
         <tr>
-            <td [style.padding-left.px]="marginLeft" [style.padding-top.px]="marginTop">
+            <td [style.padding-top.px]="marginTop">
+                <table>
+                    <tr>
+                        <td style="padding-left: 100px">{{fechaImpresion}}</td>
+                        <td style="padding-left: 190px">{{this.hojaRuta.lugar}}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td [style.padding-left.px]="marginLeft" style="padding-top:65px">
                 <table>
                     <!--tr>
                         <th>Nombre del Cliente</th>

@@ -10,6 +10,7 @@
             <th>Cod. Resp. WS</th>
             <th>Respuesta Ws</th>
             <th>Fecha Documento Original</th>
+            <th>Descripcion</th>
         </tr>
         <tbody>
             <tr *ngFor="let de of this.docEnviadosservice.documentosEnviados">
@@ -22,6 +23,7 @@
                 <td>{{de.codRespWS}}</td>
                 <td>{{de.respWs}}</td>
                 <td>{{de.fechaDocumentoOriginal}}</td>
+                <td>{{de.descripcion}}</td>
             </tr>
         </tbody>
     </table>

@@ -11,25 +11,31 @@
       <span class="menu-spacer"></span>
       <table fxShow="true"  fxHide.lt-md width="100%">
         <tr>
-          <td><img class="logo" src="/assets/images/logo.png"></td>
-          <td>
-            <button mat-button  routerLink="participantesPuntos" >
-             <mat-icon>group</mat-icon> Participantes Puntos
-            </button>
-          </td>
-          <td>
-            <button mat-button  routerLink="entregasUrbano" >
-             <mat-icon>local_shipping</mat-icon> Entregas Urbano
-            </button>
-          </td>
-          <td>
-            <button mat-button  routerLink="hojaRuta" >
-             <mat-icon>local_shipping</mat-icon> Hoja de Ruta
-            </button>
-          </td>
           <td>
             <button mat-button  routerLink="directorio" >
               <mat-icon>menu_book</mat-icon> Directorio
+            </button>
+          </td>
+          <td>
+            <button mat-button [matMenuTriggerFor]="menu">Ventas</button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item  routerLink="updateNumFacturaExportacion" >
+                  <mat-icon>numbers</mat-icon> Actualizar Num Factura Exp
+                </button>
+                <button mat-menu-item routerLink="entregasUrbano" >
+                  <mat-icon>local_shipping</mat-icon> Entregas Urbano
+                 </button>
+                 <button mat-menu-item routerLink="hojaRuta" >
+                  <mat-icon>local_shipping</mat-icon> Hoja de Ruta
+                 </button>
+                 <button mat-menu-item  routerLink="participantesPuntos" >
+                  <mat-icon>group</mat-icon> Participantes Puntos
+                 </button>
+              </mat-menu>
+          </td>
+          <td>
+            <button mat-button  routerLink="reacciones" >
+             <mat-icon>auto_awesome_motion</mat-icon>Reacciones Medicamentos
             </button>
           </td>
           <td>

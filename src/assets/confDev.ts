@@ -29,9 +29,11 @@ const conf=[
             {
                 "endPointName": "user",
                 "url": "http://localhost:53628/api/user"
+            },
+            {
+                "endPointName": "reacciones",
+                "url": "http://localhost:53628/api/reacciones"
             }
-
-            
         ]
     }
 ]

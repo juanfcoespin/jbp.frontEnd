@@ -14,6 +14,7 @@ import { FormUtils } from 'src/app/utils/forms.utils';
 })
 export class EntregasUrbanoComponent implements OnInit {
   form: FormGroup;
+  procesando: boolean=false;
   bodegas: any[];
   entregas: any[];
   displayedColumns = ['Selected', 'NumFactura','Fecha', 'Cedula', 'Cliente'];
@@ -27,17 +28,7 @@ export class EntregasUrbanoComponent implements OnInit {
     this.setBodegas();  
   }
   setBodegas(){
-    this.bodegas=['PT1', 'PT2']
-    // this.bodegas=[
-    //   {
-    //     "id":'PT1',
-    //     "nombre":'Prod. Terminado Pifo'
-    //   },
-    //   {
-    //     "id":'PT2',
-    //     "nombre":'Prod. Terminado Puembo'
-    //   }
-    // ];
+    this.bodegas=['PT1', 'PT2', 'PICK2']
   }
 
   ngOnInit() {
@@ -46,14 +37,13 @@ export class EntregasUrbanoComponent implements OnInit {
       fechaHasta: [new Date(), Validators.required],
       bodega: [null, Validators.required],
     });
-    //this.setDataSource(this.entregas);
-    
   }
   getEntregas(){
     if(!this.validForm())
       return;
+    this.procesando=true;
     this.entregaService.getEntregasUrbano(this.form.value).subscribe(entregas=>{
-      //console.log(entregas);
+      this.procesando=false;
       this.entregas=entregas;
       this.setDataSource(this.entregas);
     });

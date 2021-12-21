@@ -73,6 +73,10 @@ import { MatTableExporterModule } from 'mat-table-exporter';
 import { HojaRutaComponent } from './pages/hoja-ruta/hoja-ruta.component';
 import { TransportistaService } from './services/transportistaService';
 import { RptHojaRutaComponent } from './reportes/rpt-hoja-ruta/rpt-hoja-ruta.component';
+import { RptReaccionesComponent } from './reportes/rpt-reacciones/rpt-reacciones.component';
+import { ReaccionesServices } from './services/reaccionesServices';
+import { UpdateNumFacturaExportacionComponent } from './pages/update-num-factura-exportacion/update-num-factura-exportacion.component';
+import { FacturaServices } from './services/facturaServices';
 
 @NgModule({
   declarations: [
@@ -94,6 +98,8 @@ import { RptHojaRutaComponent } from './reportes/rpt-hoja-ruta/rpt-hoja-ruta.com
     EntregasUrbanoComponent,
     HojaRutaComponent,
     RptHojaRutaComponent,
+    RptReaccionesComponent,
+    UpdateNumFacturaExportacionComponent
   ],
   imports: [
     BrowserModule,
@@ -150,7 +156,9 @@ import { RptHojaRutaComponent } from './reportes/rpt-hoja-ruta/rpt-hoja-ruta.com
     PromotickServices,
     DocumentosEnviadosServices,
     EntregaServices,
-    TransportistaService
+    TransportistaService,
+    ReaccionesServices,
+    FacturaServices
   ],
   entryComponents: [AlertComponent, NewUserComponent],
   bootstrap: [AppComponent]

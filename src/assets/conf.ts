@@ -29,6 +29,14 @@ const conf=[
             {
                 "endPointName": "user",
                 "url": "http://services.jbp.com.ec/api/user"
+            },
+            {
+                "endPointName": "reacciones",
+                "url": "http://services.jbp.com.ec/api/reacciones"
+            },
+            {
+                "endPointName": "factura",
+                "url": "http://services.jbp.com.ec/api/factura"
             }
         ]
     }

@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.form.value).subscribe(loginOk => {
       this.procesando=false;
       if (loginOk) {
-        this.router.navigate(['participantesPuntos']);
+        this.router.navigate(['directorio']);
       } else {
         this.utl.showMsg('No está autorizado para ingresar', MessageType.warning);
       }

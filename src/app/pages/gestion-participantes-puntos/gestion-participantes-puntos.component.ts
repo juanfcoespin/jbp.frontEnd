@@ -193,7 +193,7 @@ export class GestionParticipantesPuntosComponent implements OnInit {
   }
   usuarioAutorizado(participante){
     console.log(this.userService.currentUserValue);
-    if(this.loggedUserHasPerfil('Administrador') || this.loggedUserHasPerfil('Administrador Ventas'))
+    if(this.loggedUserHasPerfil('Administrador') || this.loggedUserHasPerfil('Administrador Ventas') || this.loggedUserPerteneceAlGrupo('Ventas'))
       return true;
     if(this.loggedUserHasPerfil('Vendedor')){
       //Solo si el vendedor está a cargo del participante lo puede ver
@@ -208,10 +208,18 @@ export class GestionParticipantesPuntosComponent implements OnInit {
     return false;
   }
   loggedUserHasPerfil(perfil){
+    console.log(this.userService.currentUserValue);
     if(!this.userService.currentUserValue)
       return false;
-    let perfilIndex=this.userService.currentUserValue.Perfiles.findIndex (p=>p===perfil);
-    return (perfilIndex>-1);
+    let index=this.userService.currentUserValue.Perfiles.findIndex (p=>p===perfil);
+    return (index>-1);
+  }
+  loggedUserPerteneceAlGrupo(grupo){
+    console.log(this.userService.currentUserValue);
+    if(!this.userService.currentUserValue)
+      return false;
+    let index=this.userService.currentUserValue.GruposDirectorioActivo.findIndex (p=>p===grupo);
+    return (index>-1);
   }
   guardar() {
     // console.log(this.form.value);

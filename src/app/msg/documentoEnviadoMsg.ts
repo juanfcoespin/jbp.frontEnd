@@ -9,4 +9,5 @@ export class DocumentoEnviadoMsg
         puntos: number;
         codRespWS: number;
         respWs: string;
+        descripcion: string;
 }

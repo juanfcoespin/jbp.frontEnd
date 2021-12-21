@@ -1,0 +1,66 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Reacciones Medicamentos</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <button  mat-button (click)="refrescar()">Refrescar</button>
+        <div *ngIf="this.reacciones">
+            Exportar a:<br>
+            <button  mat-button (click)="export(exporter,'excel')">Excel</button>
+            &nbsp;
+            <button  mat-button (click)="export(exporter,'csv')">Csv</button>
+        </div>
+        <mat-table matTableExporter (exportCompleted)="onExportCompleted()" [dataSource]="dataSource" #exporter="matTableExporter">
+            <ng-container matColumnDef="Selected">
+                <mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="selectAll($event.checked)">Exportar todo?</mat-checkbox>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <mat-checkbox [(ngModel)]="element.Selected"></mat-checkbox>
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="fechaRegistro">
+              <mat-header-cell *matHeaderCellDef>Fecha Registro</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.fechaRegistro}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="nombres">
+                <mat-header-cell *matHeaderCellDef>Nombres</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.nombres}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="apellidos">
+                <mat-header-cell *matHeaderCellDef>Apellidos</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.apellidos}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="sexo">
+                <mat-header-cell *matHeaderCellDef>Sexo</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.sexo}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="rangoEdad">
+                <mat-header-cell *matHeaderCellDef>Rango Edad</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.rangoEdad}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="pesoKg">
+                <mat-header-cell *matHeaderCellDef>Peso (Kg)</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.pesoKg}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="alturaCm">
+                <mat-header-cell *matHeaderCellDef>Altura (Cm)</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.alturaCm}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="quienPadecioReaccion">
+                <mat-header-cell *matHeaderCellDef>Quien Padecio Reaccion?</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.quienPadecioReaccion}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="padeceOtraEnfermedad">
+                <mat-header-cell *matHeaderCellDef>Padece Otra Enfermedad?</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.padeceOtraEnfermedad}}</mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+          <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
+    </mat-card-content>
+</mat-card>
+
+
+

@@ -26,8 +26,14 @@
               </mat-form-field>
         </div>
     </mat-card-content>
+    <div fxLayoutAlign="center none">
+      <button [disabled]="procesando" mat-button (click)="getEntregas()">Consultar Entregas</button>
+      <div *ngIf="procesando">
+        <mat-progress-spinner [mode]="'indeterminate'" [diameter]="30"></mat-progress-spinner>
+      </div>
+    </div>
     <mat-card-actions fxLayout="row" fxLayoutAlign="center center">
-        <button mat-button (click)="getEntregas()">Consultar Entregas</button>
+        
     </mat-card-actions>
     <div *ngIf="this.entregas">
         Exportar a:<br>

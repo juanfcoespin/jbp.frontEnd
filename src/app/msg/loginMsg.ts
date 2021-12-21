@@ -8,4 +8,5 @@ export interface RespAuthMsg {
     Nombre: string;
     Perfiles: string[];
     correo: string;
+    GruposDirectorioActivo: string[];
 }
