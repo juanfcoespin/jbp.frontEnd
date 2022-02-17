@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Clientes Encontrados</h1>
+<div mat-dialog-content>
+  <mat-radio-group appearance="fill" class="example-radio-group" [(ngModel)]="data.rucSeleccionado">
+    <mat-radio-button *ngFor="let cliente of data.clientes" [value]="cliente.Ruc">({{cliente.Ruc}}) - {{cliente.Nombre}}</mat-radio-button>
+  </mat-radio-group>
+</div>
+<div mat-dialog-actions class="align-right">
+    <button mat-button [mat-dialog-close]="data.rucSeleccionado" cdkFocusInitial>Aceptar</button>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+</div>

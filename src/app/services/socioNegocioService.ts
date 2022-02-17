@@ -23,6 +23,11 @@ export class SocioNegocioService{
         return this.http.get<SocioNegocioItem[]>(url);
       }
     }
+    getHistoricoClientes(cliente): Observable<any>{
+      let url= ConfigUtils.getUrlFromEndPointName('socioNegocio');
+      url+='/getHistoricoClientesByNombre/' + cliente;
+      return this.http.get<any>(url);
+    }
     getParticipanteByRuc(ruc: string): Observable<any>{
       if (ruc && ruc !== '') {
         let url= ConfigUtils.getUrlFromEndPointName('socioNegocio');

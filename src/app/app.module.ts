@@ -77,6 +77,8 @@ import { RptReaccionesComponent } from './reportes/rpt-reacciones/rpt-reacciones
 import { ReaccionesServices } from './services/reaccionesServices';
 import { UpdateNumFacturaExportacionComponent } from './pages/update-num-factura-exportacion/update-num-factura-exportacion.component';
 import { FacturaServices } from './services/facturaServices';
+import { RptFacturasHistoricasComponent } from './reportes/rpt-facturas-historicas/rpt-facturas-historicas.component';
+import { ClientesEncontradosDialogComponent } from './reportes/clientes-encontrados-dialog/clientes-encontrados-dialog.component';
 
 @NgModule({
   declarations: [
@@ -99,7 +101,9 @@ import { FacturaServices } from './services/facturaServices';
     HojaRutaComponent,
     RptHojaRutaComponent,
     RptReaccionesComponent,
-    UpdateNumFacturaExportacionComponent
+    UpdateNumFacturaExportacionComponent,
+    RptFacturasHistoricasComponent,
+    ClientesEncontradosDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -160,7 +164,7 @@ import { FacturaServices } from './services/facturaServices';
     ReaccionesServices,
     FacturaServices
   ],
-  entryComponents: [AlertComponent, NewUserComponent],
+  entryComponents: [AlertComponent, NewUserComponent, ClientesEncontradosDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

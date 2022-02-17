@@ -1,0 +1,126 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Facturas Históricas por cliente</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div [formGroup]="form" fxLayout="column">
+          <mat-form-field appearance="fill">
+            <mat-label>Año</mat-label>
+            <mat-select formControlName="year">
+              <mat-option *ngFor="let year of years" [value]="year">
+                {{year}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <div fxLayout="row">
+            <span style="padding-right: 20px;">Consultar Por:</span>
+            <mat-radio-group appearance="fill" formControlName="tipoConsulta">
+              <mat-radio-button class="example-radio-button" value="ruc">Ruc</mat-radio-button>
+              <mat-radio-button class="example-radio-button" value="cliente">Cliente</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <mat-form-field appearance="fill" *ngIf="form.value.tipoConsulta=='ruc'">
+            <mat-label>Ruc</mat-label>
+            <input matInput  formControlName="ruc" (keyup.enter)="consultar()">
+          </mat-form-field>  
+          <mat-form-field appearance="fill" *ngIf="form.value.tipoConsulta=='cliente'">
+            <mat-label>Cliente</mat-label>
+            <input matInput  formControlName="cliente" (keyup.enter)="consultar()">
+          </mat-form-field>  
+        </div>
+        <div fxLayoutAlign="center none">
+          <button [disabled]="procesando" mat-button (click)="consultar()">Consultar</button>
+          <mat-progress-spinner *ngIf="procesando" [mode]="'indeterminate'" [diameter]="30"></mat-progress-spinner>
+        </div>
+    </mat-card-content>
+    
+    <div *ngIf="this.facturas && this.facturas.length>0">
+      <div>
+        Exportar a:<br>
+        <button  mat-button (click)="export(exporter,'excel')">Excel</button>
+        &nbsp;
+        <button  mat-button (click)="export(exporter,'csv')">Csv</button>
+      </div>
+      <div class="table-responsive">
+          <mat-table matTableExporter (exportCompleted)="onExportCompleted()" [dataSource]="dataSource" #exporter="matTableExporter" [hiddenColumns]="[0]">
+            <ng-container matColumnDef="Selected">
+              <mat-header-cell *matHeaderCellDef>
+                  <mat-checkbox (change)="selectAll($event.checked)"></mat-checkbox>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                  <mat-checkbox [(ngModel)]="element.Selected"></mat-checkbox>
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="fecha">
+              <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.fecha}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="ruc">
+              <mat-header-cell *matHeaderCellDef>Ruc</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.ruc}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="cliente">
+              <mat-header-cell *matHeaderCellDef>Cliente</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.cliente}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="numFactura">
+              <mat-header-cell *matHeaderCellDef>Num Factura</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.numFactura}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="codOrden">
+              <mat-header-cell *matHeaderCellDef>Cod Orden</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.codOrden}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="autorizacionSRI">
+              <mat-header-cell *matHeaderCellDef >AutorizacionSRI</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.autorizacionSRI}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="total">
+              <mat-header-cell *matHeaderCellDef>Total</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.total}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="descuento">
+              <mat-header-cell *matHeaderCellDef>Descuento</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.descuento}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="impuesto">
+              <mat-header-cell *matHeaderCellDef>Impuesto</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.impuesto}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="vendedor">
+              <mat-header-cell *matHeaderCellDef>vendedor</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.vendedor}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="comentario">
+              <mat-header-cell *matHeaderCellDef>comentario</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.comentario}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="producto">
+              <mat-header-cell *matHeaderCellDef>producto</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.producto}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="lote">
+              <mat-header-cell *matHeaderCellDef>lote</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.lote}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="cantidad">
+              <mat-header-cell *matHeaderCellDef>cantidad</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.cantidad}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="precioUnitario">
+              <mat-header-cell *matHeaderCellDef>precioUnitario</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.precioUnitario}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="subtotalLinea">
+              <mat-header-cell *matHeaderCellDef>subtotalLinea</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.subtotalLinea}}</mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+      </div>
+    </div>
+</mat-card>
+
+

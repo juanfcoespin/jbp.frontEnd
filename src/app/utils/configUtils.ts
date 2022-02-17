@@ -1,4 +1,5 @@
 import conf from '../../assets/conf';
+//import conf from '../../assets/confTest';
 //import conf from '../../assets/confDev';
 
 export class ConfigUtils {

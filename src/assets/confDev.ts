@@ -33,6 +33,10 @@ const conf=[
             {
                 "endPointName": "reacciones",
                 "url": "http://localhost:53628/api/reacciones"
+            },
+            {
+                "endPointName": "facturaHistorico",
+                "url": "http://localhost:53628/api/facturahistorico"
             }
         ]
     }

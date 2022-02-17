@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Promotick, ConfMsg } from '../msg/confMsg';
@@ -16,6 +16,11 @@ export class FacturaServices {
     setNumFacturaExportacion(me):Observable<any>{
         const url=ConfigUtils.getUrlFromEndPointName('factura')+'/'+'updateFolioFactExportacion';
         //console.log(url);
+        return this.http.post<any>(url,me);      
+    }
+    getFacturasHistoricas(me):Observable<any>{
+        const url=ConfigUtils.getUrlFromEndPointName('facturaHistorico')+'/'+'getFacturasByCliente';
+        console.log(url);
         return this.http.post<any>(url,me);      
     }
    
