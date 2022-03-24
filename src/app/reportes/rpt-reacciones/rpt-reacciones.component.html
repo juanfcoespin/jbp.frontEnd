@@ -4,7 +4,120 @@
     </mat-card-header>
     <mat-card-content>
         <button  mat-button (click)="refrescar()">Refrescar</button>
-        <div *ngIf="this.reacciones">
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Fecha Registro</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Rango Edad</th>
+                    <th>Altura (Cm)</th>
+                    <th>Peso (Kg)</th>
+                    <th>Quien Padecio Enfermedad</th>
+                    <th>padeceOtraEnfermedad</th>
+                    <th>otraEnfermedad</th>
+                    <th>Notificador</th>
+                    <th>Mail</th>
+                    <th>Teléfono</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of this.reacciones">
+                <tr>
+                    <td *ngIf="!item.ver" (click)="viewItem(item)">
+                        <mat-icon>add_box</mat-icon>
+                    </td>
+                    <td *ngIf="item.ver" (click)="viewItem(item)">
+                        <mat-icon>indeterminate_check_box</mat-icon>
+                    </td>
+                    <td>{{item.fechaRegistro}}</td>
+                    <td>{{item.nombres}}</td>
+                    <td>{{item.apellidos}}</td>
+                    <td>{{item.rangoEdad}}</td>
+                    <td>{{item.alturaCm}}</td>
+                    <td>{{item.pesoKg}}</td>
+                    <td>{{item.quienPadecioEnfermedad}}</td>
+                    <td>{{item.padeceOtraEnfermedad?'Si':'No'}}</td>
+                    <td>{{item.otraEnfermedad}}</td>
+                    <td>{{item.notificador}}</td>
+                    <td>{{item.notificadorMail}}</td>
+                    <td>{{item.notificadorTelefono}}</td>
+                </tr>
+                <tr *ngIf="item.ver">
+                    <td colspan="20">
+                        <h4>Medicamentos:</h4>
+                        <table class="table table-sm">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Medicamento</th>
+                                    <th>Lote</th>
+                                    <th>Fecha Vencimiento</th>
+                                    <th>Para Que lo Utilizo</th>
+                                    <th>Posología</th>
+                                    <th>cantidadFrecuencia</th>
+                                    <th>Via Administracion</th>
+                                    <th>Que Paso Con Medicamento?</th>
+                                    <th>fechaUtilizacion</th>
+                                    <th>cuandoDejoUsar</th>
+                                    <th>haVueltoReaccion</th>
+                                </tr> 
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let med of item.medicamentos">
+                                    <td>{{med.medicamento}}</td>
+                                    <td>{{med.lote}}</td>
+                                    <td>{{med.fechaVencimiento}}</td>
+                                    <td>{{med.paraQueUtilizo}}</td>
+                                    <td>{{med.posologia}}</td>
+                                    <td>{{med.cantidadFrecuencia}}</td>
+                                    <td>{{med.viaAdministracion}}</td>
+                                    <td>{{med.quePasoConMedicamento}}</td>
+                                    <td>{{med.fechaUtilizacion}}</td>
+                                    <td>{{med.cuandoDejoUsar}}</td>
+                                    <td>{{med.haVueltoReaccion?'Si':'No'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr *ngIf="item.ver">
+                    <td colspan="20">
+                        <h4>Reacciones</h4>
+                        <ul>
+                            <li *ngFor="let r of item.reaccionesStr">{{r}}</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr *ngIf="item.ver">
+                    <td colspan="20">
+                        <h4>Informacion de la Reaccion</h4>
+                        <table class="table table-sm">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Síntomas</th>
+                                    <th>Estado Persona Afectada</th>
+                                    <th>Fecha Inicio</th>
+                                    <th>Fecha Fin</th>
+                                    <th>Siguio Tratamiento?</th>
+                                    <th>Tratamiento</th>
+                                </tr> 
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let info of item.informacionesReaccion">
+                                    <td>{{info.sintomas}}</td>
+                                    <td>{{info.estadoPersonaAfectada}}</td>
+                                    <td>{{info.fechaInicio}}</td>
+                                    <td>{{info.fechaFin}}</td>
+                                    <td>{{info.siguioTratamiento?'Si':'No'}}</td>
+                                    <td>{{info.tratamiento}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- <div *ngIf="this.reacciones">
             Exportar a:<br>
             <button  mat-button (click)="export(exporter,'excel')">Excel</button>
             &nbsp;
@@ -54,11 +167,14 @@
             <ng-container matColumnDef="padeceOtraEnfermedad">
                 <mat-header-cell *matHeaderCellDef>Padece Otra Enfermedad?</mat-header-cell>
                 <mat-cell *matCellDef="let element">{{element.padeceOtraEnfermedad}}</mat-cell>
+                
             </ng-container>
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;">
+                <div>hola</div>
+            </mat-row>
           </mat-table>
-          <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
+          <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator> -->
     </mat-card-content>
 </mat-card>
 

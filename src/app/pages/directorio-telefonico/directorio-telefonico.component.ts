@@ -33,7 +33,7 @@ export class DirectorioTelefonicoComponent implements OnInit {
   }
   cargarContactos() {
     this.directorioService.getDirectorio().subscribe(contactos => {
-      console.log(contactos);
+      //console.log(contactos);
       this.contactos = Array.from(contactos);
       this.mostrarResultadoBusqueda();
     });

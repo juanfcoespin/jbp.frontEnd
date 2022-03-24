@@ -31,6 +31,7 @@ export class RptReaccionesComponent implements OnInit {
       console.log(reacciones);
       if(reacciones)
         this.reacciones=reacciones;
+        this.reacciones.forEach(item=>item.ver=false);
         this.setDataSource(this.reacciones);
     });
   }
@@ -58,5 +59,8 @@ export class RptReaccionesComponent implements OnInit {
   onExportCompleted(){
     console.log('compleated');
     this.setDataSource(this.reacciones);
+  }
+  viewItem(item){
+    item.ver=!item.ver;
   }
 }
