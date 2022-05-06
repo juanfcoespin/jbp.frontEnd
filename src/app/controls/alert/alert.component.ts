@@ -16,12 +16,9 @@ export class AlertComponent implements OnInit {
     // this.data.message = StringUtils.replace(this.data.message, '\r\n', '<br>');
     // this.data.message = StringUtils.replace(this.data.message, '\r', '<br>');
     // this.data.message = StringUtils.replace(this.data.message, '\n', '<br>');
-    console.log(this.data.message);
     this.data.message = this.data.message.split("\r\n").join("<br/>");
     this.data.message = this.data.message.split("\n").join("<br/>");
     this.data.message = this.data.message.split("\r").join("<br/>");
-    let tmp='Run64Bits\r\nerror prueba';
-    console.log(tmp);
   }
   ok() {
 

@@ -14,11 +14,12 @@ import {ItemMsg} from '../../msg/common.msg';
 import {FormUtils} from '../../utils/forms.utils';
 import { ArrayUtils } from '../../utils/arrayUtils';
 import { SocioNegocioService } from '../../services/socioNegocioService';
-import { GuardsCheckStart, Router } from '@angular/router';
+import { ActivatedRoute, GuardsCheckStart, Router } from '@angular/router';
 import { MessageType } from 'src/app/msg/alert.msg';
 import { UserService } from 'src/app/services/userService';
 import { PromotickServices } from 'src/app/services/promotickServices';
 import { DocumentosEnviadosServices } from 'src/app/services/documentosEnviadosServices';
+
 
 @Component({
   selector: 'app-gestion-participantes-puntos',
@@ -54,13 +55,33 @@ export class GestionParticipantesPuntosComponent implements OnInit {
     private snService: SocioNegocioService,
     private ptkService: PromotickServices,
     private documentosEnviadosService: DocumentosEnviadosServices,
-    public userService: UserService
+    public userService: UserService,
+    public route: ActivatedRoute
   ) {
       this.setTitulo();
       this.initForm();
       this.setGeneros();
       this.setCategorias();
       this.setTiposDocumento();
+      
+  }
+  
+  ngOnInit() {
+    // se carga aqui porque puede tomar mas tiempo en la llamada asíncrona al servicio
+    this.setVendedores();
+    this.checkIfCalledFromAppVentas();
+  }
+  //gestión de la página si es que fue invocada desde el aplicativo de ventas
+  //se manda por query string los valores de vendedor y cliente
+  checkIfCalledFromAppVentas(){
+    this.route.queryParams.subscribe(p=>{
+      if(p && p.rucCliente && p.idVendedor){
+        this.snService.getParticipanteByRuc(p.rucCliente).subscribe(participante=>{
+          console.log(participante);
+          this.setParticipante(participante, p.idVendedor);
+        });
+      }
+    }); 
   }
   setTiposDocumento() {
     this.TiposDocumento = [
@@ -129,10 +150,7 @@ export class GestionParticipantesPuntosComponent implements OnInit {
   setTitulo() {
     this.global.setComponentTitle('Gestión Participantes Puntos');
   }
-  ngOnInit() {
-    // se carga aqui porque puede tomar mas tiempo en la llamada asíncrona al servicio
-    this.setVendedores();
-  }
+  
   setVendedores() {
     this.snService.getVendedores().subscribe(items => {
       this.vendedores = items;
@@ -174,24 +192,27 @@ export class GestionParticipantesPuntosComponent implements OnInit {
   seleccionarSN(event: MatRadioChange) {
     const ruc=event.value;
     this.snService.selectSocioNegocio(ruc);
-    this.documentosEnviadosService.consultarDocumentosEnviados(ruc);
     this.snService.getParticipanteByRuc(ruc).subscribe(participante => {
-        FormUtils.cleanForm(this.form);
-        if(this.usuarioAutorizado(participante)){
-          this.participante=participante;
-          this.seSeleccionoSocioNegocio=true;
-          if (this.participante && this.participante.nombres) { //se encontro en la bdd de participantes
-            this.form.patchValue(participante); 
-          } else{ // se trae del erp
-            this.utl.showMsg("El ruc no esta asociado a ningún participante del plan puntos!!",MessageType.warning)
-            FormUtils.cleanForm(this.form);
-            this.seSeleccionoSocioNegocio=false;
-          }
-        }
+        this.setParticipante(participante);
       }
     );
   }
-  usuarioAutorizado(participante){
+  setParticipante(participante, idVendedor=null){
+    if (!participante || !participante.nombres) { //se encontro en la bdd de participantes
+      this.utl.showMsg("El ruc no esta asociado a ningún participante del plan puntos!!",MessageType.warning)
+      FormUtils.cleanForm(this.form);
+      this.seSeleccionoSocioNegocio=false;
+      return;
+    }
+    FormUtils.cleanForm(this.form);
+    if(this.usuarioAutorizado(participante, idVendedor)){
+      this.participante=participante;
+      this.seSeleccionoSocioNegocio=true;
+      this.form.patchValue(participante); 
+      this.documentosEnviadosService.consultarDocumentosEnviados(participante.RucPrincipal);
+    }
+  }
+  usuarioAutorizado(participante, idVendedor=null){
     console.log(this.userService.currentUserValue);
     if(this.loggedUserHasPerfil('Administrador') || this.loggedUserHasPerfil('Administrador Ventas') || this.loggedUserPerteneceAlGrupo('Ventas'))
       return true;
@@ -203,6 +224,9 @@ export class GestionParticipantesPuntosComponent implements OnInit {
       console.log(correoVendedor);
       if (correoUsuario === correoVendedor)
         return true;
+    }
+    if(idVendedor && participante.idVendedor==idVendedor){
+      return true;
     }
     this.utl.showMsg("Ud no está autorizado para ver este participante!!", MessageType.warning);
     return false;
