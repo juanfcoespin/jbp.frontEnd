@@ -79,6 +79,9 @@ import { UpdateNumFacturaExportacionComponent } from './pages/update-num-factura
 import { FacturaServices } from './services/facturaServices';
 import { RptFacturasHistoricasComponent } from './reportes/rpt-facturas-historicas/rpt-facturas-historicas.component';
 import { ClientesEncontradosDialogComponent } from './reportes/clientes-encontrados-dialog/clientes-encontrados-dialog.component';
+import { GenerarQRComponent } from './pages/bodega/generar-qr/generar-qr.component';
+import { QRCodeModule } from 'angularx-qrcode';
+import { BodegaServices } from './services/bodegaServises';
 
 @NgModule({
   declarations: [
@@ -103,9 +106,11 @@ import { ClientesEncontradosDialogComponent } from './reportes/clientes-encontra
     RptReaccionesComponent,
     UpdateNumFacturaExportacionComponent,
     RptFacturasHistoricasComponent,
-    ClientesEncontradosDialogComponent
+    ClientesEncontradosDialogComponent,
+    GenerarQRComponent
   ],
   imports: [
+    QRCodeModule,
     BrowserModule,
     AppRoutingModule,
     GrowlModule,
@@ -162,7 +167,8 @@ import { ClientesEncontradosDialogComponent } from './reportes/clientes-encontra
     EntregaServices,
     TransportistaService,
     ReaccionesServices,
-    FacturaServices
+    FacturaServices,
+    BodegaServices
   ],
   entryComponents: [AlertComponent, NewUserComponent, ClientesEncontradosDialogComponent],
   bootstrap: [AppComponent]

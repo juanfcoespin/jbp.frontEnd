@@ -37,6 +37,14 @@
               </mat-menu>
           </td>
           <td>
+            <button mat-button [matMenuTriggerFor]="menu2">Bodega</button>
+              <mat-menu #menu2="matMenu">
+                <button mat-menu-item  routerLink="generarQR" >
+                  <mat-icon>qr_code</mat-icon> Generar QR
+                </button>
+              </mat-menu>
+          </td>
+          <td>
             <button mat-button  routerLink="reacciones" >
              <mat-icon>auto_awesome_motion</mat-icon>Reacciones Medicamentos
             </button>

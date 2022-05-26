@@ -41,6 +41,10 @@ const conf=[
             {
                 "endPointName": "facturaHistorico",
                 "url": "http://services.jbp.com.ec/api/facturahistorico"
+            },
+            {
+                "endPointName": "bodega",
+                "url": "http://services.jbp.com.ec/api/bodega"
             }
         ]
     }
