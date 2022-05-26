@@ -15,6 +15,7 @@ export class GenerarQRComponent implements OnInit {
   niveles: any[];
   perchas: any[];
   pallets: any[];
+  stringQR: string='Test Data';
   ubicaciones: string[]=[];
   constructor(private fb: FormBuilder, private bodegaService: BodegaServices, private utl: FormUtils) { 
     this.bodegaService.getSubniveles().subscribe(subniveles=>{

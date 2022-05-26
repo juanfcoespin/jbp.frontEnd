@@ -37,13 +37,19 @@
                 </mat-select>
             </mat-form-field>
         </div>
-        <div fxLayoutAlign="center none">
-            <button  mat-button (click)="generarUbicaciones()">Generar Ubicaciones</button>
+        <div fxLayoutAlign="center">
+            <button mat-button (click)="generarUbicaciones()">Generar Ubicaciones</button>
+            <span style="padding-left: 20px;"> </span>
+            <button *ngIf="this.ubicaciones.length>0" mat-button printSectionId="codigosQR" ngxPrint>Imprimir</button>
+            <!-- <button mat-button printSectionId="codigosQR2" ngxPrint>Imprimir</button> -->
+            
         </div>
-        <div fxLayout="row wrap" fxLayoutGap="25px" style="width:595; margin-right:-25px;" *ngIf="this.ubicaciones.length>0">
-            <div *ngFor="let ubicacion of this.ubicaciones">
-                <qrcode [qrdata]="ubicacion" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
-                <p style="text-align: center;">{{ubicacion}}</p>
+        <div id="codigosQR">
+            <div  fxLayout="row wrap" fxLayoutGap="25px" style="width:595; margin-right:-25px;" *ngIf="this.ubicaciones.length>0">
+                <div *ngFor="let ubicacion of this.ubicaciones">
+                    <qrcode [qrdata]="ubicacion" [elementType]="svg" [margin]="0" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+                    <p style="text-align: center;">{{ubicacion}}</p>
+                </div>
             </div>
         </div>
     </mat-card-content>
