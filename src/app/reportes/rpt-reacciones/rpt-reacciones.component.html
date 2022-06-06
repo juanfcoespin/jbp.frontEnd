@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-header>
-      <mat-card-title>Reacciones Medicamentos</mat-card-title>
+      <mat-card-title>FOR-ARH-011 Base de Datos de Reportes RAM, FT, EM</mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <button  mat-button (click)="refrescar()">Refrescar</button>
@@ -8,6 +8,7 @@
             <thead>
                 <tr>
                     <th></th>
+                    <th>Cod. Registro</th>
                     <th>Fecha Registro</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
@@ -30,6 +31,7 @@
                     <td *ngIf="item.ver" (click)="viewItem(item)">
                         <mat-icon>indeterminate_check_box</mat-icon>
                     </td>
+                    <td>{{item.idStr}}</td>
                     <td>{{item.fechaRegistro}}</td>
                     <td>{{item.nombres}}</td>
                     <td>{{item.apellidos}}</td>

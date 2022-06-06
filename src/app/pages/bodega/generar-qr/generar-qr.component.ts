@@ -12,11 +12,14 @@ import { FormUtils } from 'src/app/utils/forms.utils';
 })
 export class GenerarQRComponent implements OnInit {
   form: FormGroup;
+  qrWidth: number=255;
+  urlConsulta='http://app.jbp.com.ec/consultaubicacion/';
   niveles: any[];
   perchas: any[];
   pallets: any[];
-  stringQR: string='Test Data';
-  ubicaciones: string[]=[];
+  public tipoUbicacion: string='masiva';
+  ubicacionManual: string;
+  ubicaciones: any[]=[];
   constructor(private fb: FormBuilder, private bodegaService: BodegaServices, private utl: FormUtils) { 
     this.bodegaService.getSubniveles().subscribe(subniveles=>{
       this.niveles=this.bodegaService.getNivelesByTocken(subniveles,'NIVEL');
@@ -33,8 +36,23 @@ export class GenerarQRComponent implements OnInit {
       palletHasta: [null, Validators.required],
     });
   }
+  encerarQRs(){
+    this.ubicaciones=[];
+  }
   generarUbicaciones(){
     this.ubicaciones=[];
+    if(this.tipoUbicacion=='manual'){
+      if(!this.ubicacionManual){
+        this.utl.showMsg("Debe ingresar una ubicación!!", MessageType.warning);
+      }else{
+        //this.ubicaciones.push(this.ubicacionManual);
+        this.ubicaciones.push({
+          ubicacion: this.ubicacionManual,
+          urlConsulta: this.urlConsulta+this.ubicacionManual
+        });
+      }
+      return;
+    }
     if(this.form.invalid){
       this.utl.showMsg('Debe escoger los parametros para la generacion de las ubicaciones!!',MessageType.warning);
       return;
@@ -42,7 +60,11 @@ export class GenerarQRComponent implements OnInit {
     this.pallets.forEach(p=>{
       if(p.id>=this.form.value.palletDesde.id && p.id<=this.form.value.palletHasta.id){
         const ubicacion = this.form.value.percha.codigo+'-'+this.form.value.nivel.codigo+'-'+p.codigo;
-        this.ubicaciones.push(ubicacion);
+        //this.ubicaciones.push(ubicacion);
+        this.ubicaciones.push({
+          ubicacion: ubicacion,
+          urlConsulta: this.urlConsulta+ubicacion
+        });
       }
     });
     console.log(this.ubicaciones);

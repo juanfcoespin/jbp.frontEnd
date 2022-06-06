@@ -15,9 +15,13 @@ import { UrlServices } from 'src/app/global';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'James Brown Pharma';
   currentUser: RespAuthMsg;
   nombreUsuario: string;
+  verVentas:boolean=false;
+  verBodega:boolean=false;
+  verFarmacoVigilancia:boolean=false;
+
 
   constructor(
     private userService: UserService,
@@ -27,13 +31,44 @@ export class AppComponent {
     userService.logout();
     userService.currentUser.subscribe(usr => {
       this.currentUser = usr;
-      if(this.currentUser)
+      console.log(this.currentUser);
+      if(this.currentUser){
         this.nombreUsuario=this.currentUser.Nombre;
-    });
-    // ordService.setServiceHubUrl(UrlServices.promotickServiceHubUrl);
-    // ordService.setServiceOrderUrl(UrlServices.promotickBusinessServiceOrdersUrl);
-  }
+        this.habilitarModulosPorPerfil()
+      }
+        
 
+    });
+  }
+  habilitarModulosPorPerfil(){
+    this.verBodega=false;
+    this.verVentas=false;
+    this.verFarmacoVigilancia=false;
+    // Por usuario
+    if(this.currentUser.UserName=='jespin'){
+      this.verBodega=true;
+      this.verVentas=true;
+      this.verFarmacoVigilancia=true;
+    }
+    if(this.currentUser.UserName=='sbrown'){
+      this.verVentas=true;
+    }
+
+    // Por grupo de AD
+    if(this.currentUser.GruposDirectorioActivo){
+      this.currentUser.GruposDirectorioActivo.forEach(grupo=>{
+        if(grupo.toLowerCase()=='ventas'){
+          this.verVentas=true;
+        }
+        if(grupo.toLowerCase()=='bodega'){
+          this.verBodega=true;
+        }
+        if(grupo.toLowerCase()=='asuntosregulatorios'){
+          this.verFarmacoVigilancia=true;
+        }
+      });
+    }
+  }
   salir() {
     this.userService.logout();
     this.route.navigate(['']);

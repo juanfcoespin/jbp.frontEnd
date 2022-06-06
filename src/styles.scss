@@ -48,11 +48,11 @@ img{
 @media only print {
     body { visibility: hidden; }
     .printthis { visibility: visible; }
-    
 }
 @page { 
-    margin: 0in; 
+    margin: 0px; 
     size: A4 Landscape !important;
     //-webkit-print-color-adjust: exact;
   }
+  
   

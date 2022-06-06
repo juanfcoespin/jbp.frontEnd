@@ -16,7 +16,7 @@
               <mat-icon>menu_book</mat-icon> Directorio
             </button>
           </td>
-          <td>
+          <td *ngIf="verVentas">
             <button mat-button [matMenuTriggerFor]="menu">Ventas</button>
               <mat-menu #menu="matMenu">
                 <button mat-menu-item  routerLink="updateNumFacturaExportacion" >
@@ -36,7 +36,7 @@
                 </button>
               </mat-menu>
           </td>
-          <td>
+          <td *ngIf="verBodega">
             <button mat-button [matMenuTriggerFor]="menu2">Bodega</button>
               <mat-menu #menu2="matMenu">
                 <button mat-menu-item  routerLink="generarQR" >
@@ -44,9 +44,9 @@
                 </button>
               </mat-menu>
           </td>
-          <td>
+          <td *ngIf="verFarmacoVigilancia">
             <button mat-button  routerLink="reacciones" >
-             <mat-icon>auto_awesome_motion</mat-icon>Reacciones Medicamentos
+             <mat-icon>auto_awesome_motion</mat-icon>Farmacovigilancia
             </button>
           </td>
           <td>

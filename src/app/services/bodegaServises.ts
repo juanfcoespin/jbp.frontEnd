@@ -15,6 +15,7 @@ export class BodegaServices {
     }
     getSubniveles():Observable<any>{
         const url=ConfigUtils.getUrlFromEndPointName('bodega')+'/getSubnivelesAlmacen';
+        console.log(url);
         return this.http.get<any>(url);      
     }
     /**
