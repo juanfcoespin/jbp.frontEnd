@@ -15,16 +15,16 @@ import { ConfigUtils } from '../utils/configUtils';
 export class UserService {
 
   private currentUserSubject: BehaviorSubject<RespAuthMsg>;
-  public currentUser: Observable<RespAuthMsg>;
+  public currentUser: Observable<any>;
 
   constructor(
     private http: HttpClient,
     private auth: AuthGuard){
-      this.currentUserSubject = new BehaviorSubject<RespAuthMsg>(
+      this.currentUserSubject = new BehaviorSubject<any>(
         JSON.parse(localStorage.getItem('currentUser')));
       this.currentUser = this.currentUserSubject.asObservable();
   }
-  public get currentUserValue(): RespAuthMsg {
+  public get currentUserValue(): any {
     return this.currentUserSubject.value;
   }
 
