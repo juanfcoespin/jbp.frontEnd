@@ -31,4 +31,14 @@ export class BodegaServices {
         });
         return ms;
     }
+    getContenidoUbicacion(ubicacion){
+        const url=ConfigUtils.getUrlFromEndPointName('bodega')+'/consultaubicacion/'+ubicacion;
+        console.log(url);
+        return this.http.get<any>(url);      
+    }
+    getContenidoLote(lote){
+        const url=ConfigUtils.getUrlFromEndPointName('bodega')+'/getUbicacionesYDetArticuloPorLote/'+lote;
+        console.log(url);
+        return this.http.get<any>(url);     
+    }
 }

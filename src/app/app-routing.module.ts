@@ -16,6 +16,8 @@ import { RptReaccionesComponent } from './reportes/rpt-reacciones/rpt-reacciones
 import { UpdateNumFacturaExportacionComponent } from './pages/update-num-factura-exportacion/update-num-factura-exportacion.component';
 import { RptFacturasHistoricasComponent } from './reportes/rpt-facturas-historicas/rpt-facturas-historicas.component';
 import { GenerarQRComponent } from './pages/bodega/generar-qr/generar-qr.component';
+import { ConsultaUbicacionComponent } from './pages/bodega/consulta-ubicacion/consulta-ubicacion.component';
+import { ConsultaLoteComponent } from './pages/bodega/consulta-lote/consulta-lote.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -32,6 +34,8 @@ const routes: Routes = [
   {path: 'test', component: TestComponent},
   {path: 'generarQR', component: GenerarQRComponent},
   {path: 'businessServices', component: BusinessServicesComponent,canActivate: [AuthGuard]},
+  {path: 'consultaUbicacion', component: ConsultaUbicacionComponent},
+  {path: 'consultaLote', component: ConsultaLoteComponent },
   // otherwise redirect to login
   { path: '**', redirectTo: '' }
 ];

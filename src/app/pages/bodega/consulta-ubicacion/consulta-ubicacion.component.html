@@ -1,0 +1,33 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Contenido de Ubicacion {{ubicacion}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="this.contenido">
+        <ng-container matColumnDef="Lote">
+          <th mat-header-cell *matHeaderCellDef> Lote </th>
+          <td mat-cell *matCellDef="let item"> {{item.Lote}} </td>
+        </ng-container>
+        <ng-container matColumnDef="CodBodega">
+            <th mat-header-cell *matHeaderCellDef> CodBodega </th>
+            <td mat-cell *matCellDef="let item"> {{item.CodBodega}} </td>
+          </ng-container>
+        <ng-container matColumnDef="CodArticulo">
+          <th mat-header-cell *matHeaderCellDef> CodArticulo </th>
+          <td mat-cell *matCellDef="let item"> {{item.CodArticulo}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Articulo">
+          <th mat-header-cell *matHeaderCellDef> Articulo </th>
+          <td mat-cell *matCellDef="let item"> {{item.Articulo}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Cantidad">
+            <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+            <td mat-cell *matCellDef="let item"> {{item.Cantidad}} {{item.UnidadMedida}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+  
+  

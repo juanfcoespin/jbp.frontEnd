@@ -66,6 +66,7 @@
                 <div *ngFor="let u of this.ubicaciones">
                     <qrcode [qrdata]="u.urlConsulta" [elementType]="svg" [margin]="0" [width]="qrWidth" [errorCorrectionLevel]="'M'"></qrcode>
                     <p style="text-align: center;">{{u.ubicacion}}</p>
+                    <!--p>{{u.urlConsulta}}</p-->
                 </div>
             </div>
         </div>

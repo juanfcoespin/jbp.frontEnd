@@ -83,6 +83,8 @@ import { GenerarQRComponent } from './pages/bodega/generar-qr/generar-qr.compone
 import { QRCodeModule } from 'angularx-qrcode';
 import { BodegaServices } from './services/bodegaServises';
 import { NgxPrintModule } from 'ngx-print';
+import { ConsultaUbicacionComponent } from './pages/bodega/consulta-ubicacion/consulta-ubicacion.component';
+import { ConsultaLoteComponent } from './pages/bodega/consulta-lote/consulta-lote.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +110,9 @@ import { NgxPrintModule } from 'ngx-print';
     UpdateNumFacturaExportacionComponent,
     RptFacturasHistoricasComponent,
     ClientesEncontradosDialogComponent,
-    GenerarQRComponent
+    GenerarQRComponent,
+    ConsultaUbicacionComponent,
+    ConsultaLoteComponent
   ],
   imports: [
     NgxPrintModule,

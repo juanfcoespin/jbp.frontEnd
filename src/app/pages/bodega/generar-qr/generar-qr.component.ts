@@ -13,7 +13,7 @@ import { FormUtils } from 'src/app/utils/forms.utils';
 export class GenerarQRComponent implements OnInit {
   form: FormGroup;
   qrWidth: number=255;
-  urlConsulta='http://app.jbp.com.ec/consultaubicacion/';
+  urlConsulta='http://app.jbp.com.ec/consultaUbicacion?ubicacion=';
   niveles: any[];
   perchas: any[];
   pallets: any[];
@@ -50,6 +50,7 @@ export class GenerarQRComponent implements OnInit {
           ubicacion: this.ubicacionManual,
           urlConsulta: this.urlConsulta+this.ubicacionManual
         });
+        console.log(this.ubicaciones);
       }
       return;
     }
