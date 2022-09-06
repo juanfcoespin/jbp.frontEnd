@@ -1,18 +1,43 @@
+.CUARENTENA{
+    background-color: yellow;
+    text-align: center;
+    font-weight: bold;
+}
+.LIBERADO{
+    background-color: green;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+}
+.RECHAZADO{
+    background-color: red;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+}
+.BAJA{
+    background-color: red;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+}
+
 table {
     width: 100%;
+    
   }
 th{
     padding-left: 5px;
     padding-right: 5px;
     background-color: rgb(9, 21, 43);
-    font-size: 9px;
+    width: 100%;
     font-weight: bold;
     color: #fff;
 }
 td{
     padding-left: 5px;
     padding-right: 5px;
-    font-size: 8px;
+    
 }
 .element {
     margin:0 2.5%;

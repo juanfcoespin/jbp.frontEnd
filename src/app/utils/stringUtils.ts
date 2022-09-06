@@ -40,4 +40,9 @@ export class StringUtils {
     static getUnicKey(){
         return '_' + Math.random().toString(36).substr(2, 9);
     }
+    static contains(texto: string, textoBusqueda: string){
+        if(texto && texto.indexOf(textoBusqueda)==0)
+            return true;
+        return false;
+    }
 }

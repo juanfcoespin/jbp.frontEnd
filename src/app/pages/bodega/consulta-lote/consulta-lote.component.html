@@ -1,23 +1,22 @@
-<mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        <table>
-            <tr>
-                <td><b>Detalle lote:</b></td>
-                <td> {{lote}}</td>
-            </tr>
-            <tr>
-                <td><b>Cod Articulo:</b></td>
-                <td>{{this.detalleLote.CodArticulo}}</td>
-            </tr>
-            <tr>
-                <td><b>Articulo:</b></td>
-                <td>{{this.detalleLote.Articulo}}</td>
-            </tr>
-        </table>
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
+<table style="background-color: #fff">
+  <tr>
+    <td>
+      <h2 [class]="this.estadoLote">{{this.estadoLote}}</h2>
+      <h4>{{this.detalleLote.Articulo}}</h4>
+      <table>
+          <tr>
+              <td><b>Detalle lote:</b></td>
+              <td> {{lote}}</td>
+          </tr>
+          <tr>
+              <td><b>Cod Articulo:</b></td>
+              <td>{{this.detalleLote.CodArticulo}}</td>
+          </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <table mat-table [dataSource]="this.ubicaciones">
         <ng-container matColumnDef="Ubicacion">
           <th mat-header-cell *matHeaderCellDef> Ubicacion </th>
@@ -30,7 +29,18 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+    </td>
+  </tr>
+</table>
+<!--mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      
     </mat-card-content>
-  </mat-card>
+  </mat-card-->
   
   
