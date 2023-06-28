@@ -1,17 +1,47 @@
 <table style="background-color: #fff">
-  <tr>
+  <tr *ngIf="this.detalleLote">
     <td>
+      <button mat-button (click)="regresar();" *ngIf="mostrarRegresar">
+        <mat-icon matSuffix>arrow_back</mat-icon> Regresar
+      </button>
       <h2 [class]="this.estadoLote">{{this.estadoLote}}</h2>
-      <h4>{{this.detalleLote.Articulo}}</h4>
+      <h6 style="text-align: center;">{{this.detalleLote.CodPoe}}</h6>
+      <h4 style="text-align: center;">{{this.detalleLote.Articulo}}</h4>
       <table>
-          <tr>
-              <td><b>Detalle lote:</b></td>
-              <td> {{lote}}</td>
-          </tr>
-          <tr>
-              <td><b>Cod Articulo:</b></td>
-              <td>{{this.detalleLote.CodArticulo}}</td>
-          </tr>
+        <tr>
+          <td><b>Cod Articulo:</b></td>
+          <td>{{this.detalleLote.CodArticulo}}</td>
+          <td><b>Detalle Lote:</b></td>
+          <td> {{lote}}</td>
+        </tr>
+        <tr>
+          <td><b>Lote Proveedor:</b></td>
+          <td>{{this.detalleLote.LoteProveedor}}</td>
+          <td><b>Proveedor:</b></td>
+          <td> {{this.detalleLote.Proveedor}}</td>
+        </tr>
+        <tr>
+          <td><b>Fabricante:</b></td>
+          <td>{{this.detalleLote.Fabricante}}</td>
+          <td><b>Condiciones de Almacenamiento:</b></td>
+          <td> {{this.detalleLote.CondicionAlmacenamiento}}</td>
+        </tr>
+        <tr>
+          <td><b>Fecha Fabricación:</b></td>
+          <td>{{this.detalleLote.FechaFabricacion}}</td>
+          <td><b>Fecha Vencimiento:</b></td>
+          <td> {{this.detalleLote.FechaVencimiento}}</td>
+        </tr>
+        <tr>
+          <td><b>Fecha Retest:</b></td>
+          <td>{{this.detalleLote.FechaRetest}}</td>
+        </tr>
+        <tr>
+          <td><b>Bultos:</b></td>
+          <td> {{this.detalleLote.Bultos}}</td>
+          <td><b>Cant. Total:</b></td>
+          <td>{{this.detalleLote.cantTotal}} {{this.detalleLote.UnidadMedida}}</td>
+      </tr>     
       </table>
     </td>
   </tr>
@@ -24,7 +54,7 @@
         </ng-container>
         <ng-container matColumnDef="Cantidad">
           <th mat-header-cell *matHeaderCellDef> Cantidad </th>
-          <td mat-cell *matCellDef="let item"> {{item.Cantidad}} </td>
+          <td mat-cell *matCellDef="let item"> {{item.Cantidad}} {{this.detalleLote.UnidadMedida}}</td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

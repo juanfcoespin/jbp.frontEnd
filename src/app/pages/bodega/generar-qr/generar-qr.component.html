@@ -62,11 +62,11 @@
             
         </div>
         <div id="codigosQR">
-            <div  fxLayout="row wrap" fxLayoutGap="25px" style="width:595; margin-right:-25px;" *ngIf="this.ubicaciones.length>0">
-                <div *ngFor="let u of this.ubicaciones">
+            <div  fxLayout="row wrap" fxLayoutGap="25px" style="width:595; margin-right:-25px" *ngIf="this.ubicaciones.length>0">
+                <div *ngFor="let u of this.ubicaciones" style="padding-top:15px; padding-left:15px;padding-right:15px; border: solid 1px #000000; text-align:center">
                     <qrcode [qrdata]="u.urlConsulta" [elementType]="svg" [margin]="0" [width]="qrWidth" [errorCorrectionLevel]="'M'"></qrcode>
-                    <p style="text-align: center;">{{u.ubicacion}}</p>
-                    <!--p>{{u.urlConsulta}}</p-->
+                    <p style="text-align: center; padding-top: 5px;">{{u.ubicacion}}</p>
+                    <!-- <p>{{u.urlConsulta}}</p> -->
                 </div>
             </div>
         </div>

@@ -1,3 +1,13 @@
+.link  {
+    color: rgb(8, 51, 245);
+    text-decoration: underline;
+    font-weight: bold;
+    
+}
+.link:hover  {
+    color: rgb(7, 109, 46);
+    cursor: pointer;
+}
 table {
     width: 100%;
   }
@@ -5,14 +15,18 @@ th{
     padding-left: 5px;
     padding-right: 5px;
     background-color: rgb(9, 21, 43);
-    font-size: 9px;
+    height: 30px;
+    font-size: 10px;
     font-weight: bold;
     color: #fff;
 }
 td{
     padding-left: 5px;
     padding-right: 5px;
-    font-size: 8px;
+    font-size: 10px;
+    border-bottom: solid 1px grey;
+    height: 30px;
+    background-color: #fff;
 }
 .element {
     margin:0 2.5%;

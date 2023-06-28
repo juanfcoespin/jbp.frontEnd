@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BodegaServices } from 'src/app/services/bodegaServises';
 import { MatTableDataSource } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-consulta-ubicacion',
@@ -10,9 +11,9 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class ConsultaUbicacionComponent implements OnInit {
   ubicacion: string;
-  contenido: MatTableDataSource<Element>;
+  contenido: any[]=[];
   displayedColumns: string[] = ['Lote', 'CodBodega', 'CodArticulo', 'Articulo', 'Cantidad'];
-  constructor(private route: ActivatedRoute, private bodegaService: BodegaServices) { }
+  constructor(private route: ActivatedRoute, private router: Router, private bodegaService: BodegaServices) { }
 
   ngOnInit() {
     this.setUbicacion();
@@ -26,11 +27,12 @@ export class ConsultaUbicacionComponent implements OnInit {
   }
   consultarContenido(ubicacion){
     this.bodegaService.getContenidoUbicacion(ubicacion).subscribe(me=>{
-      console.log(me);
       if(me && me.Items)
-        this.contenido=new MatTableDataSource<Element>(me.Items);
-      console.log(this.contenido);
+        this.contenido=me.Items;
     });
+  }
+  verDetalleLote(lote){
+    this.router.navigate(['consultaLote'], { queryParams: {lote: lote, regresar:1}});
   }
 
 }

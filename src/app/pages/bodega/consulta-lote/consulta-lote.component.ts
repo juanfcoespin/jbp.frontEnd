@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BodegaServices } from 'src/app/services/bodegaServises';
 import { MatTableDataSource } from '@angular/material';
 import { StringUtils } from 'src/app/utils/stringUtils';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-consulta-lote',
@@ -16,19 +16,27 @@ export class ConsultaLoteComponent implements OnInit {
   ubicaciones: MatTableDataSource<Element>;
   displayedColumns: string[] = ['Ubicacion', 'Cantidad'];
   estadoLote: string;
-  constructor(private route: ActivatedRoute, private bodegaService: BodegaServices) {
+  mostrarRegresar:boolean=false;
 
-   }
+  constructor(
+    private route: ActivatedRoute,
+    private location: Location, 
+    private bodegaService: BodegaServices) {}
 
   ngOnInit() {
     this.setLote();
   }
   setLote(){
     this.route.queryParams.subscribe(params => {
-      if(params && params.lote)
-        this.lote=params.lote;
-        console.log(this.lote);
-        this.consultarContenido(this.lote);
+      if(params){
+        if(params.lote){
+          this.lote=params.lote;
+          this.consultarContenido(this.lote);
+        }
+        if(params.regresar){
+          this.mostrarRegresar=true;
+        }
+      }
     });
   }
   consultarContenido(lote){
@@ -36,26 +44,36 @@ export class ConsultaLoteComponent implements OnInit {
       this.detalleLote=me;
       if(me && me.UbicacionesCantidad){
         this.ubicaciones=new MatTableDataSource<Element>(me.UbicacionesCantidad);
-        this.setEstado(me.UbicacionesCantidad);
+        this.setEstado(me.Estado);
+        this.detalleLote.cantTotal=0;
+        console.log(me);
+        if(me.UbicacionesCantidad){
+          me.UbicacionesCantidad.forEach(uc => {
+            console.log(uc.Cantidad);
+            this.detalleLote.cantTotal+=uc.Cantidad;
+          });
+        }
+        this.detalleLote.cantTotal=this.detalleLote.cantTotal.toFixed(2);
       }
-        
-      console.log(this.detalleLote);
     });
   }
-  setEstado(ubicaciones){
-    ubicaciones.forEach(u => {
-      if(StringUtils.contains(u.Ubicacion, 'CUAR')){
-        this.estadoLote='CUARENTENA';
-      }
-      if(StringUtils.contains(u.Ubicacion, 'PT') || StringUtils.contains(u.Ubicacion, 'PICK')|| StringUtils.contains(u.Ubicacion, 'MAT')){
+  setEstado(estado){
+    //TODO: ver como gestionar el estado de baja
+    switch(estado){
+      case 'Liberado':
         this.estadoLote='LIBERADO';
-      }
-      if(StringUtils.contains(u.Ubicacion, 'RECH')){
+        break;
+      case 'Acceso Denegado':
+        this.estadoLote='CUARENTENA';
+        break;
+      case 'Bloqueado':
         this.estadoLote='RECHAZADO';
-      }
-      if(StringUtils.contains(u.Ubicacion, 'BAJ')){
-        this.estadoLote='BAJA';
-      }
-    });
+        break;
+    }
+    console.log(this);
+    console.log(this.detalleLote);
+  }
+  regresar(){
+    this.location.back();
   }
 }

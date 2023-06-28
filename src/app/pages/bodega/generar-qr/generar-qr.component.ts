@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { timeStamp } from 'console';
 import { MessageType } from 'src/app/msg/alert.msg';
 import { BodegaServices } from 'src/app/services/bodegaServises';
+import { ConfigUtils } from 'src/app/utils/configUtils';
 import { FormUtils } from 'src/app/utils/forms.utils';
 
 @Component({
@@ -13,7 +14,6 @@ import { FormUtils } from 'src/app/utils/forms.utils';
 export class GenerarQRComponent implements OnInit {
   form: FormGroup;
   qrWidth: number=255;
-  urlConsulta='http://app.jbp.com.ec/consultaUbicacion?ubicacion=';
   niveles: any[];
   perchas: any[];
   pallets: any[];
@@ -48,7 +48,7 @@ export class GenerarQRComponent implements OnInit {
         //this.ubicaciones.push(this.ubicacionManual);
         this.ubicaciones.push({
           ubicacion: this.ubicacionManual,
-          urlConsulta: this.urlConsulta+this.ubicacionManual
+          urlConsulta: ConfigUtils.urlConsultaUbicacion +this.ubicacionManual
         });
         console.log(this.ubicaciones);
       }
@@ -64,7 +64,7 @@ export class GenerarQRComponent implements OnInit {
         //this.ubicaciones.push(ubicacion);
         this.ubicaciones.push({
           ubicacion: ubicacion,
-          urlConsulta: this.urlConsulta+ubicacion
+          urlConsulta: ConfigUtils.urlConsultaUbicacion +ubicacion
         });
       }
     });
