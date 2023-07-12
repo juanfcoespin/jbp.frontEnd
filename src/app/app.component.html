@@ -1,6 +1,6 @@
 <!-- tyle="height: 90vh;" -->
 <!-- *ngIf="currentUser" -->
-
+<!-- menu pc -->
 <mat-toolbar *ngIf="currentUser">
     <mat-toolbar-row>
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
@@ -59,13 +59,50 @@
       </table>
   </mat-toolbar-row>
 </mat-toolbar>
-<!-- fxFlexFill -->
+<!-- menu movil -->
 <mat-sidenav-container [style.padding-top]="getPadding()">
   <mat-sidenav #sidenav [style.padding-top]="getPadding()">
     <mat-nav-list>
-      <a mat-list-item routerLink="participantesPuntos">Participantes Puntos</a>
-      <a mat-list-item routerLink="directorio">Directorio</a>
-      <a mat-list-item (click)="salir();sidenav.toggle()">Salir</a>
+      <div>
+        <a mat-list-item routerLink="directorio">Directorio</a>
+      </div>
+      <div>
+        <button mat-button [matMenuTriggerFor]="menu">Ventas</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item  routerLink="updateNumFacturaExportacion" >
+            <mat-icon>numbers</mat-icon> Actualizar Num Factura Exp
+          </button>
+          <button mat-menu-item routerLink="entregasUrbano" >
+            <mat-icon>local_shipping</mat-icon> Entregas Urbano
+            </button>
+            <button mat-menu-item routerLink="hojaRuta" >
+            <mat-icon>local_shipping</mat-icon> Hoja de Ruta
+            </button>
+            <button mat-menu-item  routerLink="participantesPuntos" >
+            <mat-icon>group</mat-icon> Participantes Puntos
+            </button>
+            <button mat-menu-item  routerLink="facturasHistoricas" >
+            <mat-icon>assessment</mat-icon>Facturas historicas por cliente
+          </button>
+        </mat-menu>
+      </div>
+      <div>
+        <button mat-button [matMenuTriggerFor]="menu2">Bodega</button>
+        <mat-menu #menu2="matMenu">
+          <button mat-menu-item  routerLink="generarQR" >
+            <mat-icon>qr_code</mat-icon> Generar QR
+          </button>
+        </mat-menu>
+      </div>
+      <div>
+        <button mat-button  routerLink="reacciones" >
+          <mat-icon>auto_awesome_motion</mat-icon>Farmacovigilancia
+         </button>
+      </div>
+      <div>
+        <a mat-list-item (click)="salir();sidenav.toggle()">Salir</a>
+      </div>
+      
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content style="padding-top: 10px;">
