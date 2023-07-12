@@ -15,7 +15,6 @@ export class BodegaServices {
     }
     getSubniveles():Observable<any>{
         const url=ConfigUtils.getUrlFromEndPointName('bodega')+'/getSubnivelesAlmacen';
-        console.log(url);
         return this.http.get<any>(url);      
     }
     /**
@@ -26,7 +25,7 @@ export class BodegaServices {
     getNivelesByTocken(subniveles: any[],token){
         let ms: any[]=[];
         subniveles.forEach(sb=>{
-            if(sb.descripcion.indexOf(token)==0) // si contiene el token
+            if(sb.descripcion.indexOf(token)==0) // si contiene el token (percha, nivel, seccion)
                 ms.push(sb);
         });
         return ms;

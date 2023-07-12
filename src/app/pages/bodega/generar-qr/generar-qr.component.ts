@@ -24,8 +24,9 @@ export class GenerarQRComponent implements OnInit {
     this.bodegaService.getSubniveles().subscribe(subniveles=>{
       this.niveles=this.bodegaService.getNivelesByTocken(subniveles,'NIVEL');
       this.perchas=this.bodegaService.getNivelesByTocken(subniveles,'PERCHA');
-      this.pallets=this.bodegaService.getNivelesByTocken(subniveles,'SECCION');
     });
+    this.pallets=this.getSecciones();
+    console.log(this.pallets);
   }
 
   ngOnInit() {
@@ -35,6 +36,15 @@ export class GenerarQRComponent implements OnInit {
       palletDesde: [null, Validators.required],
       palletHasta: [null, Validators.required],
     });
+  }
+  getSecciones(){
+    let ms=[];
+    for(let i=1;i<40; i++)
+      ms.push({
+        id: i,
+        codigo: 'S'+i
+      });
+    return ms;
   }
   encerarQRs(){
     this.ubicaciones=[];

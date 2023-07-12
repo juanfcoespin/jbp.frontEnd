@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 export class ConsultaUbicacionComponent implements OnInit {
   ubicacion: string;
   contenido: any[]=[];
+  contenidoFiltrado: any[]=[];
+  codBodegaSeleccionada: string;
+  codBodegas: any[]=[];
   displayedColumns: string[] = ['Lote', 'CodBodega', 'CodArticulo', 'Articulo', 'Cantidad'];
   constructor(private route: ActivatedRoute, private router: Router, private bodegaService: BodegaServices) { }
 
@@ -29,6 +32,18 @@ export class ConsultaUbicacionComponent implements OnInit {
     this.bodegaService.getContenidoUbicacion(ubicacion).subscribe(me=>{
       if(me && me.Items)
         this.contenido=me.Items;
+        this.codBodegas=[];
+        this.contenido.forEach(item=>{
+          if(!this.codBodegas.includes(item.CodBodega))
+            this.codBodegas.push(item.CodBodega);
+        });
+    });
+  }
+  seleccionarBodega(codBodega){
+    this.contenidoFiltrado=[];
+    this.contenido.forEach(item=>{
+      if(item.CodBodega==codBodega)
+      this.contenidoFiltrado.push(item);
     });
   }
   verDetalleLote(lote){
