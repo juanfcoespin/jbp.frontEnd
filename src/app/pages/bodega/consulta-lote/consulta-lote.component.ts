@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BodegaServices } from 'src/app/services/bodegaServises';
-import { MatTableDataSource } from '@angular/material';
-import { StringUtils } from 'src/app/utils/stringUtils';
 import { Location } from '@angular/common'
 
 @Component({
@@ -13,8 +11,6 @@ import { Location } from '@angular/common'
 export class ConsultaLoteComponent implements OnInit {
   lote: string;
   detalleLote: any;
-  ubicaciones: MatTableDataSource<Element>;
-  displayedColumns: string[] = ['Ubicacion', 'Cantidad'];
   estadoLote: string;
   mostrarRegresar:boolean=false;
 
@@ -43,17 +39,8 @@ export class ConsultaLoteComponent implements OnInit {
     this.bodegaService.getContenidoLote(lote).subscribe(me=>{
       this.detalleLote=me;
       if(me && me.UbicacionesCantidad){
-        this.ubicaciones=new MatTableDataSource<Element>(me.UbicacionesCantidad);
         this.setEstado(me.Estado);
-        this.detalleLote.cantTotal=0;
         console.log(me);
-        if(me.UbicacionesCantidad){
-          me.UbicacionesCantidad.forEach(uc => {
-            console.log(uc.Cantidad);
-            this.detalleLote.cantTotal+=uc.Cantidad;
-          });
-        }
-        this.detalleLote.cantTotal=this.detalleLote.cantTotal.toFixed(2);
       }
     });
   }

@@ -85,6 +85,8 @@ import { BodegaServices } from './services/bodegaServises';
 import { NgxPrintModule } from 'ngx-print';
 import { ConsultaUbicacionComponent } from './pages/bodega/consulta-ubicacion/consulta-ubicacion.component';
 import { ConsultaLoteComponent } from './pages/bodega/consulta-lote/consulta-lote.component';
+import { ConfDashComponent } from './pages/marketing/conf-dash/conf-dash.component';
+import { MarketingServices } from './services/marketingServices';
 
 @NgModule({
   declarations: [
@@ -112,7 +114,8 @@ import { ConsultaLoteComponent } from './pages/bodega/consulta-lote/consulta-lot
     ClientesEncontradosDialogComponent,
     GenerarQRComponent,
     ConsultaUbicacionComponent,
-    ConsultaLoteComponent
+    ConsultaLoteComponent,
+    ConfDashComponent
   ],
   imports: [
     NgxPrintModule,
@@ -174,7 +177,8 @@ import { ConsultaLoteComponent } from './pages/bodega/consulta-lote/consulta-lot
     TransportistaService,
     ReaccionesServices,
     FacturaServices,
-    BodegaServices
+    BodegaServices,
+    MarketingServices
   ],
   entryComponents: [AlertComponent, NewUserComponent, ClientesEncontradosDialogComponent],
   bootstrap: [AppComponent]

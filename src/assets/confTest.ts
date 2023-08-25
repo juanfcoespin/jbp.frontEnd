@@ -45,6 +45,10 @@ const conf=[
             {
                 "endPointName": "bodega",
                 "url": "http://test.jbp.com.ec/api/bodega"
+            },
+            {
+                "endPointName": "marketing",
+                "url": "http://test.jbp.com.ec/api/marketing"
             }
         ]
     }

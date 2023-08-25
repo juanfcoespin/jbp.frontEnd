@@ -1,11 +1,22 @@
+.tituloTabla{
+  background-color: #666;
+  color: #FFF;
+  text-align: center;
+}
+.contCell{
+  padding-left: 10px;
+  padding-right: 10px;
+  border-bottom: solid 1px #666;
+}
+.registro{
+  color : #fff;
+  background-color: rgba(10, 64, 116, 0.96);
+  font-size: 16px;
+}
 mat-card{
     background-color: rgba($color: #fff, $alpha: 0.9)
   }
-  .mat-button{
-    color : #fff;
-    background-color: rgba(10, 64, 116, 0.96);
-    font-size: 16px;
-  }
+  
   .example-radio-group {
     display: flex;
     flex-direction: column;

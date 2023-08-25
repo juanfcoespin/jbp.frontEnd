@@ -1,34 +1,42 @@
-<table style="background-color: #fff">
+<table border="1" align="center">
   <tr *ngIf="this.detalleLote">
-    <td>
+    <td style="background-color: #fff">
       <button mat-button (click)="regresar();" *ngIf="mostrarRegresar">
         <mat-icon matSuffix>arrow_back</mat-icon> Regresar
       </button>
       <h2 [class]="this.estadoLote">{{this.estadoLote}}</h2>
       <h6 style="text-align: center;">{{this.detalleLote.CodPoe}}</h6>
       <h4 style="text-align: center;">{{this.detalleLote.Articulo}}</h4>
-      <table>
+      <table class="infoLote">
         <tr>
           <td><b>Cod Articulo:</b></td>
-          <td>{{this.detalleLote.CodArticulo}}</td>
+          <td width="80%">{{this.detalleLote.CodArticulo}}</td>
+        </tr>
+        <tr>
           <td><b>Detalle Lote:</b></td>
           <td> {{lote}}</td>
         </tr>
         <tr>
           <td><b>Lote Proveedor:</b></td>
           <td>{{this.detalleLote.LoteProveedor}}</td>
+        </tr>
+        <tr>
           <td><b>Proveedor:</b></td>
           <td> {{this.detalleLote.Proveedor}}</td>
         </tr>
         <tr>
           <td><b>Fabricante:</b></td>
           <td>{{this.detalleLote.Fabricante}}</td>
-          <td><b>Condiciones de Almacenamiento:</b></td>
+        </tr>
+        <tr>
+          <td style="padding-right: 10px;"><b>Condiciones de Almacenamiento:</b></td>
           <td> {{this.detalleLote.CondicionAlmacenamiento}}</td>
         </tr>
         <tr>
           <td><b>Fecha Fabricación:</b></td>
           <td>{{this.detalleLote.FechaFabricacion}}</td>
+        </tr>
+        <tr>
           <td><b>Fecha Vencimiento:</b></td>
           <td> {{this.detalleLote.FechaVencimiento}}</td>
         </tr>
@@ -39,38 +47,30 @@
         <tr>
           <td><b>Bultos:</b></td>
           <td> {{this.detalleLote.Bultos}}</td>
-          <td><b>Cant. Total:</b></td>
-          <td>{{this.detalleLote.cantTotal}} {{this.detalleLote.UnidadMedida}}</td>
-      </tr>     
+        </tr>
+        <tr>
+          <td><b>Observaciones:</b></td>
+          <td> {{this.detalleLote.Observaciones}}</td>
+        </tr>
+      </table>
+      <br>
+      <table width="100%" *ngIf="this.detalleLote.UbicacionesCantidad.length>0">
+        <thead>
+          <th>CodBodega</th>
+          <th>Ubicación</th>
+          <th>Cantidad ({{this.detalleLote.UnidadMedida}})</th>
+        </thead>
+        <tbody class="infoLote">
+          <tr *ngFor="let uc of this.detalleLote.UbicacionesCantidad">
+            <td>{{uc.CodBodega}}</td>
+            <td>{{uc.Ubicacion}}</td>
+            <td *ngIf="!uc.Ubicacion">{{uc.CantBodega}}</td>
+            <td *ngIf="uc.Ubicacion">{{uc.CantUbicacion}}</td>
+            
+            
+          </tr>
+        </tbody>
       </table>
     </td>
   </tr>
-  <tr>
-    <td>
-      <table mat-table [dataSource]="this.ubicaciones">
-        <ng-container matColumnDef="Ubicacion">
-          <th mat-header-cell *matHeaderCellDef> Ubicacion </th>
-          <td mat-cell *matCellDef="let item"> {{item.Ubicacion}} </td>
-        </ng-container>
-        <ng-container matColumnDef="Cantidad">
-          <th mat-header-cell *matHeaderCellDef> Cantidad </th>
-          <td mat-cell *matCellDef="let item"> {{item.Cantidad}} {{this.detalleLote.UnidadMedida}}</td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<!--mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      
-    </mat-card-content>
-  </mat-card-->
-  
-  
+ </table>

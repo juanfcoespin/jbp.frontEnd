@@ -13,6 +13,7 @@ export class AppComponent {
   title = 'James Brown Pharma';
   currentUser: any;
   nombreUsuario: string;
+  esAdministrador: boolean=false;
 
   constructor(
     private userService: UserService,
@@ -24,8 +25,19 @@ export class AppComponent {
       console.log(this.currentUser);
       if(this.currentUser){
         this.nombreUsuario=this.currentUser.Nombre;
+        //this.verificarSiEsAdministrador();
       }
     });
+  }
+  verificarSiEsAdministrador(){
+    this.esAdministrador=false;
+    if(this.currentUser && this.currentUser.Perfiles){
+      this.currentUser.Perfiles.forEach(perfil => {
+        if(perfil=="Administrador")
+          this.esAdministrador=true;
+      });
+    }
+    console.log(this.esAdministrador);
   }
   salir() {
     this.userService.logout();

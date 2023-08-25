@@ -189,9 +189,9 @@ export class GestionParticipantesPuntosComponent implements OnInit {
     }
     return ms;
   }
-  seleccionarSN(event: MatRadioChange) {
-    const ruc=event.value;
+  seleccionarSN(ruc) {
     this.snService.selectSocioNegocio(ruc);
+    console.log(ruc);
     this.snService.getParticipanteByRuc(ruc).subscribe(participante => {
         this.setParticipante(participante);
       }
@@ -213,10 +213,9 @@ export class GestionParticipantesPuntosComponent implements OnInit {
     }
   }
   usuarioAutorizado(participante, idVendedor=null){
-    console.log(this.userService.currentUserValue);
-    if(this.loggedUserHasPerfil('Administrador') || this.loggedUserHasPerfil('Administrador Ventas') || this.loggedUserPerteneceAlGrupo('Ventas'))
+    if(this.loggedUserHasPerfil('tics') || this.loggedUserPerteneceAlGrupo('Promotick'))//usuarios que ven todos los clientes
       return true;
-    if(this.loggedUserHasPerfil('Vendedor')){
+    if(this.loggedUserHasPerfil('Ventas')){ // los vendedores solo ven sus clientes.
       //Solo si el vendedor está a cargo del participante lo puede ver
       const correoUsuario=this.userService.currentUserValue.correo.toLocaleLowerCase();
       const correoVendedor=participante.correoVendedor.toLocaleLowerCase();
@@ -232,11 +231,13 @@ export class GestionParticipantesPuntosComponent implements OnInit {
     return false;
   }
   loggedUserHasPerfil(perfil){
-    console.log(this.userService.currentUserValue);
-    if(!this.userService.currentUserValue)
-      return false;
-    let index=this.userService.currentUserValue.Perfiles.findIndex (p=>p===perfil);
-    return (index>-1);
+    if(this.userService && this.userService.currentUserValue && this.userService.currentUserValue.GruposDirectorioActivo){
+      console.log(this.userService.currentUserValue);
+      let index=this.userService.currentUserValue.GruposDirectorioActivo.findIndex (p=>p===perfil);
+      return (index>-1);
+    }
+    return false;
+    
   }
   loggedUserPerteneceAlGrupo(grupo){
     console.log(this.userService.currentUserValue);

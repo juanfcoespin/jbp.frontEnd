@@ -8,7 +8,7 @@
         <td>
           <div fxLayout="row" fxLayoutAlign="space-around center">
             <mat-form-field fxFlex="80" class="example-full-width">
-              <input [formControl]="txtSearch" autofocus matInput placeholder="Búsqueda: (Ruc o Nombre)" >
+              <input [formControl]="txtSearch" autofocus matInput placeholder="Búsqueda: (Ruc o Nombre)" (keyup.enter)="buscarSocioNegocio()">
             </mat-form-field>  
             <button [disabled]="procesando" fxFlex="20" style="padding-left:10px" mat-button (click)="buscarSocioNegocio()">Buscar</button>
             <div *ngIf="procesando">
@@ -20,7 +20,7 @@
       <tr>
         <td *ngIf="seEncontraroSN">
           <mat-radio-group class="example-radio-group">
-            <mat-radio-button class="example-radio-button" (change)="seleccionarSN($event)" *ngFor="let sn of filterSearchSocioNegocio | async" [value]="sn.Ruc">
+            <mat-radio-button class="example-radio-button" (click)="seleccionarSN(sn.Ruc)" *ngFor="let sn of filterSearchSocioNegocio | async" [value]="sn.Ruc">
               {{sn.Ruc}}: {{sn.Nombre}}
             </mat-radio-button>
           </mat-radio-group>

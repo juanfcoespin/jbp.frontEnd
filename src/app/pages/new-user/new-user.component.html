@@ -3,59 +3,31 @@
       <mat-card-title>{{global.ComponentTitle}}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div [formGroup]="form" fxLayout="column" fxLayoutAlign="center none">
-        <mat-form-field>
-          <input matInput placeholder="Nombre Completo" formControlName="nombre" required>
-          <mat-error>
-              Debe ingresar su nombre
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input type="email" matInput placeholder="Correo" formControlName="email" required>
-          <mat-error *ngIf="form.get('email').hasError('required')">
-              Debe ingresar su e-mail
-          </mat-error>
-          <mat-error *ngIf="form.get('email').hasError('email')">
-              El e-mail ingresado es incorrecto
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-select placeholder="Género" formControlName="idGenero" required>
-            <mat-option *ngFor="let genero of this.cat.catalog.ListGenero" [value]="genero.Id">
-              {{genero.Nombre}}
-            </mat-option>
-          </mat-select>
-          <mat-error>
-              Debe seleccionar su género
-          </mat-error>
-        </mat-form-field>
-        <div formGroupName="matching_passwords" fxLayout="column" fxLayoutAlign="center none">
-            <mat-form-field>
-                <input matInput placeholder="Contraseña" [type]="hidePwd ? 'password' : 'text'" formControlName="pwd" required>
-                <mat-icon matSuffix (click)="hidePwd = !hidePwd">{{hidePwd ? 'visibility' : 'visibility_off'}}</mat-icon>
-                <mat-error *ngIf="form.get('matching_passwords').get('pwd').hasError('required')">
-                    Debe Registrar la contraseña
-                </mat-error>
-                <mat-error *ngIf="form.get('matching_passwords').get('pwd').hasError('minlength')">
-                    Su contraseña debe tener al menos 5 caracteres
-                </mat-error>
+      <div fxLayout="column" fxLayoutAlign="center none">
+        <table>
+          <tr>
+            <td width="100%">
+              <mat-form-field style="width: 100%;">
+                <input matInput placeholder="Nombre de Usuario" [(ngModel)]="user.userName" required>
               </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="Confirmar Contraseña" [type]="hideConfirmPwd ? 'password' : 'text'" formControlName="confirmPwd"  [errorStateMatcher]="parentErrorStateMatcher" required>
-                <mat-icon matSuffix (click)="hideConfirmPwd = !hideConfirmPwd">{{hideConfirmPwd ? 'visibility' : 'visibility_off'}}</mat-icon>
-                
-                <mat-error *ngIf="form.get('matching_passwords').get('confirmPwd').hasError('required')">
-                    Debe confirmar su contraseña
-                </mat-error>
-                <mat-error *ngIf="form.get('matching_passwords').hasError('areEqual')">
-                    Las contraseñas no coinciden
-                </mat-error>
-              </mat-form-field>
-        </div>
+            </td>
+            <td>
+              <button [disabled]="procesando" mat-button  (click)="getUser()">Consultar Usuario</button>
+              <div *ngIf="procesando">
+                <mat-progress-spinner [mode]="'indeterminate'" [diameter]="30"></mat-progress-spinner>
+              </div>
+            </td>
+          </tr>
+        </table>
       </div>
-      <mat-card-actions fxLayout="row" fxLayoutAlign="space-around center">
-        <button mat-button (click)="createUser()">Registrar</button>
-        <button mat-button mat-dialog-close>Cancelar</button>
-      </mat-card-actions>
+      <table *ngIf="habilitarRegistro">
+        <tr>
+          <td><b>Nombre: </b>{{user.userDisplayName}}</td>  
+        </tr>
+        <tr>
+          <td><b>Correo: </b>{{user.userMail}}</td>  
+        </tr>
+      </table>
+      <button mat-button [disabled]="!habilitarRegistro" (click)="createUser()">Registrar</button>
     </mat-card-content>
   </mat-card>

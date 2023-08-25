@@ -27,7 +27,12 @@ export class UserService {
   public get currentUserValue(): any {
     return this.currentUserSubject.value;
   }
-
+  
+  getModulos(): Observable<string[]> {
+    let url = ConfigUtils.getUrlFromEndPointName('user')
+    url += '/getModulosAcceso';
+    return this.http.get<any>(url);
+  }
   login(me: LoginMsg): Observable<boolean> {
     let url = ConfigUtils.getUrlFromEndPointName('user')
     url += '/login';
@@ -37,7 +42,6 @@ export class UserService {
       map(resp => {
         console.log(resp);
         if (resp && resp.Nombre) {
-          
           localStorage.setItem('currentUser', JSON.stringify(resp));
           this.auth.isLoged = true;
           this.currentUserSubject.next(resp);
@@ -46,6 +50,10 @@ export class UserService {
         return false;
         })
     );
+  }
+  getUserDetails(username):Observable<any>{
+    const url=ConfigUtils.getUrlFromEndPointName('user')+'/GetUserDetails/'+username;
+    return this.http.get<any>(url);
   }
   logout() {
     // remove user from local storage to log user out

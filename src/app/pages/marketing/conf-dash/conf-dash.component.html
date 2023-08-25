@@ -1,0 +1,87 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>{{global.ComponentTitle}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div fxLayout="column" fxLayoutAlign="center none">
+        <table>
+          <tr>
+              <td>
+                Modulos en los que será visible el Dashboard:
+                <div *ngFor="let modulo of dash.modulos">
+                    <mat-checkbox [(ngModel)]="modulo.Checked">
+                    {{modulo.Name}}
+                    </mat-checkbox>
+                </div>
+              </td>
+          </tr>
+          <tr>
+            <td width="100%">
+              <mat-form-field style="width: 100%;">
+                <input matInput placeholder="Nombre" [(ngModel)]="dash.nombre">
+              </mat-form-field>
+             </td>
+          </tr>
+          <tr>
+            <td width="100%">
+              <mat-form-field style="width: 100%;">
+                <input matInput placeholder="Url" [(ngModel)]="dash.url">
+              </mat-form-field>
+             </td>
+          </tr>
+          <tr>
+            <td>
+              <table>
+                  <tr>
+                      <td>
+                        <button [disabled]="procesando" class="registro" mat-button (click)="registrar()">{{editing ? 'Aceptar': 'Registrar DashBoard'}}</button>
+                        <div *ngIf="procesando">
+                          <mat-progress-spinner [mode]="'indeterminate'" [diameter]="30"></mat-progress-spinner>
+                        </div>
+                      </td>
+                      <td *ngIf="editing" style="padding-left: 10px;">
+                        <button  class="registro" mat-button (click)="clearDash()">Cancelar</button>
+                      </td>
+                  </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+     </div>
+     <div *ngIf="dashBoards.length>0" style="padding-top:30px">
+        <table align="center">
+            <tr>
+                <td class="tituloTabla">Dasboards</td>
+            </tr>
+            <tr>
+                <td>
+                    <table style="border: solid 1px #000;">
+                        <thead>
+                          <th class="contCell">DashBoard</th>  
+                          <th class="contCell">Modulo permitidos(s)</th>
+                         </thead>
+                         <tbody>
+                            <tr *ngFor="let d of dashBoards">
+                                <td class="contCell">
+                                    <a href="{{d.url}}"  target="_blank">{{d.nombre}}</a>
+                                </td>
+                                <td class="contCell">{{d.modulosStr}}</td>
+                                <td style="width: 10px;">
+                                    <button (click)="editar(d)" mat-button color="primary" aria-label="Example icon button with a delete icon">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                </td>  
+                                <td style="width: 10px;">
+                                    <button (click)="borrar(d)" mat-button color="primary" aria-label="Example icon button with a delete icon">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </td>       
+                             </tr>
+                         </tbody>
+                     </table>
+                </td>
+            </tr>
+        </table>
+     </div>
+    </mat-card-content>
+</mat-card>

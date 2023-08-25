@@ -16,6 +16,14 @@
               <mat-icon>menu_book</mat-icon> Directorio
             </button>
           </td>
+          <!--td *ngIf="esAdministrador">
+            <button mat-button [matMenuTriggerFor]="menu0">Administración</button>
+              <mat-menu #menu0="matMenu">
+                <button mat-menu-item  routerLink="user" >
+                  <mat-icon>person</mat-icon> Gestionar Usuarios App Movil
+                </button>
+              </mat-menu>
+          </td-->
           <td *ngIf="currentUser.ModulosAcceso.Ventas">
             <button mat-button [matMenuTriggerFor]="menu">Ventas</button>
               <mat-menu #menu="matMenu">
@@ -33,6 +41,14 @@
                  </button>
                  <button mat-menu-item  routerLink="facturasHistoricas" >
                   <mat-icon>assessment</mat-icon>Facturas historicas por cliente
+                </button>
+              </mat-menu>
+          </td>
+          <td *ngIf="currentUser.ModulosAcceso.Dashboards">
+            <button mat-button [matMenuTriggerFor]="menu">Dashboards</button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item  routerLink="confDash" >
+                  <mat-icon>assessment</mat-icon> Configurar Dashboards
                 </button>
               </mat-menu>
           </td>

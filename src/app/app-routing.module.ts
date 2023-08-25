@@ -18,24 +18,29 @@ import { RptFacturasHistoricasComponent } from './reportes/rpt-facturas-historic
 import { GenerarQRComponent } from './pages/bodega/generar-qr/generar-qr.component';
 import { ConsultaUbicacionComponent } from './pages/bodega/consulta-ubicacion/consulta-ubicacion.component';
 import { ConsultaLoteComponent } from './pages/bodega/consulta-lote/consulta-lote.component';
+import { NewUserComponent } from './pages/new-user/new-user.component';
+import { ConfDashComponent } from './pages/marketing/conf-dash/conf-dash.component';
+
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'directorio', component: DirectorioTelefonicoComponent},
-  {path: 'entregasUrbano', component: EntregasUrbanoComponent},
-  {path: 'hojaRuta', component: HojaRutaComponent},
-  {path: 'rptHojaRuta', component: RptHojaRutaComponent},
-  {path: 'updateNumFacturaExportacion', component: UpdateNumFacturaExportacionComponent},
-  {path: 'facturasHistoricas', component: RptFacturasHistoricasComponent},
+  {path: 'entregasUrbano', component: EntregasUrbanoComponent, canActivate: [AuthGuard]},
+  {path: 'hojaRuta', component: HojaRutaComponent, canActivate: [AuthGuard]},
+  {path: 'rptHojaRuta', component: RptHojaRutaComponent, canActivate: [AuthGuard]},
+  {path: 'updateNumFacturaExportacion', component: UpdateNumFacturaExportacionComponent, canActivate: [AuthGuard]},
+  {path: 'facturasHistoricas', component: RptFacturasHistoricasComponent, canActivate: [AuthGuard]},
   {path: 'reacciones', component: RptReaccionesComponent},
-  {path: 'participantesPuntos', component: GestionParticipantesPuntosComponent},
+  {path: 'participantesPuntos', component: GestionParticipantesPuntosComponent, canActivate: [AuthGuard]},
   {path: 'envioRetenciones', component: EnvioRetencionesComponent, canActivate: [AuthGuard]},
   {path: 'updateMontoCuentas', component: UpdateMontosCuentasComponent},
   {path: 'test', component: TestComponent},
-  {path: 'generarQR', component: GenerarQRComponent},
+  {path: 'generarQR', component: GenerarQRComponent, canActivate: [AuthGuard]},
   {path: 'businessServices', component: BusinessServicesComponent,canActivate: [AuthGuard]},
   {path: 'consultaUbicacion', component: ConsultaUbicacionComponent},
   {path: 'consultaLote', component: ConsultaLoteComponent },
+  {path: 'confDash', component: ConfDashComponent, canActivate: [AuthGuard]},
+  {path: 'user', component: NewUserComponent},
   // otherwise redirect to login
   { path: '**', redirectTo: '' }
 ];
