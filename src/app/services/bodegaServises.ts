@@ -35,8 +35,8 @@ export class BodegaServices {
         console.log(url);
         return this.http.get<any>(url);      
     }
-    getContenidoLote(lote){
-        const url=ConfigUtils.getUrlFromEndPointName('bodega')+'/getUbicacionesYDetArticuloPorLote/'+lote;
+    getContenidoLote(lote, codArticulo){
+        const url=ConfigUtils.getUrlFromEndPointName('bodega')+'/getUbicacionesYDetArticuloPorLote/'+lote+'/'+codArticulo;
         console.log(url);
         return this.http.get<any>(url);     
     }

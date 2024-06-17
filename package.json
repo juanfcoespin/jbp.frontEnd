@@ -30,6 +30,7 @@
     "font-awesome": "^4.7.0",
     "mat-table-exporter": "^1.2.5",
     "ngx-print": "^1.2.1",
+    "package.json": "^2.0.1",
     "primeng": "^7.1.2",
     "rxjs": "~6.5.3",
     "tslib": "^1.9.0",

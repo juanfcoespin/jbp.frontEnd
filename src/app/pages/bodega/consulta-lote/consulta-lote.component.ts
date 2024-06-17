@@ -13,6 +13,7 @@ export class ConsultaLoteComponent implements OnInit {
   detalleLote: any;
   estadoLote: string;
   mostrarRegresar:boolean=false;
+  esProductoTerminado:boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,9 +26,9 @@ export class ConsultaLoteComponent implements OnInit {
   setLote(){
     this.route.queryParams.subscribe(params => {
       if(params){
-        if(params.lote){
+        if(params.lote && params.codArticulo){
           this.lote=params.lote;
-          this.consultarContenido(this.lote);
+          this.consultarContenido(this.lote, params.codArticulo);
         }
         if(params.regresar){
           this.mostrarRegresar=true;
@@ -35,12 +36,16 @@ export class ConsultaLoteComponent implements OnInit {
       }
     });
   }
-  consultarContenido(lote){
-    this.bodegaService.getContenidoLote(lote).subscribe(me=>{
+  consultarContenido(lote, codArticulo){
+    this.bodegaService.getContenidoLote(lote, codArticulo).subscribe(me=>{
       this.detalleLote=me;
+      console.log(me);
+      if(this.detalleLote && this.detalleLote.CodArticulo){
+        this.esProductoTerminado = (this.detalleLote.CodArticulo.substring(0,1)==8)
+        console.log(this.esProductoTerminado);
+      }
       if(me && me.UbicacionesCantidad){
         this.setEstado(me.Estado);
-        console.log(me);
       }
     });
   }
@@ -48,7 +53,7 @@ export class ConsultaLoteComponent implements OnInit {
     //TODO: ver como gestionar el estado de baja
     switch(estado){
       case 'Liberado':
-        this.estadoLote='LIBERADO';
+        this.estadoLote='APROBADO';
         break;
       case 'Acceso Denegado':
         this.estadoLote='CUARENTENA';
@@ -57,8 +62,6 @@ export class ConsultaLoteComponent implements OnInit {
         this.estadoLote='RECHAZADO';
         break;
     }
-    console.log(this);
-    console.log(this.detalleLote);
   }
   regresar(){
     this.location.back();

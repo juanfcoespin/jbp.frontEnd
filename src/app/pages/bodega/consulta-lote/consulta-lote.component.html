@@ -5,7 +5,7 @@
         <mat-icon matSuffix>arrow_back</mat-icon> Regresar
       </button>
       <h2 [class]="this.estadoLote">{{this.estadoLote}}</h2>
-      <h6 style="text-align: center;">{{this.detalleLote.CodPoe}}</h6>
+      <h6 style="text-align: center;">{{esProductoTerminado?this.detalleLote.CodPoePT:this.detalleLote.CodPoe}}</h6>
       <h4 style="text-align: center;">{{this.detalleLote.Articulo}}</h4>
       <table class="infoLote">
         <tr>
@@ -13,40 +13,56 @@
           <td width="80%">{{this.detalleLote.CodArticulo}}</td>
         </tr>
         <tr>
-          <td><b>Detalle Lote:</b></td>
+          <td><b>Lote:</b></td>
           <td> {{lote}}</td>
         </tr>
-        <tr>
+        <tr *ngIf="!esProductoTerminado">
           <td><b>Lote Proveedor:</b></td>
           <td>{{this.detalleLote.LoteProveedor}}</td>
         </tr>
-        <tr>
+        <tr *ngIf="!esProductoTerminado">
           <td><b>Proveedor:</b></td>
           <td> {{this.detalleLote.Proveedor}}</td>
         </tr>
-        <tr>
+        <tr *ngIf="!esProductoTerminado">
           <td><b>Fabricante:</b></td>
           <td>{{this.detalleLote.Fabricante}}</td>
         </tr>
-        <tr>
-          <td style="padding-right: 10px;"><b>Condiciones de Almacenamiento:</b></td>
-          <td> {{this.detalleLote.CondicionAlmacenamiento}}</td>
+        <tr *ngIf="esProductoTerminado">
+          <td><b>Titular del Producto:</b></td>
+          <td>{{this.detalleLote.Cliente}}</td>
         </tr>
         <tr>
-          <td><b>Fecha Fabricación:</b></td>
+          <td style="padding-right: 10px;"><b>Condiciones de Almacenamiento:</b></td>
+          <td> {{esProductoTerminado?this.detalleLote.CondicionAlmacenamientoPT:this.detalleLote.CondicionAlmacenamiento}}</td>
+        </tr>
+        <tr *ngIf="esProductoTerminado">
+          <td style="padding-right: 10px;"><b>Empacado Por:</b></td>
+          <td> {{this.detalleLote.ResponsableEmpaque}}</td>
+        </tr>
+        <tr *ngIf="!esProductoTerminado">
+          <td><b>Fecha Ingreso:</b></td>
+          <td>{{this.detalleLote.FechaIngreso}}</td>
+        </tr>
+        <tr>
+          <td><b>Fecha Fab.:</b></td>
           <td>{{this.detalleLote.FechaFabricacion}}</td>
         </tr>
         <tr>
-          <td><b>Fecha Vencimiento:</b></td>
+          <td><b>Fecha Ven.:</b></td>
           <td> {{this.detalleLote.FechaVencimiento}}</td>
         </tr>
-        <tr>
+        <tr *ngIf="!esProductoTerminado">
           <td><b>Fecha Retest:</b></td>
           <td>{{this.detalleLote.FechaRetest}}</td>
         </tr>
+        <tr *ngIf="esProductoTerminado">
+          <td><b>Cantidad:</b></td>
+          <td>{{this.detalleLote.Cantidad}}</td>
+        </tr>
         <tr>
           <td><b>Bultos:</b></td>
-          <td> {{this.detalleLote.Bultos}}</td>
+          <td> {{esProductoTerminado?this.detalleLote.BultosPT:this.detalleLote.Bultos}}</td>
         </tr>
         <tr>
           <td><b>Observaciones:</b></td>

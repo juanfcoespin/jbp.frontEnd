@@ -75,6 +75,7 @@ export class EstadoCuentaPtkComponent implements OnInit {
        obj.puntos=0;
        this.documentosPorMes.push(obj);
      }
+     console.log(this.documentosPorMes);
      this.documentosPorMes.forEach(obj=>{
        if(obj.mes==mes){
          obj.monto+= Number(d.monto);
