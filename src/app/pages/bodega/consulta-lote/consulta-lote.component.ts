@@ -25,10 +25,14 @@ export class ConsultaLoteComponent implements OnInit {
   }
   setLote(){
     this.route.queryParams.subscribe(params => {
+      console.log(params);
       if(params){
-        if(params.lote && params.codArticulo){
+        if(params.lote){
           this.lote=params.lote;
-          this.consultarContenido(this.lote, params.codArticulo);
+          var codArticulo=null;
+          if(params.codArticulo)
+            codArticulo=params.codArticulo;
+          this.consultarContenido(this.lote, codArticulo);
         }
         if(params.regresar){
           this.mostrarRegresar=true;
@@ -36,12 +40,14 @@ export class ConsultaLoteComponent implements OnInit {
       }
     });
   }
-  consultarContenido(lote, codArticulo){
+  consultarContenido(lote, codArticulo=null){
+    console.log(lote);
+    console.log(codArticulo);
     this.bodegaService.getContenidoLote(lote, codArticulo).subscribe(me=>{
       this.detalleLote=me;
       console.log(me);
-      if(this.detalleLote && this.detalleLote.CodArticulo){
-        this.esProductoTerminado = (this.detalleLote.CodArticulo.substring(0,1)==8)
+      if(this.detalleLote && this.detalleLote.EsPT){
+        this.esProductoTerminado = this.detalleLote.EsPT
         console.log(this.esProductoTerminado);
       }
       if(me && me.UbicacionesCantidad){

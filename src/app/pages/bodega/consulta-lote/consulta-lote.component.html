@@ -57,20 +57,21 @@
           <td>{{this.detalleLote.FechaRetest}}</td>
         </tr>
         <tr *ngIf="esProductoTerminado">
-          <td><b>Cantidad:</b></td>
-          <td>{{this.detalleLote.Cantidad}}</td>
+          <td><b>Cantidad Por Caja:</b></td>
+          <td>{{this.detalleLote.CantidadPT}} {{this.detalleLote.UnidadMedida}}</td>
         </tr>
         <tr>
           <td><b>Bultos:</b></td>
-          <td> {{esProductoTerminado?this.detalleLote.BultosPT:this.detalleLote.Bultos}}</td>
+          <!-- Internamente la api discrimina los bultos de MP y los bultos de PT -->
+          <td> {{this.detalleLote.Bultos}}</td>
         </tr>
         <tr>
-          <td><b>Observaciones:</b></td>
+          <td style="vertical-align: top;"><b>Observaciones:</b></td>
           <td> {{this.detalleLote.Observaciones}}</td>
         </tr>
       </table>
       <br>
-      <table width="100%" *ngIf="this.detalleLote.UbicacionesCantidad.length>0">
+      <table width="100%" *ngIf="this.detalleLote.UbicacionesCantidad && this.detalleLote.UbicacionesCantidad.length>0">
         <thead>
           <th>CodBodega</th>
           <th>Ubicación</th>
