@@ -46,8 +46,8 @@ export class ConsultaUbicacionComponent implements OnInit {
       this.contenidoFiltrado.push(item);
     });
   }
-  verDetalleLote(lote){
-    this.router.navigate(['consultaLote'], { queryParams: {lote: lote, regresar:1}});
+  verDetalleLote(lote, codArticulo){
+    this.router.navigate(['consultaLote'], { queryParams: {lote: lote, codArticulo: codArticulo, regresar:1}});
   }
 
 }

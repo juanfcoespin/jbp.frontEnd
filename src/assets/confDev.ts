@@ -37,8 +37,12 @@ const conf=[
             {
                 "endPointName": "facturaHistorico",
                 "url": "http://localhost:53628/api/facturahistorico"
+            },
+            {
+                "endPointName": "bodega",
+                "url": "http://localhost:53628/api/bodega"
             }
-        ]
+                   ]
     }
 ]
 export default conf
